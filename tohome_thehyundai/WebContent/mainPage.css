@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 1800px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 45px;
+}
+
+.header .util a {
+  margin-left: 24px;
+  color: #aea7a2;
+  font-size: 13px;
+}
+
+.gnb-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.gnb-list i {
+  color: #767572;
+}
+
+.gnb-list li {
+  color: #454545;
+  font-size: 16px;
+  vertical-align: middle;
+  margin-left: 22px;
+}
+
+.gnb-list .search {
+  position: relative;
+  margin-left: 28px;
+}
+.gnb-list .search input {
+  width: 180px;
+  height: 28px;
+  border-color: #454545;
+  background-color: #fff;
+  border: 1px solid #454545;
+  border-radius: 18px;
+  padding: 0px 15px;
+}
+
+.gnb-list .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+}
+
+.gnb-list .cart {
+  margin-left: 25px;
+  position: relative;
+}
+
+.gnb-list .cart .count {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff6913;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.gnb-list .cart .count p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  line-height: 24px;
+}
+
+/* 타임세일 */
+
+.timesale {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.timesale .inner {
+  width: 502px;
+  height: 502px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.timesale .time-inner {
+  width: 502px;
+  height: 502px;
+  background: #f5eee9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.time-inner .time-cart {
+  position: absolute;
+  bottom: 8%;
+  right: 20%;
+}
+.timesale .inner h2 {
+  font-size: 40px;
+}
+
+.timesale .inner p {
+  font-size: 18px;
+  color: #767572;
+}
+
+.timesale .time-inner .thumb {
+  position: relative;
+}
+.timesale .time-inner .thumb .sale-percent {
+  width: 55px;
+  height: 55px;
+  background-color: #ff6913;
+  position: absolute;
+  bottom: 15%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timesale .time-inner .thumb .percent {
+  margin: 0;
+  color: white;
+  font-size: 18px;
+}
+
+.timesale .time-inner .thumb img {
+  width: 100%;
+  height: 360px;
+}
+
+.timesale .time-inner .txt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.timesale .time-inner .txt strong {
+  max-height: 50px;
+  line-height: 25px;
+  color: #454545;
+  font-size: 18px;
+  font-weight: 200;
+}
+
+.timesale .time-inner .txt .price {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* exhibiton */
+.exhibition {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.exhibition li {
+  margin-bottom: 25px;
+}

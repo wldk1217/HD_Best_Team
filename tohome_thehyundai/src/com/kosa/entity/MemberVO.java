@@ -1,5 +1,5 @@
 package com.kosa.entity;
 
-public class UserVO {
+public class MemberVO {
 
 }

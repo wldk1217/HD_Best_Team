@@ -35,7 +35,7 @@
 		<form>
 			<ul>
 				<li class="form-text">
-					<h2>회원가입</h2>
+					<h2>회원가입a</h2>
 				</li>
 				<li>
 					<label class="form-entry">

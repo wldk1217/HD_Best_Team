@@ -21,7 +21,7 @@ public class DBConnection {
 		Properties properties = new Properties();
 		Reader reader;
 		try {
-			reader = new FileReader("lib/oracle.properties"); // 읽어올 파일 지정
+			reader = new FileReader("WebContent/WEB-INF/lib/oracle.properties"); // 읽어올 파일 지정
 			properties.load(reader); // 설정 파일 로딩하기
 		} catch (FileNotFoundException e1) {
 			System.out.println("예외: 지정한 파일을 찾을수없습니다 :" + e1.getMessage());

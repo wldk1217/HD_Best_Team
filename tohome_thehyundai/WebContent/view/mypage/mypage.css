@@ -1,0 +1,96 @@
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 1800px;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none !important;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 45px;
+}
+
+.header .util a {
+  margin-left: 24px;
+  color: #aea7a2;
+  font-size: 13px;
+}
+
+.gnb-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 25px;
+}
+
+.gnb-list i {
+  color: #767572;
+}
+
+.gnb-list li {
+  color: #454545;
+  font-size: 16px;
+  vertical-align: middle;
+  margin-left: 22px;
+}
+
+.gnb-list .search {
+  position: relative;
+  margin-left: 28px;
+}
+.gnb-list .search input {
+  width: 180px;
+  height: 28px;
+  border-color: #454545;
+  background-color: #fff;
+  border: 1px solid #454545;
+  border-radius: 18px;
+  padding: 0px 15px;
+}
+
+.gnb-list .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translate(-50%, -50%);
+}
+
+.gnb-list .cart {
+  margin-left: 25px;
+  position: relative;
+}
+
+.gnb-list .cart .count {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff6913;
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
+
+.gnb-list .cart .count p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  color: white;
+  line-height: 24px;
+}
+

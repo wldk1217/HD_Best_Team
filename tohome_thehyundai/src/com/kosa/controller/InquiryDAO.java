@@ -1,5 +1,5 @@
 package com.kosa.controller;
 
-public class UserController {
+public class InquiryDAO {
 
 }

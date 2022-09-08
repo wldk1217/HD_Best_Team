@@ -1,0 +1,98 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 1800px;
+	font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
+	font-weight: 200;
+	font-size: 15px;
+	line-height: 1.6;
+	color: #767572;
+	letter-spacing: -0.025em;
+	word-break: keep-all;
+	word-wrap: break-word;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 15px 45px;
+}
+
+.header .util a {
+	margin-left: 24px;
+	color: #aea7a2;
+	font-size: 13px;
+}
+
+
+
+
+/* 로그인 폼 */
+.find-input-form {
+	padding: 20px 35% 20px 35%;
+	margin: 0 auto;
+	text-align : center;
+}
+
+.form-entry {
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 100%;
+	min-width: 300px;
+	display: flex;
+}
+.item {
+	margin-bottom: 20px;
+}
+.item input{
+	width: 100%;
+	height: 50px;
+}
+.item:nth-child(1) {
+	min-width: 100px;	
+}
+.item:nth-child(2) {
+	min-width: 400px;
+}
+
+.big {
+	height: 56px;
+	line-height: 54px;
+	width: 100%;
+	padding-left: 20px;
+}
+
+.find-btn li button {
+	width: 470px;
+	background-color: black;
+    color: white;
+	font-weight: bold;
+	height: 50px;
+	margin-bottom: 10px;
+}
+
+.login-surport {
+	width: 100%;
+	text-align: right;
+}
+
+.login-sub {
+	width: 100%;	
+	margin-bottom: 10px;
+}
+
+.login-sub a {
+	color: gray;
+}

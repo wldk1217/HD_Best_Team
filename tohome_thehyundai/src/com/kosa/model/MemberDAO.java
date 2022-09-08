@@ -1,5 +1,5 @@
 package com.kosa.model;
 
-public class UserDAO {
-
+public class MemberDAO {
+	
 }

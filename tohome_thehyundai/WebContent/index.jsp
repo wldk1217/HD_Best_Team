@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,13 +10,19 @@
 <link rel="stylesheet" href="./mainPage.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link href="./view/footer.css" rel="stylesheet">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous" />
+
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<link href="./view/footer.css" rel="stylesheet" />
 <title>Document</title>
 </head>
-<body>
+
+<body id="body">
 	<!-- header -->
 	<header class="header">
 		<h1 class="logo">
@@ -33,9 +40,26 @@
 
 	<!-- global navigation bar  -->
 	<ul class="gnb-list">
-		<div>
-			<i class="bi bi-list">카테고리 전체보기</i>
+		<div class="category">
+			<li>
+				<div class="dropdown">
+					<button class="btn dropdown-toggle" type="button"
+						data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="bi bi-list"> 카테고리 전체보기 </i>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">1</a></li>
+						<li><a class="dropdown-item" href="#">2</a></li>
+						<li><a class="dropdown-item" href="#">3</a></li>
+						<li><a class="dropdown-item" href="#">4</a></li>
+						<li><a class="dropdown-item" href="#">5</a></li>
+						<li><a class="dropdown-item" href="#">6</a></li>
+						<li><a class="dropdown-item" href="#">7</a></li>
+					</ul>
+				</div>
+			</li>
 		</div>
+
 		<li>세일</li>
 		<li>신상품</li>
 		<li>매거진</li>
@@ -117,18 +141,17 @@
 	<ul class="exhibition" data-aos="fade-up">
 		<li><a href="/"> <img
 				src="https://tohomeimage.thehyundai.com/DP/DP034/2022/08/22/115648/dkxea.png?RS=1204x160"
-				alt="image">
+				alt="image" />
 		</a></li>
 		<li><a href="/"> <img
-				src="https://tohomeimage.thehyundai.com/DP/DP034/2022/04/27/1315570/ierta.png?RS=1204x160"
-				alt="image">
+				src="https://tohomeimage.thehyundai.com/DP/DP034/2021/11/01/104726/lqgpp.jpg?RS=1204x160"
+				alt="image" />
 		</a></li>
 		<li><a href="/"> <img
 				src="https://tohomeimage.thehyundai.com/DP/DP034/2022/08/22/115648/elqth.jpg?RS=1204x160"
-				alt="image">
+				alt="image" />
 		</a></li>
 	</ul>
-	</div>
 
 	<footer id="footer">
 		<div class="util">
@@ -143,10 +166,13 @@
 		</div>
 	</footer>
 </body>
+<!-- JavaScript Bundle with Popper -->
 <script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+	crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-	AOS.init();
+  AOS.init();
 </script>
 </html>

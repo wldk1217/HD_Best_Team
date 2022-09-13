@@ -1,0 +1,242 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	height: 1800px;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none !important;
+}
+
+.header {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 15px 45px;
+}
+
+.header .util a {
+	margin-left: 24px;
+	color: #aea7a2;
+	font-size: 13px;
+}
+
+.gnb-list {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	margin-bottom: 25px;
+}
+
+.gnb-list i {
+	color: #767572;
+}
+
+.gnb-list li {
+	color: #454545;
+	font-size: 16px;
+	vertical-align: middle;
+	margin-left: 22px;
+}
+
+.gnb-list .search {
+	position: relative;
+	margin-left: 28px;
+}
+
+.gnb-list .search input {
+	width: 180px;
+	height: 28px;
+	border-color: #454545;
+	background-color: #fff;
+	border: 1px solid #454545;
+	border-radius: 18px;
+	padding: 0px 15px;
+}
+
+.gnb-list .search-icon {
+	position: absolute;
+	top: 50%;
+	right: 5%;
+	transform: translate(-50%, -50%);
+}
+
+.gnb-list .cart {
+	margin-left: 25px;
+	position: relative;
+}
+
+.gnb-list .cart .count {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background: #ff6913;
+	position: absolute;
+	top: 0;
+	left: 10px;
+}
+
+.gnb-list .cart .count p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 13px;
+	font-weight: 700;
+	text-align: center;
+	color: white;
+	line-height: 24px;
+}
+
+/* productDetail 페이지 */
+.contents {
+	width: 100%;
+	min-width: 300px;
+	padding: 5% 25%;
+}
+
+#content_first {
+	display: flex;
+}
+
+.productInfo:nth-child(1) {
+	width: 50%;
+}
+
+.productInfo:nth-child(2) {
+	width: 50%;
+}
+
+.productSimpleInfo {
+	color: gray;
+}
+
+.productPrice {
+	display: flex;
+}
+
+.productOrigin {
+	display: flex;
+	padding: 15px;
+}
+
+.productOrigin2 {
+	display: flex;
+	background-color: rgb(248, 248, 248);
+	border: solid 2px lightgrey;
+	padding: 15px;
+}
+
+.originItem:nth-child(1) {
+	width: 30%;
+}
+
+.originItem:nth-child(2) {
+	width: 70%;
+}
+
+.originItem div button {
+	width: 35px;
+	text-align: center;
+}
+
+.originItem div input {
+	height: 35px;
+	width: 60px;
+	text-align: center;
+	padding-bottom: 6px;
+	border-radius: 5px;
+}
+
+.productTotal {
+	display: flex;
+	float: right;
+}
+
+.btns {
+	display: flex;
+}
+
+.btns button {
+	width: 49%;
+	height: 50px;
+	margin: 0px 1% 0px 0px;
+	border-radius: 0px;
+}
+
+
+/*tab css*/
+ul {
+	list-style: none;
+}
+
+.tabmenu {
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.tabmenu ul {
+	position: relative;
+}
+
+.tabmenu ul li {
+	display: inline-block;
+	width: 33.33%;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+}
+
+.tabmenu label {
+	display: block;
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+}
+
+.tabmenu input {
+	display: none;
+}
+
+.tabCon {
+	display: none;
+	width: 100%;
+	text-align: left;
+	padding: 20px;
+	position: absolute;
+	left: 0;
+	top: 40px;
+	box-sizing: border-box;
+	border: 5px solid #f9f9f9;
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+.tabCon div {
+	padding: 40px 30px 40px 30px;
+}
+
+.tabmenu input:checked ~ label {
+	background: #ccc;
+}
+
+.tabmenu input:checked ~ .tabCon {
+	display: block;
+}
+
+.tabmenu3_wrap button {
+	background-color: #FFAA40;
+	width: 100%;
+	margin: 0 auto;
+	height: 70px;
+	border-radius: 0px;
+}

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,13 +51,9 @@
 						<i class="bi bi-list"> 카테고리 전체보기 </i>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="#">1</a></li>
-						<li><a class="dropdown-item" href="#">2</a></li>
-						<li><a class="dropdown-item" href="#">3</a></li>
-						<li><a class="dropdown-item" href="#">4</a></li>
-						<li><a class="dropdown-item" href="#">5</a></li>
-						<li><a class="dropdown-item" href="#">6</a></li>
-						<li><a class="dropdown-item" href="#">7</a></li>
+						<c:forEach items="${categoryList}" var="CategoryVO">
+							<li><a class="dropdown-item" href="#">${CategoryVO.categoryType}</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</li>

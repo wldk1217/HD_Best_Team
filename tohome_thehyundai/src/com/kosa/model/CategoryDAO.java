@@ -6,16 +6,29 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.kosa.dbUtil.DBConnection;
 import com.kosa.dbUtil.DbUtil;
+import com.kosa.entity.CategoryVO;
 
 import oracle.jdbc.OracleTypes;
 
 public class CategoryDAO {
+	
+	private CategoryDAO() {
+	}
 
-	public static void main(String[] args) {
+	private static CategoryDAO instance = new CategoryDAO();
 
+	public static CategoryDAO getInstance() {
+		return instance;
+	}
+	
+	// 카테고리 항목 화면에 뿌려주기
+	public ArrayList<CategoryVO> viewCategory() {
+		ArrayList<CategoryVO> categoryList = new ArrayList<CategoryVO>();
+		
 		String runSP = "{ call category_pro(?) }";
 
 		try {
@@ -27,10 +40,12 @@ public class CategoryDAO {
 				callableStatement.execute();
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
 				
-				while (resultSet.next()) {
-					int id = resultSet.getInt(1);
-					String type = resultSet.getString(2);
-					System.out.println(id + " " + type);
+				while (resultSet.next()) {	
+					CategoryVO category = new CategoryVO();
+					category.setCategoryId(resultSet.getInt(1));
+					category.setCategoryType(resultSet.getString(2));
+					
+					categoryList.add(category);
 				}
 
 			} catch (SQLException e) {
@@ -45,7 +60,6 @@ public class CategoryDAO {
 		} finally {
 			
 		}
-
+		return categoryList;
 	}
-
 }

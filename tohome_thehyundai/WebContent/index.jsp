@@ -12,6 +12,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<link href="./view/footer.css" rel="stylesheet">
 <title>Document</title>
 </head>
 <body>
@@ -128,6 +129,19 @@
 		</a></li>
 	</ul>
 	</div>
+
+	<footer id="footer">
+		<div class="util">
+			<div class="inner">
+				<a href="">브랜드소개</a> <a href="">이용약관</a> <a href="">개인정보처리방침</a> <a
+					href="">청소년보호정책</a> <a href="">영상기기운영방침</a> <a href="#body">
+					<button type="button" class="top_btn">
+						<i class="bi bi-arrow-up-short"></i>TOP
+					</button>
+				</a>
+			</div>
+		</div>
+	</footer>
 </body>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"></script>

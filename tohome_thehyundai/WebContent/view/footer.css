@@ -1,0 +1,43 @@
+#footer {
+    width: 100%;
+    min-height: 400px;
+    background-color: #101010;
+  }
+  
+  #footer .util {
+    border-bottom: 1px solid #2b2b2b;
+  }
+  
+  #footer .util .inner {
+    position: relative;
+    margin: 0 auto;
+    width: 1204px;
+  }
+  
+  #footer .util .inner a {
+    display: inline-block;
+    margin-right: 24px;
+    line-height: 59px;
+    color: #fff;
+    font-size: 16px;
+  }
+  
+  .top_btn {
+    position: relative;
+    border: 0;
+    margin-left: 458px;
+    width: 60px;
+    height: 60px;
+    background-color: #454545;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .top_btn i {
+    position: absolute;
+    top: 0;
+    left: 33%;
+    font-size: 20px;
+  }
+  

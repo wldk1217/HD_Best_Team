@@ -25,7 +25,7 @@ public class CategoryDAO {
 			
 			
 			System.out.println("connection successful");
-			stmt = conn.prepareStatement("select * from category");
+			stmt = conn.prepareStatement("select * from v_category");
 
 			rs = stmt.executeQuery();
 

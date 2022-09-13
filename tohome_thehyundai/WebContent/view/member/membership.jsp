@@ -25,7 +25,7 @@
 		</h1>
 
 		<div class="util">
-			<a href="./loginForm.html">로그인</a> <a href="./membership.html">회원가입</a> <a href="">마이페이지</a> <a
+			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a> <a href="">마이페이지</a> <a
 				href="">고객센터</a>
 		</div>
 	</header>
@@ -35,7 +35,7 @@
 		<form>
 			<ul>
 				<li class="form-text">
-					<h2>회원가입a</h2>
+					<h2>회원가입</h2>
 				</li>
 				<li>
 					<label class="form-entry">

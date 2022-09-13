@@ -57,7 +57,6 @@
 			</div>
 		</div>
 	</ul>
-
 	<!-- 상품 상세 페이지 -->
 	<div class="contents">
 		<div id="content_first">
@@ -69,13 +68,14 @@
 					<h2>[새벽시장] 사과 2.5kg</h2>
 				</div>
 				<div class="productSimpleInfo">8/24일 새벽배송부터 홍로사과로 변경되어 운영됩니다.
-				</div>
+				</div><br>
 				<div class="productPrice">
 					<div class="priceItem">
-						<h2>27,000</h2>
+						<h3>27,000</h3>
 					</div>
 					<div class="priceItem">원</div>
 				</div>
+				<br><br>
 				<hr>
 				<div class="productOrigin">
 					<div class="originItem">원산지</div>
@@ -105,11 +105,12 @@
 				</div>
 				<br>
 				<br>
+				
 				<br>
 				<br>
 				<div class="btns">
-					<button type="button" class="btn orange bigger" style="background: #FFAA40;">장바구니</button>
-					<button type="button" class="btn orange bigger">바로구매</button>
+					<button type="button" class="btn orange bigger">장바구니</button>
+					<button type="button" class="btn orange bigger" style="background: #FFAA40;">바로구매</button>
 				</div>
 			</div>
 		</div> <br><br><hr><br><br>

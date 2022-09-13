@@ -1,50 +1,51 @@
 package com.kosa.model;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.kosa.dbUtil.DBConnection;
 import com.kosa.dbUtil.DbUtil;
 
+import oracle.jdbc.OracleTypes;
+
 public class CategoryDAO {
-	
+
 	public static void main(String[] args) {
-		System.out.println("test");
-		
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
 
-		conn = DBConnection.getConnection();
+		String runSP = "{ call category_pro(?) }";
+
 		try {
-			int a = 0;
-			String b = null;
-
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(runSP);
+			callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
 			
-			
-			System.out.println("connection successful");
-			stmt = conn.prepareStatement("select * from v_category");
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
+				
+				while (resultSet.next()) {
+					int id = resultSet.getInt(1);
+					String type = resultSet.getString(2);
+					System.out.println(id + " " + type);
+				}
 
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				a = rs.getInt(1);
-				b = rs.getString(2);
-				System.out.println(a + " " + b);
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
 			}
-
-			rs.close();
-			stmt.close();
-			conn.close();
-			
-			
+		} catch (SQLException e) {
+			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			
 		}
-		
-		
+
 	}
-	
+
 }

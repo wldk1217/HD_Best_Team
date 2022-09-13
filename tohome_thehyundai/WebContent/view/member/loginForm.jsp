@@ -25,7 +25,7 @@
 		</h1>
 
 		<div class="util">
-			<a href="./loginForm.html">로그인</a> <a href="./membership.html">회원가입</a> <a href="">마이페이지</a> <a
+			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a> <a href="">마이페이지</a> <a
 				href="">고객센터</a>
 		</div>
 	</header>
@@ -50,9 +50,9 @@
 			</ul>
 			<ul class="btn-group login-surport">
 				<li class="login-sub">
-					<a href="./membership.html">회원가입</a>&nbsp&nbsp|&nbsp&nbsp
-					<a href="./findId.html">아이디/</a>
-					<a href="./findPw.html">비밀번호 찾기</a>
+					<a href="./membership.jsp">회원가입</a>&nbsp&nbsp|&nbsp&nbsp
+					<a href="./findId.jsp">아이디/</a>
+					<a href="./findPw.jsp">비밀번호 찾기</a>
 				</li>
 			</ul>
 			<div class="login-btn">

@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE htm.---l>
+<html>
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="./findId.css" />
@@ -23,14 +25,14 @@
 		</h1>
 
 		<div class="util">
-			<a href="./loginForm.html">로그인</a> <a href="./membership.html">회원가입</a> <a href="">마이페이지</a> <a
+			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a> <a href="">마이페이지</a> <a
 				href="">고객센터</a>
 		</div>
 	</header>
 	
 	<!-- 로그인 폼  -->
 	<div class="find-input-form">
-		<h2>아이디찾기</h2><br>
+		<h2>비밀번호 찾기</h2><br>
 		<form>
 			<ul>
 				<li style="margin-bottom: 10px;">
@@ -46,16 +48,22 @@
 							<input type="text" id="email" name="email" class="big" title="이메일 입력" placeholder="이메일">
 						</div>
 					</label>
+					<label class="form-entry">
+						<div class="item">전화번호</div>
+						<div class="item">
+							<input type="text" id="tel" name="tel" class="big" title="전화번호 입력" placeholder="전화번호">
+						</div>
+					</label>
 				</li>
 			</ul>
 			<div class="find-btn">
 				<li>
-					<button type="button" class="find-btn-btn" style="margin-bottom: 10px;">아이디 찾기</button>
+					<button type="button" class="find-btn-btn">비밀번호 찾기</button>
 				</li>
 			</div>
 			<ul class="login-surport">
 				<li class="login-sub">
-					<a href="./findPw.html">비밀번호 찾기</a>
+					<a href="./findId.jsp">아이디 찾기</a>
 				</li>
 			</ul>
 		</form>

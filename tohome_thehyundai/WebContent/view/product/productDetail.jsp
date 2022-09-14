@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,13 +16,13 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script type="text/javascript" src="productDetail.js"></script>
-<title>Document</title>
+<title>prodcutDetail</title>
 </head>
 <body>
 	<!-- header -->
 	<header class="header">
 		<h1 class="logo">
-			<a href="/mainPage.html"> <img
+			<a href="./index.html"> <img
 				src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
 				alt="logo" />
 			</a>
@@ -30,49 +33,22 @@
 				href="">고객센터</a>
 		</div>
 	</header>
-
-	<!-- global navigation bar  -->
-	<ul class="gnb-list">
-		<div>
-			<i class="bi bi-list">카테고리 전체보기</i>
-		</div>
-		<li>베스트</li>
-		<li>세일</li>
-		<li>신상품</li>
-		<li>매거진</li>
-		<li>선물하기</li>
-		<li>이벤트</li>
-		<div class="search">
-			<input type="text" />
-			<div class="search-icon">
-				<i class="bi bi-search"></i>
-			</div>
-		</div>
-
-		<div class="cart">
-
-			<i class="bi bi-cart fs-4"></i>
-			<div class="count">
-				<p>1</p>
-			</div>
-		</div>
-	</ul>
 	<!-- 상품 상세 페이지 -->
 	<div class="contents">
 		<div id="content_first">
 			<div class="productInfo">
-				<div id="productImg">상품 이미지</div>
+				<div id="productImg"><img src="${productVO.productImg}" alt="image"></div>
 			</div>
 			<div class="productInfo">
 				<div class="productName">
-					<h2>[새벽시장] 사과 2.5kg</h2>
+					<h2>${productVO.productName}</h2>
 				</div>
-				<div class="productSimpleInfo">8/24일 새벽배송부터 홍로사과로 변경되어 운영됩니다.
+				<div class="productSimpleInfo">${shortDetail}
 				</div>
 				<br>
 				<div class="productPrice">
 					<div class="priceItem">
-						<h3>27,000</h3>
+						<h3>${productVO.productPrice}</h3>
 					</div>
 					<div class="priceItem">원</div>
 				</div>
@@ -81,13 +57,13 @@
 				<hr>
 				<div class="productOrigin">
 					<div class="originItem">원산지</div>
-					<div class="originItem">국내산</div>
+					<div class="originItem">${productVO.productOrigin}</div>
 				</div>
 				<br>
 				<div class="productOrigin2">
 					<div class="originItem">상품선택</div>
 					<div class="originItem">
-						<div class="proName">[새벽시장] 사과 2.5kg</div>
+						<div class="proName">${productVO.productName}</div>
 						<br>
 						<div>
 							<button class="btn btn-secondary">-</button>
@@ -101,7 +77,7 @@
 					<div class="proTotal">총 금액</div>
 					&nbsp&nbsp
 					<div class="proTotal">
-						<h3>27,000</h3>
+						<h3>????????</h3>
 					</div>
 					<div class="proTotal">원</div>
 				</div>
@@ -124,7 +100,8 @@
 					<li id="tab1" class="btnCon"><input type="radio" checked
 						name="tabmenu" id="tabmenu1"> <label for="tabmenu1">상세정보</label><br>
 						<div class="tabCon">
-							<div>이 사과는 아주 맛있는 사과입니다.</div>
+							<div><img src="${productVO.productImg}" alt="image"></div>
+							<div>${productVO.productDetail}</div>
 						</div></li>
 					<li id="tab2" class="btnCon"><input type="radio"
 						name="tabmenu" id="tabmenu2"> <label for="tabmenu2">취소/교환/반품</label>

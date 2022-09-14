@@ -33,7 +33,7 @@ public class OrdersDAO {
 //		System.out.println(arr);
 //		ArrayList<OrderListVO> arr = dao.orderListDetail(1);
 //		System.out.println(arr);
-//		
+//		dao.CancelOrder("admin12", 1);
 //	}
 	
 	//주문 내역 조회
@@ -115,5 +115,23 @@ public class OrdersDAO {
 			e.printStackTrace();
 		}
 		return orderDetail;
+	}
+	
+	public void CancelOrder(String memberID, int orderID) {
+		String run = "{ call orderlist_cancel(?, ?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+			callableStatement.setString(1, memberID);
+			callableStatement.setInt(2, orderID);
+			callableStatement.executeUpdate();	
+			System.out.println("성공");			
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

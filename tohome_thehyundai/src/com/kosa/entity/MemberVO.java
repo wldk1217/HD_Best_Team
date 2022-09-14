@@ -14,4 +14,5 @@ public class MemberVO {
 	private String memberNickname;
 	private String joinDate;
 	private String memberAdderss;
+	
 }

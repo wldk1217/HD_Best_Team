@@ -1,6 +1,8 @@
 package com.kosa.controller.action;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,14 +22,26 @@ public class InquiryInsertAction implements Action {
           HttpSession session = request.getSession();
           
           InquiryVO inquiryVO = new InquiryVO();
+          //문의분야
+          inquiryVO.setQuiryType(request.getParameter("depth1"));
+          //문의날짜
+          inquiryVO.setQuiryDate(Date.valueOf(LocalDate.now()));
+          //문의내용
+          inquiryVO.setQuiryContent(request.getParameter("cntn"));
           
-          inquiryVO.setQuiryType(request.getParameter(""));
+          if(request.getParameter("uploading")==null) {
+        	  inquiryVO.setQuiryImg(null);
+          }
+          else {
+          }
+          inquiryVO.setMember_memberId("admin12");
+          
             
-          session.setAttribute("id", request.getParameter("id"));    
+ //         session.setAttribute("id", request.getParameter("id"));
           
           InquiryDAO inquiryDAO = InquiryDAO.getInstance();
           inquiryDAO.insertInquiry(inquiryVO);
-
+          
           
 //          RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 //          dispatcher.forward(request, response);

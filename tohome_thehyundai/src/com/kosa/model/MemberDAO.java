@@ -38,6 +38,7 @@ public class MemberDAO {
 //		System.out.println(vo.getMemberName());
 		
 //		dao.deleteMember("asd");
+//		System.out.println(dao.passwordCheck("admin12", "0"));
 //	}
 
 	public MemberVO selectMember(String memberID) {
@@ -132,6 +133,7 @@ public class MemberDAO {
 
 	}
 	
+	//회원 탈퇴
 	public void deleteMember(String memberID) {
 		String run = "{ call member_delete(?) }";
 
@@ -147,5 +149,28 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	//마이페이지 접속시 비밀번호 확인 성공이면 1, 실패면 -1
+	public int passwordCheck(String memberID, String memberPw) {
+		int result = -1;
+	    String sql = "select * from member where memberid=? and memberPw = ?";
+	       
+	    
+	    try {
+	      Connection connn = DBConnection.getConnection();
+	      PreparedStatement pstmt = connn.prepareStatement(sql);
+	      pstmt.setString(1, memberID);
+	      pstmt.setString(2, memberPw);
+	      ResultSet rs = pstmt.executeQuery();
+	      if (rs.next()) { 
+	        result = 1;
+	      } else { 
+	        result = -1;
+	      }
+	    } catch (Exception e) {
+	      e.printStackTrace();
+	    }
+	    return result;
 	}
 }

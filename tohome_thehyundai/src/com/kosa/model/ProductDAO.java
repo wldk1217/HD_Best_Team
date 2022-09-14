@@ -99,4 +99,48 @@ public class ProductDAO {
 		}
 		return productList;
 	}
+	
+	// 상품 상세 정보 조회
+	public ProductVO ProductDetail(int productId) {
+		ProductVO product = null;
+
+		String runSP = "{ call product_detail(?, ?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(runSP);
+			callableStatement.setInt(1, productId);
+			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
+				while (resultSet.next()) {
+					product = new ProductVO();
+					product.setProductId(resultSet.getInt(1));
+					product.setProductName(resultSet.getString(2));
+					product.setProductPrice(resultSet.getInt(3));
+					product.setProductOrigin(resultSet.getString(4));
+					product.setProductStock(resultSet.getInt(5));
+					product.setProductDate(resultSet.getDate(6));
+					product.setProductDetail(resultSet.getString(7));
+					product.setProductImg(resultSet.getString(9));
+					product.setProductImg(resultSet.getString(9));
+					product.setCategory_categoryId(resultSet.getInt(10));
+				}
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+		return product;
+	}
 }

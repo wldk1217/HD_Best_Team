@@ -17,13 +17,14 @@ public class ProductDetailAction implements Action {
 		String url = "view/product/productDetail.jsp";
 
 		int productId = Integer.parseInt(request.getParameter("productId"));
-
-		/*
-		 * ProductDAO productDAO = ProductDAO.getInstance(); ProductVO productVO =
-		 * productDAO.getProduct(pseq);
-		 * 
-		 * request.setAttribute("productVO", productVO);
-		 */
+		
+		ProductDAO productDAO = ProductDAO.getInstance(); 
+		ProductVO productVO = productDAO.ProductDetail(productId);
+		
+		String shortDetail = productVO.getProductDetail().split("\\.")[0];
+		
+		request.setAttribute("productVO", productVO);
+		request.setAttribute("shortDetail", shortDetail);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

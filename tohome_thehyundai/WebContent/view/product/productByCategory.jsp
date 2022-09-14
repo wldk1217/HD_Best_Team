@@ -89,6 +89,8 @@
 			</h3>
 		</div>
 	</div>
+	
+	
 	<div class="container">
 
 		<c:forEach items="${productList}" var="ProductVO">

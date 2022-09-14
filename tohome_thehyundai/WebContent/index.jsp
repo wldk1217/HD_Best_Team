@@ -29,7 +29,7 @@
 	<!-- header -->
 	<header class="header">
 		<h1 class="logo">
-			<a href="/mainPage.html"> <img
+			<a href="./index.html"> <img
 				src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
 				alt="logo" />
 			</a>
@@ -52,13 +52,13 @@
 					</button>
 					<ul class="dropdown-menu">
 						<c:forEach items="${categoryList}" var="CategoryVO">
-							<li><a class="dropdown-item" href="#">${CategoryVO.categoryType}</a></li>
+							<li><a class="dropdown-item" href="tohomeServlet?command=product_by_category&categoryId=${CategoryVO.categoryId}">${CategoryVO.categoryType}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
 			</li>
 		</div>
-
+		<li>전체상품</li>
 		<li>세일</li>
 		<li>신상품</li>
 		<li>매거진</li>

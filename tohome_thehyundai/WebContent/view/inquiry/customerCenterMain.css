@@ -248,3 +248,13 @@ a {
   background-color: #f2f2f2;
   padding: 27px;
 }
+
+.inquiry-answer .delete_inquiry_btn{
+  color: #101010;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  border: none;
+}
+

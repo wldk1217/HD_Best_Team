@@ -8,18 +8,83 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Scanner;
 
 import com.kosa.dbUtil.DBConnection;
+import com.kosa.entity.MemberVO;
+
+import oracle.jdbc.OracleTypes;
 
 public class MemberDAO {
+
+	private static MemberDAO instance = new MemberDAO();
+
+	private MemberDAO() {
+
+	}
+
+	public static MemberDAO getInstance() {
+		return instance;
+	}
 	
-	public static void main(String[] args) {
+	/* MemberDAO 테스트시 사용 */
+	
+//	public static void main(String[] args) {
+//		MemberDAO dao = MemberDAO.getInstance();
+//		MemberVO vo = dao.selectMember("admin12");
+//		
+//		System.out.println(vo.getMemberId());
+//		System.out.println(vo.getMemberName());
+//	}
+
+	public MemberVO selectMember(String memberID) {
+		MemberVO memberVO = new MemberVO();
+		String run = "{call MEMBER_SELECT(?,?)}";
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+
+			callableStatement.setString(1, memberID);
+			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+			System.out.println();
+
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
+
+				while (resultSet.next()) {
+					
+					memberVO.setMemberName(resultSet.getString(1));
+					memberVO.setMemberId(resultSet.getString(2));
+					memberVO.setMemberPw(resultSet.getString(3));
+					memberVO.setMemberTel(resultSet.getString(4));
+					memberVO.setMemberEmail(resultSet.getString(5));
+					memberVO.setMemberAdderss(resultSet.getString(6));
+				}
+
+				System.out.println("성공");
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return memberVO;
+	}
+
+	public void insertMember() {
 		System.out.println("test");
 		Scanner sc = new Scanner(System.in);
 
 		System.out.print("회원ID: ");
-		String id = sc.next();	
+		String id = sc.next();
 		System.out.print("pw: ");
 		String pw = sc.next();
 		System.out.print("name 입력: ");
@@ -36,7 +101,7 @@ public class MemberDAO {
 		String nick = sc.next();
 		System.out.print("addrress 입력: ");
 		String addrress = sc.next();
-		
+
 		String runSP = "{ call member_insert(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
 
 		try {
@@ -51,9 +116,9 @@ public class MemberDAO {
 			callableStatement.setInt(7, gender);
 			callableStatement.setString(8, nick);
 			callableStatement.setString(9, addrress);
-			
-			callableStatement.executeUpdate();	
-			System.out.println("성공");			
+
+			callableStatement.executeUpdate();
+			System.out.println("성공");
 		} catch (SQLException e) {
 			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
 			e.printStackTrace();
@@ -62,6 +127,6 @@ public class MemberDAO {
 		} finally {
 			sc.close();
 		}
-		
+
 	}
 }

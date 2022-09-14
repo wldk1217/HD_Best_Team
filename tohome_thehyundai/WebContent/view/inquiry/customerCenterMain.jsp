@@ -9,11 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="./customerCenterMain.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
-  <link rel="stylesheet" href="../footer.css" />
   <title>Document</title>
 </head>
 
-<body>
+<body id="body">
   <!-- header -->
   <header class="header">
     <h1 class="logo">
@@ -117,29 +116,14 @@
               A. 문의에 대한 답변을 준비중입니다. 빠른 답변을 드릴 수 있도록
               노력하겠습니다.
             </p>
+            <br />
+            <br />
+            <button class="delete_inquiry_btn" onclick="function_delete()">삭제</button>
           </div>
         </div>
       </section>
     </div>
   </div>
-  
-    <footer id="footer">
-    <div class="util">
-      <div class="inner">
-        <a href="">브랜드소개</a>
-        <a href="">이용약관</a>
-        <a href="">개인정보처리방침</a>
-        <a href="">청소년보호정책</a>
-        <a href="">영상기기운영방침</a>
-        <a href="#body">
-          <button type="button" class="top_btn">
-            <i class="bi bi-arrow-up-short"></i>TOP
-          </button>
-        </a>
-      </div>
-    </div>
-  </footer>
-  
 </body>
 <script>
   const arrowDown = document.getElementById("arrow-down");
@@ -152,5 +136,11 @@
     inquiryAnswer.style.display = "block";
   });
 </script>
+<script>
+  function function_delete() {
+    console.log("삭제완료");
+  }
+</script>
+
 
 </html>

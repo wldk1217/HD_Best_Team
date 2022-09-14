@@ -96,7 +96,7 @@ public class OrdersDAO {
 				while (resultSet.next()) {
 					OrderListVO orderListVO = new OrderListVO();
 					ProductVO productVO = new ProductVO(); 
-					productVO.setProdcutId(resultSet.getInt(1));
+					productVO.setProductId(resultSet.getInt(1));
 					productVO.setProductName(resultSet.getString(2));
 					productVO.setProductPrice(resultSet.getInt(3));
 					orderListVO.setProduct(productVO);

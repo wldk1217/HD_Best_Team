@@ -59,7 +59,7 @@
 				</div>
 			</li>
 		</div>
-		<li><a href="#" style="color: #41464b;">전체상품</a></li>
+		<li><a href="tohomeServlet?command=product_All" style="color: #41464b;">전체상품</a></li>
 		<li><a href="#" style="color: #41464b;">세일</a></li>
 		<li><a href="#" style="color: #41464b;">신상품</a></li>
 		<li><a href="#" style="color: #41464b;">매거진</a></li>

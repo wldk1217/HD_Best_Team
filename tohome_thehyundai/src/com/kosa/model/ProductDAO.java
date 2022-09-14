@@ -30,24 +30,19 @@ public class ProductDAO {
 		try {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(runSP);
-			callableStatement.registerOutParameter(1, categoryId);
+			callableStatement.setInt(1, categoryId);
 			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 
 			try {
 				callableStatement.execute();
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
-				System.out.println("before amu");
 				while (resultSet.next()) {
-					
-					System.out.println("amu");
 					ProductVO product = new ProductVO();
 					product.setProductName(resultSet.getString(1));
 					product.setProductPrice(resultSet.getInt(2));
 					product.setProductImg(resultSet.getString(3));
 			
 					productList.add(product);
-					
-					System.out.println(product.getProductName());
 				}
 
 			} catch (SQLException e) {

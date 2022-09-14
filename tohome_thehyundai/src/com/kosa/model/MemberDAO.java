@@ -36,6 +36,8 @@ public class MemberDAO {
 //		
 //		System.out.println(vo.getMemberId());
 //		System.out.println(vo.getMemberName());
+		
+//		dao.deleteMember("asd");
 //	}
 
 	public MemberVO selectMember(String memberID) {
@@ -128,5 +130,22 @@ public class MemberDAO {
 			sc.close();
 		}
 
+	}
+	
+	public void deleteMember(String memberID) {
+		String run = "{ call member_delete(?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+			callableStatement.setString(1, memberID);
+			callableStatement.executeUpdate();	
+			System.out.println("성공");			
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

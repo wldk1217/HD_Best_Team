@@ -14,9 +14,9 @@ public class ProductDetailAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "product/productDetail.jsp";
+		String url = "view/product/productDetail.jsp";
 
-		String pseq = request.getParameter("pseq").trim();
+		int productId = Integer.parseInt(request.getParameter("productId"));
 
 		/*
 		 * ProductDAO productDAO = ProductDAO.getInstance(); ProductVO productVO =

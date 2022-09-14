@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,14 +22,14 @@
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 <link href="./view/footer.css" rel="stylesheet" />
-<title>Document</title>
+<title>index</title>
 </head>
 
 <body id="body">
 	<!-- header -->
 	<header class="header">
 		<h1 class="logo">
-			<a href="/mainPage.html"> <img
+			<a href="./index.html"> <img
 				src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
 				alt="logo" />
 			</a>
@@ -52,18 +52,19 @@
 					</button>
 					<ul class="dropdown-menu">
 						<c:forEach items="${categoryList}" var="CategoryVO">
-							<li><a class="dropdown-item" href="#">${CategoryVO.categoryType}</a></li>
+							<li><a class="dropdown-item"
+								href="tohomeServlet?command=product_by_category&categoryId=${CategoryVO.categoryId}">${CategoryVO.categoryType}</a></li>
 						</c:forEach>
 					</ul>
 				</div>
 			</li>
 		</div>
-
-		<li>세일</li>
-		<li>신상품</li>
-		<li>매거진</li>
-		<li>선물하기</li>
-		<li>이벤트</li>
+		<li><a href="tohomeServlet?command=product_All" style="color: #41464b;">전체상품</a></li>
+		<li><a href="#" style="color: #41464b;">세일</a></li>
+		<li><a href="#" style="color: #41464b;">신상품</a></li>
+		<li><a href="#" style="color: #41464b;">매거진</a></li>
+		<li><a href="#" style="color: #41464b;">선물하기</a></li>
+		<li><a href="#" style="color: #41464b;">이벤트</a></li>
 		<div class="search">
 			<input type="text" />
 			<div class="search-icon">
@@ -129,7 +130,7 @@
 					src="https://tohomeimage.thehyundai.com/PD/PDImages/S/0/4/3/2801001047340_00.jpg?RS=720x864"
 					alt="food-image" />
 				<div class="txt">
-					<strong>[중앙해장] 곱창전골 (중/2인분)</strong>
+					<strong>[중앙해장] 곱창전골</strong>
 					<p class="price">55,000원</p>
 				</div>
 			</div>
@@ -158,7 +159,7 @@
 				<a href="">브랜드소개</a> <a href="">이용약관</a> <a href="">개인정보처리방침</a> <a
 					href="">청소년보호정책</a> <a href="">영상기기운영방침</a> <a href="#body">
 					<button type="button" class="top_btn">
-						<i class="bi bi-arrow-up-short"></i>TOP
+						<i class="bi bi-arrow-up-short"></i>
 					</button>
 				</a>
 			</div>
@@ -172,6 +173,6 @@
 	crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  AOS.init();
+	AOS.init();
 </script>
 </html>

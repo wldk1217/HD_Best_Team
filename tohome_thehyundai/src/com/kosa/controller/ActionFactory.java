@@ -21,6 +21,10 @@ public class ActionFactory {
 			action = new IndexAction();
 		} else if (command.equals("product_detail")) {
 			action = new ProductDetailAction();
+		} else if (command.equals("product_All")) {
+			action = new ProductAllAction();
+		} else if (command.equals("product_by_category")) {
+			action = new ProductByCategoryAction();
 		} else if (command.equals("product_sale")) {
 			action = new ProductSaleAction();
 		} else if (command.equals("prouduct_new")) {
@@ -76,7 +80,7 @@ public class ActionFactory {
 		} else if (command.equals("password_check")) {
 			action = new PasswordCheckAction();
 		}
-		
+
 		return action;
 	}
 }

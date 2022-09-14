@@ -21,6 +21,8 @@ public class ActionFactory {
 			action = new IndexAction();
 		} else if (command.equals("product_detail")) {
 			action = new ProductDetailAction();
+		} else if (command.equals("product_All")) {
+			action = new ProductAllAction();
 		} else if (command.equals("product_by_category")) {
 			action = new ProductByCategoryAction();
 		} else if (command.equals("product_sale")) {

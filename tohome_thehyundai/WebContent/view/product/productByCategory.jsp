@@ -10,17 +10,21 @@
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="view/product/ProductPage.css" />
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 <!-- CSS only -->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-	crossorigin="anonymous" />
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<link href="./view/footer.css" rel="stylesheet" />
+	crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" href="view/product/ProductPage.css" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
+
 <title>ProductByCategory</title>
 </head>
 
@@ -78,32 +82,35 @@
 			</div>
 		</div>
 	</ul>
-
+	<div class="contents">
+		<div>
+			<h3>
+				<strong>현대식품관</strong> <small>현대식품관 투홈</small>
+			</h3>
+		</div>
+	</div>
 	<div class="container">
+
 		<c:forEach items="${productList}" var="ProductVO">
-			<!-- 이미지 -->
-			<div class="item-img-wrapper">
-				<img
-					src="${ProductVO.productImg}"
-					alt="image">
-			</div>
-
-			<!-- 상품 제목 -->
-			<div class="item-title">
-				<p>${ProductVO.productName}</p>
-			</div>
-
-			<!-- 상품 가격 cart 아이콘 -->
-			<div class="item-bottom">
-
-				<div class="item-price">
-					<p class="discount-per">10%</p>
-					<span>${ProductVO.productName}원</span>
+			<div class="item">
+				<div class="item-img-wrapper"
+					onclick="location.href='tohomeServlet?command=index';">
+					<img src="${ProductVO.productImg}" alt="image">
+					<div class="item-title">
+						<p>${ProductVO.productName}</p>
+					</div>
+					<div class="item-bottom">
+						<div class="item-price">
+							<p class="discount-per">SALE</p>
+							<span>${ProductVO.productPrice}원</span>
+						</div>
+						<a href=""><i class="bi bi-cart fs-4"></i></a>
+					</div>
 				</div>
-
-				<a href=""><i class="bi bi-cart fs-4"></i></a>
-			</div>		
+			</div>
 		</c:forEach>
 	</div>
+
+
 </body>
 </html>

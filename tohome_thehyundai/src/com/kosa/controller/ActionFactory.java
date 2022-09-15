@@ -53,11 +53,15 @@ public class ActionFactory {
 			action = new FindIdAction();
 		} else if (command.equals("find_id_form")) {
 			action = new FindIdFormAction();
+		} else if (command.equals("find_id_result")) {
+			action = new FindIdResultAction();
 		} else if (command.equals("find_pw")) {
 			action = new FindPwAction();
 		} else if (command.equals("find_pw_form")) {
 			action = new FindPwFormAction();
-		} else if (command.equals("basket_insert")) {
+		} else if (command.equals("find_pw_result")) {
+			action = new FindPwResultAction();
+		}  else if (command.equals("basket_insert")) {
 			action = new BasketInsertAction();
 		} else if (command.equals("basket_list")) {
 			action = new BasketListAction();
@@ -71,7 +75,7 @@ public class ActionFactory {
 			action = new MyPageAction();
 		} else if (command.equals("mypage_update_from")) {
 			action = new MyPageUpdateFormAction();
-		}else if (command.equals("mypage_update")) {
+		} else if (command.equals("mypage_update")) {
 			action = new MyPageUpdateAction();
 		} else if (command.equals("mypage_member_delete")) {
 			action = new MyPageMemberDeleteAction();

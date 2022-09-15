@@ -35,13 +35,13 @@
 	<!-- 로그인 폼  -->
 	<div class="find-input-form">
 		<h2>비밀번호 찾기</h2><br>
-		<form>
+		<form method="post" id="mainform" action="tohomeServlet?command=find_pw">
 			<ul>
 				<li style="margin-bottom: 10px;">
 					<label class="form-entry">
-						<div class="item">이름</div>
+						<div class="item">아이디</div>
 						<div class="item">
-							<input type="text" id="name" name="name" class="big" title="이름 입력" placeholder="이름">
+							<input type="text" id="id" name="id" class="big" placeholder="아이디">
 						</div>
 					</label>
 					<label class="form-entry">
@@ -60,7 +60,7 @@
 			</ul>
 			<div class="find-btn">
 				<li>
-					<button type="button" class="find-btn-btn">비밀번호 찾기</button>
+					<button type="submit" class="find-btn-btn">비밀번호 찾기</button>
 				</li>
 			</div>
 			<ul class="login-surport">

@@ -2,6 +2,7 @@ package com.kosa.controller.action;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +15,7 @@ public class LoginAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "member/login_fail.jsp";
+		String url = "view/member/login_fail.jsp";
 		HttpSession session = request.getSession();
 
 		String id = request.getParameter("id");
@@ -24,7 +25,9 @@ public class LoginAction implements Action {
 
 		MemberVO memberVO = memberDAO.selectMember(id);
 
-		if (memberVO != null) {
+		System.out.println(memberVO);
+		
+		if (memberVO.getMemberId() != null) {
 			if (memberVO.getMemberPw().equals(pwd)) {
 				session.removeAttribute("id");
 				session.setAttribute("memberId", memberVO.getMemberId());
@@ -32,6 +35,7 @@ public class LoginAction implements Action {
 			}
 		}
 
-		request.getRequestDispatcher(url).forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 }

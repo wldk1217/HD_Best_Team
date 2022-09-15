@@ -197,27 +197,27 @@ public class MemberDAO {
 		return memberVO;
 	}
 	
-		// 아이디 찾기 성공이면 1, 실패면 0
-		public int findID(String memberName, String memberEmail) {
-			int result = 0;
-			String sql = "select memberId from member where memberName=? and memberEmail = ?";
+	// 아이디 찾기 성공이면 1, 실패면 0
+	public int findID(String memberName, String memberEmail) {
+		int result = 0;
+		String sql = "select memberId from member where memberName=? and memberEmail = ?";
 
-			try {
-				Connection connn = DBConnection.getConnection();
-				PreparedStatement pstmt = connn.prepareStatement(sql);
-				pstmt.setString(1, memberName);
-				pstmt.setString(2, memberEmail);
-				ResultSet rs = pstmt.executeQuery();
-				if (rs.next()) {
-					result = 1;
-				} else {
-					result = 0;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+		try {
+			Connection connn = DBConnection.getConnection();
+			PreparedStatement pstmt = connn.prepareStatement(sql);
+			pstmt.setString(1, memberName);
+			pstmt.setString(2, memberEmail);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = 1;
+			} else {
+				result = 0;
 			}
-			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+		return result;
+	}
 	/*
 	 * public void insertMember() { System.out.println("test"); Scanner sc = new
 	 * Scanner(System.in);

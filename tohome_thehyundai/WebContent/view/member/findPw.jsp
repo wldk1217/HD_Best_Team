@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="./findId.css" />
+<link rel="stylesheet" href="view/member/findId.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 <link rel="stylesheet"
@@ -25,8 +25,10 @@
 		</h1>
 
 		<div class="util">
-			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a> <a href="">마이페이지</a> <a
-				href="">고객센터</a>
+			<a href="tohomeServlet?command=login_form">로그인</a> 
+			<a href="tohomeServlet?command=join_form">회원가입</a> 
+			<a href="">마이페이지</a> 
+			<a href="">고객센터</a>
 		</div>
 	</header>
 	
@@ -63,7 +65,7 @@
 			</div>
 			<ul class="login-surport">
 				<li class="login-sub">
-					<a href="./findId.jsp">아이디 찾기</a>
+					<a href="tohomeServlet?command=find_id_form">아이디 찾기</a>
 				</li>
 			</ul>
 		</form>

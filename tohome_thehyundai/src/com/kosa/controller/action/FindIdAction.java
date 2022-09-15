@@ -19,24 +19,22 @@ public class FindIdAction implements Action {
 		
 		HttpSession session = request.getSession();
 		
-		String id = (String) session.getAttribute("memberId");	
+		//String email = (String) session.getAttribute("memberEmail");	
 	    
-	    MemberDAO memberDAO=MemberDAO.getInstance();
-	    String pwd = request.getParameter("PWD");
-	    System.out.println(id + " "+ pwd);
-	    int checked = memberDAO.passwordCheck(id, pwd);
+	    MemberDAO memberDAO = MemberDAO.getInstance();
+	    String name = request.getParameter("name");
+	    String email = request.getParameter("email");
+	    System.out.println(name + " "+ email);
+	    int checked = memberDAO.findID(name, email);
 	    
 	    if(checked == 1){
-	    	url="tohomeServlet?command=mypage_update";
-	    	response.sendRedirect(url);
-	      
+	    	checked = Integer.parseInt(request.getParameter("1"));
 	    }else {
-	    	url="tohomeServlet?command=mypage";
-	    	response.sendRedirect(url);
+	    	checked = Integer.parseInt(request.getParameter("0"));
 	    }
 	    
-//	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-//		dispatcher.forward(request, response);
+	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 }

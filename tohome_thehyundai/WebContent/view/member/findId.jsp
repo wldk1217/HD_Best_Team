@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="./findId.css" />
+<link rel="stylesheet" href="view/member/findId.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 <link rel="stylesheet"
@@ -25,8 +25,10 @@
 		</h1>
 
 		<div class="util">
-			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a>
-			<a href="">마이페이지</a> <a href="">고객센터</a>
+			<a href="tohomeServlet?command=login_form">로그인</a> 
+			<a href="tohomeServlet?command=join_form">회원가입</a> 
+			<a href="">마이페이지</a> 
+			<a href="">고객센터</a>
 		</div>
 	</header>
 
@@ -34,7 +36,7 @@
 	<div class="find-input-form">
 		<h2>아이디찾기</h2>
 		<br>
-		<form method="post" id="mainform" action="findIdResult()">
+		<form method="post" id="mainform" action="tohomeServlet?command=find_id">
 			<ul>
 				<li style="margin-bottom: 10px;"><label class="form-entry">
 						<div class="item">이름</div>
@@ -56,12 +58,13 @@
 						style="margin-bottom: 10px;">아이디 찾기</button>
 				</li>
 			</div>
-			<div class="bottom-menu">
+			
+<%-- 			<div class="bottom-menu">
 				<!-- 이름과 이메일이 일치하지 않을 때-->
-				<c:if test="${check == 1}">
+				<c:if test="${checked == 0}">
 					<script>
-									opener.document.findform.user_name.value = "";
-									opener.document.findform.user_email.value = "";
+									opener.document.find-input-form.name.value = "";
+									opener.document.find-input-form.email.value = "";
 								</script>
 					<label>일치하는 회원정보가 존재하지 않습니다.</label>
 					<br>
@@ -70,17 +73,18 @@
 				</c:if>
 
 				<!-- 이름과 이메일이 일치할 때 -->
-				<c:if test="${check == 0 }">
+				<c:if test="${checked == 1}">
 					<div class="bottom-flex">
 						<div class="bottom-id">
 							<label>찾으시는 아이디는 '${memberId}' 입니다.</label>
 						</div>
 					</div>
 				</c:if>
-			</div>
-
+			</div> --%>
+			
+			
 			<ul class="login-surport">
-				<li class="login-sub"><a href="./findPw.jsp">비밀번호 찾기</a></li>
+				<li class="login-sub"><a href="tohomeServlet?command=find_pw_form">비밀번호 찾기</a></li>
 			</ul>
 		</form>
 	</div>

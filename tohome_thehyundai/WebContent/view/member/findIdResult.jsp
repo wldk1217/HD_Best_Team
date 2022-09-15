@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE htm.---l>
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -31,42 +31,36 @@
 			<a href="">고객센터</a>
 		</div>
 	</header>
-	
+
 	<!-- 로그인 폼  -->
 	<div class="find-input-form">
-		<h2>비밀번호 찾기</h2><br>
-		<form>
+		<h2>아이디찾기</h2>
+		<br>
+		<form method="post" id="mainform" action="tohomeServlet?command=find_id">
 			<ul>
-				<li style="margin-bottom: 10px;">
-					<label class="form-entry">
+				<li style="margin-bottom: 10px;"><label class="form-entry">
 						<div class="item">이름</div>
 						<div class="item">
-							<input type="text" id="name" name="name" class="big" title="이름 입력" placeholder="이름">
+							<input type="text" id="name" name="name" class="big"
+								title="이름 입력" placeholder="이름">
 						</div>
-					</label>
-					<label class="form-entry">
+				</label> <label class="form-entry">
 						<div class="item">이메일</div>
 						<div class="item">
-							<input type="text" id="email" name="email" class="big" title="이메일 입력" placeholder="이메일">
+							<input type="text" id="email" name="email" class="big"
+								title="이메일 입력" placeholder="이메일">
 						</div>
-					</label>
-					<label class="form-entry">
-						<div class="item">전화번호</div>
-						<div class="item">
-							<input type="text" id="tel" name="tel" class="big" title="전화번호 입력" placeholder="전화번호">
-						</div>
-					</label>
-				</li>
+				</label></li>
 			</ul>
 			<div class="find-btn">
 				<li>
-					<button type="button" class="find-btn-btn">비밀번호 찾기</button>
+					<button type="button" class="find-btn-btn"
+						style="margin-bottom: 10px;">로그인 하기</button>
 				</li>
 			</div>
+		
 			<ul class="login-surport">
-				<li class="login-sub">
-					<a href="tohomeServlet?command=find_id_form">아이디 찾기</a>
-				</li>
+				<li class="login-sub"><a href="tohomeServlet?command=find_pw_form">비밀번호 찾기</a></li>
 			</ul>
 		</form>
 	</div>

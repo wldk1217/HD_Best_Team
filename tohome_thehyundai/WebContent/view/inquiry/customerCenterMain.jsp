@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +9,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="./customerCenterMain.css" />
+  <link rel="stylesheet" href="view/inquiry/customerCenterMain.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
   <title>Document</title>
 </head>
@@ -95,22 +97,23 @@
               </div>
             </div>
           </div>
-
+		
+		 <div class="inquiryList">
+		 <c:forEach items="${inquiryList}" var="InquiryVO">
           <div class="inquiry-history">
             <div class="info">
-              <span class="text-white">기타</span>
+              <span class="text-white">${InquiryVO.quiryType}</span>
             </div>
             <div class="text-wrapper">
               <div class="text-answer">
-                <p>Q.!!!!!!!!!!!!!!</p>
+                <p>${InquiryVO.quiryContent}</p>
               </div>
               <div class="text-date">
-                <p>2022.09.11</p>
+                <p>${InquiryVO.quiryDate}</p>
                 <i class="bi bi-arrow-down-short" style="font-size: 32px" id="arrow-down"></i>
               </div>
             </div>
           </div>
-
           <div class="inquiry-answer" id="inquiry-answer">
             <p>
               A. 문의에 대한 답변을 준비중입니다. 빠른 답변을 드릴 수 있도록
@@ -120,6 +123,9 @@
             <br />
             <button class="delete_inquiry_btn" onclick="function_delete()">삭제</button>
           </div>
+          </c:forEach>
+         </div>
+          
         </div>
       </section>
     </div>

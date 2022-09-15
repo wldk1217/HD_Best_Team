@@ -36,8 +36,8 @@
 		</h1>
 
 		<div class="util">
-			<a href="">로그인</a> <a href="">회원가입</a> <a href="">마이페이지</a> <a
-				href="">고객센터</a>
+			<a href="tohomeServlet?command=login_form">로그인</a> <a href="tohomeServlet?command=join_form">회원가입</a> <a href="./view/mypage/mypage.jsp">마이페이지</a> <a
+				href="tohomeServlet?command=inquiry_list&member_id=admin12">고객센터</a>
 		</div>
 	</header>
 
@@ -60,8 +60,8 @@
 			</li>
 		</div>
 		<li><a href="tohomeServlet?command=product_All" style="color: #41464b;">전체상품</a></li>
-		<li><a href="#" style="color: #41464b;">세일</a></li>
-		<li><a href="#" style="color: #41464b;">신상품</a></li>
+		<li><a href="tohomeServlet?command=product_sale" style="color: #41464b;">세일</a></li>
+		<li><a href="tohomeServlet?command=prouduct_new" style="color: #41464b;">신상품</a></li>
 		<li><a href="#" style="color: #41464b;">매거진</a></li>
 		<li><a href="#" style="color: #41464b;">선물하기</a></li>
 		<li><a href="#" style="color: #41464b;">이벤트</a></li>

@@ -25,7 +25,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 
-<title>ProductByCategory</title>
+<title>ProductAll</title>
 </head>
 
 <body id="body">
@@ -85,12 +85,10 @@
 	<div class="contents">
 		<div>
 			<h3>
-				<strong>현대식품관</strong> <small>현대식품관 투홈</small>
+				<strong>현대식품관</strong> <small>현대식품관 투홈 신상품</small>
 			</h3>
 		</div>
 	</div>
-	
-	
 	<div class="container">
 
 		<c:forEach items="${productList}" var="ProductVO">

@@ -49,6 +49,10 @@ public class ActionFactory {
 			action = new LoginAction();
 		} else if (command.equals("logout")) {
 			action = new LogoutAction();
+		} else if (command.equals("find_id")) {
+			action = new FindIdAction();
+		} else if (command.equals("find_pw")) {
+			action = new FindPwAction();
 		} else if (command.equals("basket_insert")) {
 			action = new BasketInsertAction();
 		} else if (command.equals("basket_list")) {

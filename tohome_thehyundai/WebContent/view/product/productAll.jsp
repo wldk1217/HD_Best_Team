@@ -94,7 +94,7 @@
 		<c:forEach items="${productList}" var="ProductVO">
 			<div class="item">
 				<div class="item-img-wrapper"
-					onclick="location.href='tohomeServlet?command=index';">
+					onclick="location.href='tohomeServlet?command=product_detail&productId=${ProductVO.productId}';">
 					<img src="${ProductVO.productImg}" alt="image">
 					<div class="item-title">
 						<p>${ProductVO.productName}</p>

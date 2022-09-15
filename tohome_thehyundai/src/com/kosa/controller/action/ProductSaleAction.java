@@ -17,7 +17,7 @@ public class ProductSaleAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "view/product/productBySale.jsp";
+		String url = "view/product/productSale.jsp";
 
 		ProductDAO productDAO = ProductDAO.getInstance();
 		ArrayList<ProductVO> productList = productDAO.ProductSale();

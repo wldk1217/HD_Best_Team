@@ -27,7 +27,7 @@ public class LoginAction implements Action {
 		if (memberVO != null) {
 			if (memberVO.getMemberPw().equals(pwd)) {
 				session.removeAttribute("id");
-				session.setAttribute("loginUser", memberVO);
+				session.setAttribute("memberId", memberVO.getMemberId());
 				url = "tohomeServlet?command=index";
 			}
 		}

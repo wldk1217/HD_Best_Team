@@ -69,7 +69,9 @@ public class ActionFactory {
 			action = new OrderListAction();
 		} else if (command.equals("mypage")) {
 			action = new MyPageAction();
-		} else if (command.equals("mypage_update")) {
+		} else if (command.equals("mypage_update_from")) {
+			action = new MyPageUpdateFormAction();
+		}else if (command.equals("mypage_update")) {
 			action = new MyPageUpdateAction();
 		} else if (command.equals("mypage_member_delete")) {
 			action = new MyPageMemberDeleteAction();

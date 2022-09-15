@@ -10,6 +10,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="view/inquiry/customerCenterMain.css" />
+  <link rel="stylesheet" href="view/footer.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
   <title>Document</title>
 </head>
@@ -18,7 +19,7 @@
   <!-- header -->
   <header class="header">
     <h1 class="logo">
-      <a href="/mainPage.html">
+      <a href=""tohomeServlet?command=index">
         <img src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png" alt="logo" />
       </a>
     </h1>
@@ -81,8 +82,8 @@
                 <i class="bi bi-chat-dots" style="font-size: 32px; margin-right: 15px"></i>
               </div>
               <div>
-                <a href="./mtmInqrReg.html">
-                  <p>1:1문의하기</p>
+                <a href="tohomeServlet?command=inquiry_moveform">
+                <p>1:1문의하기</p>
                 </a>
                 <small>쉽고 편리하게 문의하세요.</small>
               </div>
@@ -97,9 +98,9 @@
               </div>
             </div>
           </div>
-		
-		 <div class="inquiryList">
-		 <c:forEach items="${inquiryList}" var="InquiryVO">
+      
+       <div class="inquiryList">
+       <c:forEach items="${inquiryList}" var="InquiryVO">
           <div class="inquiry-history">
             <div class="info">
               <span class="text-white">${InquiryVO.quiryType}</span>
@@ -130,6 +131,22 @@
       </section>
     </div>
   </div>
+    <footer id="footer">
+    <div class="util">
+      <div class="inner">
+        <a href="">브랜드소개</a>
+        <a href="">이용약관</a>
+        <a href="">개인정보처리방침</a>
+        <a href="">청소년보호정책</a>
+        <a href="">영상기기운영방침</a>
+        <a href="#body">
+          <button type="button" class="top_btn">
+            <i class="bi bi-arrow-up-short"></i>TOP
+          </button>
+        </a>
+      </div>
+    </div>
+  </footer>
 </body>
 <script>
   const arrowDown = document.getElementById("arrow-down");

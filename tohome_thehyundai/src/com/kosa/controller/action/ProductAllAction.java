@@ -19,8 +19,6 @@ public class ProductAllAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/product/productAll.jsp";
 		
-		int productId = Integer.parseInt(request.getParameter("productId"));
-
 		ProductDAO productDAO = ProductDAO.getInstance();
 		ArrayList<ProductVO> productList = productDAO.ProductAll();
 		

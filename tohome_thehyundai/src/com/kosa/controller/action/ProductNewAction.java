@@ -19,10 +19,8 @@ public class ProductNewAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/product/productNew.jsp";
 
-		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-
 		ProductDAO productDAO = ProductDAO.getInstance();
-		ArrayList<ProductVO> productList = productDAO.ProductByCategory(categoryId);
+		ArrayList<ProductVO> productList = productDAO.ProductNew();
 		
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
 		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();

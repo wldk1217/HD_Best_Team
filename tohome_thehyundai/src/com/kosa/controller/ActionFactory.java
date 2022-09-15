@@ -85,7 +85,10 @@ public class ActionFactory {
 			action = new InquiryDeleteAction();
 		} else if (command.equals("password_check")) {
 			action = new PasswordCheckAction();
-		}
+		} else if (command.equals("inquiry_moveform")) {
+	         action = new InquiryMoveFormAction();
+	    }
+
 
 		return action;
 	}

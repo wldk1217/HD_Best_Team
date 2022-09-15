@@ -13,24 +13,14 @@ import com.kosa.entity.InquiryVO;
 import com.kosa.model.InquiryDAO;
 
 
-public class InquiryListAction implements Action {
+public class InquiryMoveFormAction implements Action {
 
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      String url = "view/inquiry/customerCenterMain.jsp";
-      
-      HttpSession hs = request.getSession();
-      InquiryDAO inquiryDAO = InquiryDAO.getInstance();
-   
-      String memberId = (String)hs.getAttribute("memberId");
-      
-      ArrayList<InquiryVO> inquiryList = inquiryDAO.viewInquiry(memberId);
-      
-      request.setAttribute("inquiryList", inquiryList);
+      String url = "view/inquiry/mtmInqrReg.jsp";
       
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);
-
    }
 
 }

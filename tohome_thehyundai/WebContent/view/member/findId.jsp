@@ -54,35 +54,10 @@
 			</ul>
 			<div class="find-btn">
 				<li>
-					<button type="button" class="find-btn-btn"
+					<button type="submit" class="find-btn-btn"
 						style="margin-bottom: 10px;">아이디 찾기</button>
 				</li>
-			</div>
-			
-<%-- 			<div class="bottom-menu">
-				<!-- 이름과 이메일이 일치하지 않을 때-->
-				<c:if test="${checked == 0}">
-					<script>
-									opener.document.find-input-form.name.value = "";
-									opener.document.find-input-form.email.value = "";
-								</script>
-					<label>일치하는 회원정보가 존재하지 않습니다.</label>
-					<br>
-					<br>
-					<br>
-				</c:if>
-
-				<!-- 이름과 이메일이 일치할 때 -->
-				<c:if test="${checked == 1}">
-					<div class="bottom-flex">
-						<div class="bottom-id">
-							<label>찾으시는 아이디는 '${memberId}' 입니다.</label>
-						</div>
-					</div>
-				</c:if>
-			</div> --%>
-			
-			
+			</div>	
 			<ul class="login-surport">
 				<li class="login-sub"><a href="tohomeServlet?command=find_pw_form">비밀번호 찾기</a></li>
 			</ul>

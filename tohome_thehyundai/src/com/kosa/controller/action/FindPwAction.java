@@ -14,29 +14,21 @@ public class FindPwAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "";
+		String url = "view/member/findId_fail.jsp";
+
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		String id = request.getParameter("id");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
+		System.out.println(id + " " + email+ " "+tel);
+		String memberPw = memberDAO.findPW(id, email, tel);
+
+		if (memberPw != "") {
+			url = "tohomeServlet?command=find_pw_result&memberPw=" + memberPw;
+		}
 		
-		
-		HttpSession session = request.getSession();
-		
-		String id = (String) session.getAttribute("memberId");	
-	    
-	    MemberDAO memberDAO=MemberDAO.getInstance();
-	    String pwd = request.getParameter("PWD");
-	    System.out.println(id + " "+ pwd);
-	    int checked = memberDAO.passwordCheck(id, pwd);
-	    
-	    if(checked == 1){
-	    	url="tohomeServlet?command=mypage_update";
-	    	response.sendRedirect(url);
-	      
-	    }else {
-	    	url="tohomeServlet?command=mypage";
-	    	response.sendRedirect(url);
-	    }
-	    
-//	    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-//		dispatcher.forward(request, response);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 }

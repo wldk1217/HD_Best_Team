@@ -7,14 +7,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class FindPwFormAction implements Action {
+public class FindPwResultAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "view/member/findPw.jsp";
+		String url = "view/member/findPwResult.jsp";
+		
+		String memberPw = request.getParameter("memberPw");
 
+		System.out.println(memberPw);
+
+		request.setAttribute("memberPw", memberPw);
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}
-
 }

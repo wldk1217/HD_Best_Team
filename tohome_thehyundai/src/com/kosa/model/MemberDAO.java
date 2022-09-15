@@ -121,10 +121,10 @@ public class MemberDAO {
 
 		return memberVO;
 	}
-	
+
 	public int insertMember(MemberVO memberVO) {
 		System.out.println("insertMember 여기왔다");
-		
+
 		int result = 0;
 		String runSP = "{ call member_insert(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
 
@@ -157,10 +157,10 @@ public class MemberDAO {
 		return result;
 	}
 
-	public MemberVO idCheck (String memberID) {
-		
+	public MemberVO idCheck(String memberID) {
+
 		System.out.println("idCheck 여기왔다");
-		
+
 		MemberVO memberVO = new MemberVO();
 		String run = "{call MEMBER_CHECKID(?,?)}";
 		try {
@@ -176,7 +176,7 @@ public class MemberDAO {
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 
 				while (resultSet.next()) {
-					memberVO.setMemberId(resultSet.getString(1));		
+					memberVO.setMemberId(resultSet.getString(1));
 				}
 
 				System.out.println("성공");
@@ -195,10 +195,9 @@ public class MemberDAO {
 		return memberVO;
 	}
 
-	
-	// 아이디 찾기 성공이면 1, 실패면 0
-	public int findID(String memberName, String memberEmail) {
-		int result = 0;
+	// 아이디 찾기
+	public String findID(String memberName, String memberEmail) {
+		String result = "";
 		String sql = "select memberId from member where memberName=? and memberEmail = ?";
 
 		try {
@@ -208,9 +207,32 @@ public class MemberDAO {
 			pstmt.setString(2, memberEmail);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				result = 1;
+				result = rs.getString("memberId");
 			} else {
-				result = 0;
+				//
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	// 비밀번호 찾기
+	public String findPW(String memberId, String memberEmail, String memberTel) {
+		String result = "";
+		String sql = "select memberPw from member where memberId=? and memberEmail=? and memberTel=?";
+
+		try {
+			Connection connn = DBConnection.getConnection();
+			PreparedStatement pstmt = connn.prepareStatement(sql);
+			pstmt.setString(1, memberId);
+			pstmt.setString(2, memberEmail);
+			pstmt.setString(3, memberTel);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getString("memberPw");
+			} else {
+				//
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -248,29 +270,30 @@ public class MemberDAO {
 	 * 
 	 * }
 	 */
-	
-	
-	//회원 정보 수정
-			public void updateMember(String memberID, String memberPW, String memberTel, String memberEmail, String memberAddress) {
-				String run = "{ call member_update(?,?,?,?,?) }";
 
-				try {
-					Connection conn = DBConnection.getConnection();
-					CallableStatement callableStatement = conn.prepareCall(run);
-					callableStatement.setString(1, memberID);
-					callableStatement.setString(2, memberPW);
-					callableStatement.setString(3, memberTel);
-					callableStatement.setString(4, memberEmail);
-					callableStatement.setString(5, memberAddress);
-					callableStatement.executeUpdate();
-					System.out.println("성공");
-				} catch (SQLException e) {
-					System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-					e.printStackTrace();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
+	// 회원 정보 수정
+	public void updateMember(String memberID, String memberPW, String memberTel, String memberEmail,
+			String memberAddress) {
+		String run = "{ call member_update(?,?,?,?,?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+			callableStatement.setString(1, memberID);
+			callableStatement.setString(2, memberPW);
+			callableStatement.setString(3, memberTel);
+			callableStatement.setString(4, memberEmail);
+			callableStatement.setString(5, memberAddress);
+			callableStatement.executeUpdate();
+			System.out.println("성공");
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
 	// 회원 탈퇴
 	public void deleteMember(String memberID) {
 		String run = "{ call member_delete(?) }";

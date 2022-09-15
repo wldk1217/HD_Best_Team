@@ -34,13 +34,13 @@
 
 	<!-- 로그인 폼  -->
 	<div class="find-input-form">
-		<h2>아이디찾기</h2>
+		<h2>비밀번호찾기</h2>
 		<br>
-		<form method="post" id="mainform" action="tohomeServlet?command=find_id_result">
+		<form method="post" id="mainform" action="tohomeServlet?command=find_pw_result">
 			<ul>
 				<li style="margin-bottom: 10px;">
 					<label class="form-entry">
-						찾으시는 아이디는 "${memberId}" 입니다. 
+						찾으시는 비밀번호는 "${memberPw}" 입니다. 
 					</label>
 				</li>
 			</ul>

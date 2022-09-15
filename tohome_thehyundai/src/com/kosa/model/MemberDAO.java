@@ -82,6 +82,45 @@ public class MemberDAO {
 		return memberVO;
 	}
 
+	public MemberVO loginCheck(String memberID, String memberPW) {
+
+		System.out.println("loginCheck 여기왔다");
+
+		MemberVO memberVO = new MemberVO();
+		String run = "{call MEMBER_LOGINCHECK(?,?,?)}";
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+
+			callableStatement.setString(1, memberID);
+			callableStatement.setString(2, memberPW);
+			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(3);
+
+				while (resultSet.next()) {
+					memberVO.setMemberId(resultSet.getString(1));
+					memberVO.setMemberPw(resultSet.getString(2));
+				}
+
+				System.out.println("성공");
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return memberVO;
+	}
+	
 	public int insertMember(MemberVO memberVO) {
 		System.out.println("insertMember 여기왔다");
 		

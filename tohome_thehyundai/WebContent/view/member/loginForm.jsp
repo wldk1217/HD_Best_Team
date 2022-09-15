@@ -33,18 +33,16 @@
 	<!-- 로그인 폼  -->
 	<div class="login-input-form">
 		<h2>로그인</h2><br>
-		<form>
+		<form method="post" action="tohomeServlet?command=login">
 			<ul>
 				<li style="margin-bottom: 10px;">
 					<label class="form-entry">
-						<input type="text" id="id" name="id" class="big" title="아이디 입력" placeholder="아이디">
-						<button type="button" class="btn-del" tabindex="-1" style="display: none;">삭제</button>
+						<input type="text" id="id" name="id" class="big" placeholder="아이디">
 					</label>
 				</li>
 				<li>
 					<label class="form-entry">
 						<input type="password" id="pwd" name="pwd" class="big" title="비밀번호 입력" placeholder="비밀번호">
-						<button type="button" class="btn-del" tabindex="-1" style="display: none;">삭제</button>
 					</label>
 				</li>
 			</ul>
@@ -57,7 +55,7 @@
 			</ul>
 			<div class="login-btn">
 				<li>
-					<button type="button" class="login-btn-btn">로그인</button>
+					<button type="submit" class="login-btn-btn">로그인</button>
 				</li>
 			</div>
 		</form>

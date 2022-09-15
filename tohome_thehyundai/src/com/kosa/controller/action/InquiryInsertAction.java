@@ -17,7 +17,7 @@ public class InquiryInsertAction implements Action {
 
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String url = "view/inquiry/customerCenterMain.jsp"; 
+       String url = "view/inquiry/customerCenterMain.jsp";
           
           HttpSession session = request.getSession();
           
@@ -30,23 +30,26 @@ public class InquiryInsertAction implements Action {
           inquiryVO.setQuiryContent(request.getParameter("cntn"));
           
           if(request.getParameter("uploading")==null) {
-        	  inquiryVO.setQuiryImg(null);
+        	  inquiryVO.setQuiryImg("test");
           }
           else {
           }
-          inquiryVO.setMember_memberId("admin12");
+          inquiryVO.setMember_memberId((String)session.getAttribute("memberId"));
           
+            System.out.print(inquiryVO.getQuiryType());
+            System.out.print(inquiryVO.getQuiryDate());
+            System.out.print(inquiryVO.getQuiryContent());
+            System.out.print(inquiryVO.getQuiryImg());
+            System.out.print(inquiryVO.getMember_memberId());
             
- //         session.setAttribute("id", request.getParameter("id"));
           
           InquiryDAO inquiryDAO = InquiryDAO.getInstance();
           inquiryDAO.insertInquiry(inquiryVO);
+      
+          RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+          dispatcher.forward(request, response);
           
-          
-//          RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-//          dispatcher.forward(request, response);
-          
-          response.sendRedirect(url);
+   
           
    }
 

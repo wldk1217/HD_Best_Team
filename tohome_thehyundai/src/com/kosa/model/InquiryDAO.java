@@ -29,28 +29,29 @@ public class InquiryDAO {
    }
    
    // 문의내역들 화면에 뿌려주기
-   public ArrayList<InquiryVO> viewInquiry(int quiryId, String member_memberId) {
-      InquiryVO inquiryVO = new InquiryVO();
+   public ArrayList<InquiryVO> viewInquiry(String member_memberId) {
       ArrayList<InquiryVO> inquiryList = new ArrayList<InquiryVO>();
       
-      String runSelect_Inquiry = "{ call select_inquiry(?, ?, ?) }";
+      String runSelect_Inquiry = "{ call select_inquiry(?, ?) }";
 
       try {
          Connection conn = DBConnection.getConnection();
          CallableStatement callableStatement = conn.prepareCall(runSelect_Inquiry);
-         callableStatement.setInt(1, quiryId);
-         callableStatement.setString(2, member_memberId);
-         callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
+         callableStatement.setString(1, member_memberId);
+         callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
          
          try {
             callableStatement.execute();
-            ResultSet resultSet = (ResultSet) callableStatement.getObject(3);
+            ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
             
             while (resultSet.next()) {   
                InquiryVO inquiry = new InquiryVO();
+               inquiry.setQuiryId(resultSet.getInt(1));
                inquiry.setQuiryType(resultSet.getString(2));
                inquiry.setQuiryDate(resultSet.getDate(3));
                inquiry.setQuiryContent(resultSet.getString(4));
+               inquiry.setQuiryImg(resultSet.getString(5));
+               inquiry.setMember_memberId(resultSet.getString(6));
                inquiryList.add(inquiry);
             }
 
@@ -69,19 +70,23 @@ public class InquiryDAO {
       return inquiryList;
    }
    
-    //dao test 하기위한 main메소드
-   	public static void main(String[] args) {
-   		InquiryVO inquiryVO = new InquiryVO();
-   		inquiryVO.setQuiryType("기타");
-   		inquiryVO.setQuiryDate(Date.valueOf(LocalDate.now()));
-   		inquiryVO.setQuiryContent("문의 테스트");
-   		inquiryVO.setQuiryImg("https://www.naver.com");
-   		inquiryVO.setMember_memberId("asd");
-   		System.out.println(insertInquiry(inquiryVO));
-   	}
+//    //dao test 하기위한 main메소드
+//   	public static void main(String[] args) {
+ 		//insert_inquiry
+//   		InquiryVO inquiryVO = new InquiryVO();
+////   		inquiryVO.setQuiryType("기타");
+////   		inquiryVO.setQuiryDate(Date.valueOf(LocalDate.now()));
+////   		inquiryVO.setQuiryContent("문의 테스트");
+////   		inquiryVO.setQuiryImg("https://www.naver.com");
+////   		inquiryVO.setMember_memberId("admin12");
+////   		System.out.println(insertInquiry(inquiryVO));
+//   		
+//   		
+//   		System.out.println(viewInquiry("admin12"));
+//   	}
    
    	 //문의내역 db에 저장
-     public static int insertInquiry(InquiryVO inquiryVO) {
+     public int insertInquiry(InquiryVO inquiryVO) {
           int result = 1;
                
          String runSP = "{ call insert_inquiry(?, ?, ?, ?, ?) }";

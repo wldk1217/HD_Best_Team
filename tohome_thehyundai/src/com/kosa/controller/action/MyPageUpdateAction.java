@@ -24,7 +24,7 @@ public class MyPageUpdateAction implements Action {
 //		System.out.println(id + " " +pw + " " + tel + " " + email + " " + address);
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		memberDAO.updateMember(id, pw, tel, email, address);
-		response.sendRedirect("tohomeServlet?command=mypage_update_from");
+		response.sendRedirect("tohomeServlet?command=mypage_update_form");
 	}
 
 }

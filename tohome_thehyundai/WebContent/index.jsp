@@ -36,8 +36,8 @@
 		</h1>
 
 		<div class="util">
-			<a href="">로그인</a> <a href="">회원가입</a> <a href="">마이페이지</a> <a
-				href="">고객센터</a>
+			<a href="./view/member/loginForm.jsp">로그인</a> <a href="./view/member/membership.jsp">회원가입</a> <a href="./view/mypage/mypage.jsp">마이페이지</a> <a
+				href="tohomeServlet?command=inquiry_list&member_id=admin12">고객센터</a>
 		</div>
 	</header>
 

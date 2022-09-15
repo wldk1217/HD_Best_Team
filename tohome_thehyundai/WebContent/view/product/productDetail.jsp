@@ -17,6 +17,37 @@
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script type="text/javascript" src="productDetail.js"></script>
 <title>prodcutDetail</title>
+<script>
+function plus_click() {
+	var count = document.getElementById('count').value;
+	var price = document.getElementById('total').innerText;
+	var p = document.getElementById('p').innerText;
+	var total = 0;
+	
+	count = parseInt(count) + 1;
+	document.getElementById('count').value = count;
+	
+	total = parseInt(count) * parseInt(p);
+	document.getElementById('total').innerText = total;
+};
+
+function minus_click() {
+	var count = document.getElementById('count').value;
+	var price = document.getElementById('total').innerText;
+	var p = document.getElementById('p').innerText;
+	var total = 0;
+	
+	if (parseInt(count) > 1) {
+		count = parseInt(count) - 1;
+		document.getElementById('count').value = count;
+		
+		total = parseInt(price) - parseInt(p);
+		document.getElementById('total').innerText = total;
+	} else {
+		alert('상품은 1개이상 선택하셔야 합니다.');
+	}
+};
+</script>
 </head>
 <body>
 	<!-- header -->
@@ -29,8 +60,16 @@
 		</h1>
 
 		<div class="util">
-			<a href="">로그인</a> <a href="">회원가입</a> <a href="">마이페이지</a> <a
-				href="">고객센터</a>
+			<c:if test="${memberId ne null}">
+				<a>${memberId}님 환영합니다!</a>
+				<a href="tohomeServlet?command=mypage&memberId=${memberId}">마이페이지</a>
+				<a href="tohomeServlet?command=logout">로그아웃</a>
+			</c:if>
+			<c:if test="${memberId eq null}">
+				<a href="tohomeServlet?command=login_form">로그인</a>
+				<a href="tohomeServlet?command=join_form">회원가입</a>
+			</c:if>
+			<a href="tohomeServlet?command=inquiry_list&member_id=${memberId}">고객센터</a>
 		</div>
 	</header>
 	<!-- 상품 상세 페이지 -->
@@ -48,7 +87,7 @@
 				<br>
 				<div class="productPrice">
 					<div class="priceItem">
-						<h3>${productVO.productPrice}</h3>
+						<h3 id="p">${productVO.productPrice}</h3>
 					</div>
 					<div class="priceItem">원</div>
 				</div>
@@ -66,9 +105,9 @@
 						<div class="proName">${productVO.productName}</div>
 						<br>
 						<div>
-							<button class="btn btn-secondary">-</button>
-							<input type="text" class="productCount">
-							<button class="btn btn-secondary">+</button>
+							<button class="btn btn-secondary" onclick="minus_click();">-</button>
+							<input id="count" type="text" value="1" class="productCount" disabled>
+							<button class="btn btn-secondary" onclick="plus_click();">+</button>
 						</div>
 					</div>
 				</div>
@@ -77,7 +116,7 @@
 					<div class="proTotal">총 금액</div>
 					&nbsp&nbsp
 					<div class="proTotal">
-						<h3>????????</h3>
+						<h3 id="total">${productVO.productPrice}</h3>
 					</div>
 					<div class="proTotal">원</div>
 				</div>
@@ -133,8 +172,8 @@
 								<h3>02-1234-1234</h3>
 								<br>
 								<br>
-								<button type="button" class="btn orange bigger">1:1문의
-									바로가기</button>
+								<c:if test="${memberId eq null}"><button type="button" class="btn orange bigger" onclick="location.href='tohomeServlet?command=login_form'">1:1문의 바로가기</button></c:if>
+								<c:if test="${memberId ne null}"><button type="button" class="btn orange bigger" onclick="location.href='tohomeServlet?command=inquiry_list'">1:1문의 바로가기</button></c:if>
 							</div>
 						</div></li>
 				</ul>

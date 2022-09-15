@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,7 @@
 <title>Document</title>
 </head>
 <body>
-<!-- header -->
+	<!-- header -->
 	<header class="header">
 		<h1 class="logo">
 			<a href="/mainPage.html"> <img
@@ -25,40 +25,62 @@
 		</h1>
 
 		<div class="util">
-			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a> <a href="">마이페이지</a> <a
-				href="">고객센터</a>
+			<a href="./loginForm.jsp">로그인</a> <a href="./membership.jsp">회원가입</a>
+			<a href="">마이페이지</a> <a href="">고객센터</a>
 		</div>
 	</header>
-	
+
 	<!-- 로그인 폼  -->
 	<div class="find-input-form">
-		<h2>아이디찾기</h2><br>
-		<form>
+		<h2>아이디찾기</h2>
+		<br>
+		<form method="post" id="mainform" action="findIdResult()">
 			<ul>
-				<li style="margin-bottom: 10px;">
-					<label class="form-entry">
+				<li style="margin-bottom: 10px;"><label class="form-entry">
 						<div class="item">이름</div>
 						<div class="item">
-							<input type="text" id="name" name="name" class="big" title="이름 입력" placeholder="이름">
+							<input type="text" id="name" name="name" class="big"
+								title="이름 입력" placeholder="이름">
 						</div>
-					</label>
-					<label class="form-entry">
+				</label> <label class="form-entry">
 						<div class="item">이메일</div>
 						<div class="item">
-							<input type="text" id="email" name="email" class="big" title="이메일 입력" placeholder="이메일">
+							<input type="text" id="email" name="email" class="big"
+								title="이메일 입력" placeholder="이메일">
 						</div>
-					</label>
-				</li>
+				</label></li>
 			</ul>
 			<div class="find-btn">
 				<li>
-					<button type="button" class="find-btn-btn" style="margin-bottom: 10px;">아이디 찾기</button>
+					<button type="button" class="find-btn-btn"
+						style="margin-bottom: 10px;">아이디 찾기</button>
 				</li>
 			</div>
+			<div class="bottom-menu">
+				<!-- 이름과 이메일이 일치하지 않을 때-->
+				<c:if test="${check == 1}">
+					<script>
+									opener.document.findform.user_name.value = "";
+									opener.document.findform.user_email.value = "";
+								</script>
+					<label>일치하는 회원정보가 존재하지 않습니다.</label>
+					<br>
+					<br>
+					<br>
+				</c:if>
+
+				<!-- 이름과 이메일이 일치할 때 -->
+				<c:if test="${check == 0 }">
+					<div class="bottom-flex">
+						<div class="bottom-id">
+							<label>찾으시는 아이디는 '${memberId}' 입니다.</label>
+						</div>
+					</div>
+				</c:if>
+			</div>
+
 			<ul class="login-surport">
-				<li class="login-sub">
-					<a href="./findPw.jsp">비밀번호 찾기</a>
-				</li>
+				<li class="login-sub"><a href="./findPw.jsp">비밀번호 찾기</a></li>
 			</ul>
 		</form>
 	</div>
@@ -68,5 +90,22 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 	AOS.init();
+
+	$("#name").focusout(function() {
+		if ($('#name').val() == "") {
+			$('#check').text('이름을 입력해주세요.');
+			$('#check').css('color', 'red');
+		} else {
+			$('#check').hide();
+		}
+	});
+	$("#email").focusout(function() {
+		if ($('#email').val() == "") {
+			$('#check').text('이메일을 입력해주세요');
+			$('#check').css('color', 'red');
+		} else {
+			$('#check').hide();
+		}
+	});
 </script>
 </html>

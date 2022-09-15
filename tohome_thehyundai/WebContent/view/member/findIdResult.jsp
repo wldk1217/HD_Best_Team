@@ -39,7 +39,7 @@
 		<form method="post" id="mainform" action="tohomeServlet?command=find_id_result">
 			<ul>
 				<li style="margin-bottom: 10px;">
-					<label class="form-entry">
+					<label class="form-entry-result">
 						찾으시는 아이디는 "${memberId}" 입니다. 
 					</label>
 				</li>

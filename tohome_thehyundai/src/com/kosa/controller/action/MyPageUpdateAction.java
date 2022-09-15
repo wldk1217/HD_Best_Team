@@ -5,13 +5,24 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.kosa.model.MemberDAO;
 
 public class MyPageUpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("memberId");
+		
+		String pw = (String) request.getAttribute("memberPw");
+		String tel = (String) request.getAttribute("memberPw");
+		String email = (String) request.getAttribute("memberEmail");
+		String address = (String) request.getAttribute("memberAddress");
+		MemberDAO memberDAO = MemberDAO.getInstance();
+		memberDAO.updateMember(id, pw, tel, email, address);
+		response.sendRedirect("tohomeServlet?command=mypage_update_form");
 	}
 
 }

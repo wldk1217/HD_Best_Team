@@ -77,15 +77,15 @@
         </div>
 
         <div class="customerform">
-          <form class="inqrForm" id="inquiry_insert" action="tohomeServlet?command=inquiry_insert" method="get" name="formm">
+          <form class="inqrForm" id="inquiry_insert" method="post" name="formm" action = "tohomeServlet?command=inquiry_insert">
             <div class="form-filter">
               <p>문의 분야</p>
               <select name="depth1" title="문의선택" class="select_small" id="inquiry1">
-                <option value="1104">배송문의</option>
-                <option value="1104">상품문의</option>
-                <option value="1104">파손/미수령</option>
-                <option value="1104">회수문의</option>
-                <option value="1104">기타문의</option>
+                <option value="배송문의">배송문의</option>
+                <option value="상품문의">상품문의</option>
+                <option value="파손/미수령">파손/미수령</option>
+                <option value="회수문의">회수문의</option>
+                <option value="기타문의">기타문의</option>
               </select>
             </div>
 
@@ -120,7 +120,7 @@
               <button type="button" class="btn-cancel" onclick="initializing()">
                 취소
               </button>
-              <button type="button" class="btn-confirm" onclick="go_save()">확인</button>
+              <button type="submit" class="btn-confirm">확인</button>
             </div>
           </form>
         </div>
@@ -162,18 +162,5 @@
     text1.value = null;
   }
 </script>
-<script>
-function go_save() {
-     if (document.formm.depth1.value="") {
-       alert("문의 분야를 입력해주세요");
-       document.formm.id.focus();
-     }
-       else if (document.formm.cntn.value="") {
-       alert("문의하실 내용을 입력해주세요");
-       document.formm.name.focus();
-     } else {
-       document.formm.action = "tohomeServlet?command=inquiry_insert";
-       document.formm.submit();
-     }
-   }</script>
+
 </html>

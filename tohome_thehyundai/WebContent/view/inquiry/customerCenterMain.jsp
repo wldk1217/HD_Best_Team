@@ -19,7 +19,7 @@
   <!-- header -->
   <header class="header">
     <h1 class="logo">
-      <a href=""tohomeServlet?command=index">
+      <a href="tohomeServlet?command=index">
         <img src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png" alt="logo" />
       </a>
     </h1>

@@ -27,7 +27,7 @@ public class PasswordCheckAction implements Action {
 	    int checked = memberDAO.passwordCheck(id, pwd);
 	    
 	    if(checked == 1){
-	    	url="tohomeServlet?command=mypage_update";
+	    	url="tohomeServlet?command=mypage_update_from";
 	    	response.sendRedirect(url);
 	      
 	    }else {

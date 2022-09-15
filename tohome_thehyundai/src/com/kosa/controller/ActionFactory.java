@@ -41,6 +41,8 @@ public class ActionFactory {
 			action = new EmailCheckFormAction();
 		} else if (command.equals("join")) {
 			action = new JoinAction();
+		} else if (command.equals("join_form")) {
+			action = new JoinFormAction();
 		} else if (command.equals("login_form")) {
 			action = new LoginFormAction();
 		} else if (command.equals("login")) {

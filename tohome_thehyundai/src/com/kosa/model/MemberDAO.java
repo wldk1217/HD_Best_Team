@@ -157,26 +157,29 @@ public class MemberDAO {
 		return result;
 	}
 
-	public MemberVO idCheck(String memberID) {
+	public String idCheck(String memberId) {
 
 		System.out.println("idCheck 여기왔다");
 
-		MemberVO memberVO = new MemberVO();
 		String run = "{call MEMBER_CHECKID(?,?)}";
+		String result ="";
 		try {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
-
-			callableStatement.setString(1, memberID);
+			
+			callableStatement.setString(1, memberId);
 			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 			System.out.println();
 
 			try {
 				callableStatement.execute();
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
-
+				
+				
+				
 				while (resultSet.next()) {
-					memberVO.setMemberId(resultSet.getString(1));
+					result = resultSet.getString(1);
+					System.out.println("MemberDAO result 값 : "+result);
 				}
 
 				System.out.println("성공");
@@ -192,7 +195,7 @@ public class MemberDAO {
 			e.printStackTrace();
 		}
 
-		return memberVO;
+		return result;
 	}
 
 	// 아이디 찾기

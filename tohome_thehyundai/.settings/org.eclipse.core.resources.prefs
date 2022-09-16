@@ -1,4 +1,6 @@
 eclipse.preferences.version=1
 encoding//WebContent/mainPage.css=UTF-8
+encoding//WebContent/view/member/findId.css=UTF-8
+encoding//WebContent/view/member/findPw.css=UTF-8
 encoding//WebContent/view/product/productByCategory.jsp=UTF-8
 encoding/<project>=UTF-8

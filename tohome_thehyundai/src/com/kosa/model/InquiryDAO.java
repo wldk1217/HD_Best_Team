@@ -32,7 +32,7 @@ public class InquiryDAO {
    public ArrayList<InquiryVO> viewInquiry(String member_memberId) {
       ArrayList<InquiryVO> inquiryList = new ArrayList<InquiryVO>();
       
-      String runSelect_Inquiry = "{ call select_inquiry(?, ?) }";
+      String runSelect_Inquiry = "{ call inquiry_pack.inquiry_select(?, ?) }";
 
       try {
          Connection conn = DBConnection.getConnection();
@@ -72,14 +72,13 @@ public class InquiryDAO {
    
 //    //dao test 하기위한 main메소드
 //   	public static void main(String[] args) {
- 		//insert_inquiry
 //   		InquiryVO inquiryVO = new InquiryVO();
-////   		inquiryVO.setQuiryType("기타");
-////   		inquiryVO.setQuiryDate(Date.valueOf(LocalDate.now()));
-////   		inquiryVO.setQuiryContent("문의 테스트");
-////   		inquiryVO.setQuiryImg("https://www.naver.com");
-////   		inquiryVO.setMember_memberId("admin12");
-////   		System.out.println(insertInquiry(inquiryVO));
+//   		inquiryVO.setQuiryType("기타");
+//		inquiryVO.setQuiryDate(Date.valueOf(LocalDate.now()));
+//		inquiryVO.setQuiryContent("문의 테스트");
+//		inquiryVO.setQuiryImg("https://www.naver.com");
+//		inquiryVO.setMember_memberId("admin12");
+//		System.out.println(insertInquiry(inquiryVO));
 //   		
 //   		
 //   		System.out.println(viewInquiry("admin12"));
@@ -89,7 +88,7 @@ public class InquiryDAO {
      public int insertInquiry(InquiryVO inquiryVO) {
           int result = 1;
                
-         String runSP = "{ call insert_inquiry(?, ?, ?, ?, ?) }";
+         String runSP = "{ call inquiry_pack.inquiry_insert(?, ?, ?, ?, ?) }";
 
          try {
             Connection conn = DBConnection.getConnection();
@@ -114,7 +113,7 @@ public class InquiryDAO {
      //문의내역 db에서 삭제
      public int deleteInquiry(int quiryId) {
         int result = 0;
-        String runSP = "{ call delete_inquiry(?) }";
+        String runSP = "{ call inquiry_pack.inquiry_delete(?) }";
         
         try {
            Connection conn = DBConnection.getConnection();

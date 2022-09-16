@@ -109,14 +109,22 @@
 
 				<div class="orderlist-area">
 
-					<p>${orderList}</p>
 					<c:forEach items="${orderList}" var="order">
-
-						<ul class="order-list">
-							<li class="order"><a href="tohomeServlet?command=order_list_detail&orderId=${order.orderId}"><strong class="order-date">${order.orderDate}</strong></a><br>
-								<span class="order-info">${order.orderCount}
-									${order.orderState} ${order.totalPrice}</span></li>
-						</ul>
+						<c:if test="${order.orderState eq '주문완료'}">
+							<ul class="order-list">
+								<li class="order"><a
+									href="tohomeServlet?command=order_list_detail&orderId=${order.orderId}"><strong
+										class="order-date">${order.orderDate}</strong></a><br> <span
+									class="order-info">${order.orderCount}
+										${order.orderState} ${order.totalPrice} 주문번호 :
+										${order.orderId}</span></li>
+								<form method="post"
+									action="tohomeServlet?command=order_list_delete">
+									<input type="hidden" name="orderId" value="${order.orderId}" />
+									<button type="submit" class="btn fill big black">주문 취소</button>
+								</form>
+							</ul>
+						</c:if>
 					</c:forEach>
 
 					<c:if test="${orderList eq null}">

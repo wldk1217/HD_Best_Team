@@ -9,16 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kosa.entity.MemberVO;
 import com.kosa.entity.OrdersVO;
 import com.kosa.entity.ProductVO;
 import com.kosa.model.MemberDAO;
-import com.kosa.model.OrdersDAO;
+import com.kosa.model.ProductDAO;
 
 public class OrderInsertAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "tohomeServlet?command=order_list";
+		String url = "view/orders/orderList.jsp";
 
 		HttpSession session = request.getSession();
 		String memberId = (String) session.getAttribute("memberId");
@@ -27,20 +28,26 @@ public class OrderInsertAction implements Action {
 		int productPrice = Integer.parseInt(request.getParameter("productPrice"));
 		int totalPrice = count * productPrice;
 		
-
-		System.out.println(totalPrice);
 		if (memberId == null) {
 			url = "tohomeServlet?command=login_form";
 		} else {
-			MemberDAO memberDAO = MemberDAO.getInstance();
+			ProductDAO productDAO = ProductDAO.getInstance();
+			ProductVO productVO = productDAO.ProductDetail(productId);
+			request.setAttribute("productVO", productVO);
+			
 			OrdersVO ordersVO = new OrdersVO();
 			ordersVO.setOrderCount(count);
-			/*
-			 * ArrayList<OrdersVO> orderInfoList = ordersDAO.orderInfoList(memberId,
-			 * totalPrice); request.setAttribute("orderInfoList", orderInfoList);
-			 */
+			ordersVO.setOrderState("주문대기");
+			ordersVO.setTotalPrice(totalPrice);
+			
+			request.setAttribute("ordersVO", ordersVO);
+			
+			MemberDAO memberDAO = MemberDAO.getInstance();
+			MemberVO memberVO = memberDAO.selectMember(memberId);
+			request.setAttribute("memberVO", memberVO);
 		}
-		response.sendRedirect(url);
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 }

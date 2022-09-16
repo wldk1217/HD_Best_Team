@@ -65,8 +65,7 @@
 					<li class="lnb-depth1"><a href="#">주문관리</a>
 						<ul class="lnb-depth2">
 							<li><a href="tohomeServlet?command=order_list_all">주문 내역</a></li>
-							<li><a href="/front/od/odd/orderCnclList.do"
-								onclick="fn_GaEvent(this);">주문취소</a></li>
+							<li><a href="tohomeServlet?command=order_list_cancel">주문취소</a></li>
 							<li><a href="/front/od/odd/orderExchRtpList.do"
 								onclick="fn_GaEvent(this);">반품/교환</a></li>
 							<li><a href="/front/od/odd/massOrdInqr.do"

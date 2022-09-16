@@ -45,6 +45,7 @@
 			<c:if test="${memberId eq null}">
 				<a href="tohomeServlet?command=login_form">로그인</a>
 				<a href="tohomeServlet?command=join_form">회원가입</a>
+				<a href="tohomeServlet?command=inquiry_list">고객센터</a>
 			</c:if>
 		</div>
 	</header>

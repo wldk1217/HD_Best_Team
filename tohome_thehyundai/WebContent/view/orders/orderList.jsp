@@ -43,7 +43,7 @@
 			<div class="innercon" style="margin: 0 20% 0 25%;">
 				<h2>주문하기</h2>
 				<form method="post" name="formm">
-
+					<input type="hidden" name="totalPrice" value="${ordersVO.totalPrice}"/>
 					<div class="delivery-banner" id="divMultiDlvBtn">
 						<p>주문해 주셔서 감사합니다</p>
 					</div>

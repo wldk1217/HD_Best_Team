@@ -5,7 +5,7 @@
 
 body {
 	height: 1800px;
-	font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "돋움";
+	font-family: "NotoSansKR", sans-serif, Malgungothic, "맑은고딕", Dotum, "�룍��";
 	font-weight: 200;
 	font-size: 15px;
 	line-height: 1.6;
@@ -39,7 +39,7 @@ a {
 
 
 
-/* 회원가입 폼 */
+/* 회원가입 */
 
 .form-text h2{
 	position: relative;
@@ -78,7 +78,7 @@ a {
     color: white;
 	font-weight: bold;
 	text-align: center;
-	min-width: 800px;
+	min-width: 700px;
 }
 
 .btn {
@@ -107,12 +107,8 @@ a {
 }
 
 .item:nth-child(1) {
-	min-width: 150px;	
+	min-width: 200px;	
 }
 .item:nth-child(2) {
-	min-width: 400px;
-}
-.item:nth-child(3) {
-	padding-left: 20px;
-	width: 100px;
+	min-width: 500px;
 }

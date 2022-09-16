@@ -16,10 +16,12 @@ public class MyPageUpdateAction implements Action {
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memberId");
 		
-		String pw = (String) request.getAttribute("memberPw");
-		String tel = (String) request.getAttribute("memberPw");
-		String email = (String) request.getAttribute("memberEmail");
-		String address = (String) request.getAttribute("memberAddress");
+		String pw = request.getParameter("memberPw");
+		String tel = request.getParameter("memberTel");
+		
+		String email =request.getParameter("memberEmail");
+		String address = request.getParameter("memberAdderss");
+//		System.out.println(id + " " +pw + " " + tel + " " + email + " " + address);
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		memberDAO.updateMember(id, pw, tel, email, address);
 		response.sendRedirect("tohomeServlet?command=mypage_update_form");

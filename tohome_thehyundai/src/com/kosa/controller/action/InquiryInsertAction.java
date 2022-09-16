@@ -17,7 +17,7 @@ public class InquiryInsertAction implements Action {
 
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String url = "view/inquiry/customerCenterMain.jsp";
+       String url = "view/inquiry/mtmInqrComplete.jsp";
           
           HttpSession session = request.getSession();
           
@@ -34,6 +34,7 @@ public class InquiryInsertAction implements Action {
           }
           else {
           }
+          
           inquiryVO.setMember_memberId((String)session.getAttribute("memberId"));
           
             System.out.print(inquiryVO.getQuiryType());
@@ -48,8 +49,6 @@ public class InquiryInsertAction implements Action {
       
           RequestDispatcher dispatcher = request.getRequestDispatcher(url);
           dispatcher.forward(request, response);
-          
-   
           
    }
 

@@ -100,9 +100,11 @@
           </div>
       
        <div class="inquiryList">
-       <c:forEach items="${inquiryList}" var="InquiryVO">
+       <form name="formm" method="post">
+       <c:forEach items="${inquiryList}" var="InquiryVO" varStatus="status">
           <div class="inquiry-history">
             <div class="info">
+              <input type="number" name="cseq" value= "${InquiryVO.quiryId}" style="display: none"> 
               <span class="text-white">${InquiryVO.quiryType}</span>
             </div>
             <div class="text-wrapper">
@@ -111,20 +113,21 @@
               </div>
               <div class="text-date">
                 <p>${InquiryVO.quiryDate}</p>
-                <i class="bi bi-arrow-down-short" style="font-size: 32px" id="arrow-down"></i>
+                <i class="bi bi-arrow-down-short" style="font-size: 32px" id="arrow-down${status.index}" onClick="ft(this.id)"></i>
               </div>
             </div>
           </div>
-          <div class="inquiry-answer" id="inquiry-answer">
+          <div class="inquiry-answer" id="inquiry-answer${status.index}">
             <p>
               A. 문의에 대한 답변을 준비중입니다. 빠른 답변을 드릴 수 있도록
               노력하겠습니다.
             </p>
-            <br />
-            <br />
-            <button class="delete_inquiry_btn" onclick="function_delete()">삭제</button>
+            <button class="delete_inquiry_btn" onclick="function_delete()">
+              삭제
+            </button>
           </div>
           </c:forEach>
+          </form>
          </div>
           
         </div>
@@ -149,21 +152,25 @@
   </footer>
 </body>
 <script>
-  const arrowDown = document.getElementById("arrow-down");
-  const inquiryAnswer = document.getElementById("inquiry-answer");
-  arrowDown.addEventListener("click", () => {
-    if (inquiryAnswer.style.display == "block") {
-      inquiryAnswer.style.display = "none";
-      return;
-    }
-    inquiryAnswer.style.display = "block";
-  });
-</script>
-<script>
-  function function_delete() {
-    console.log("삭제완료");
-  }
+ function ft(MyId){
+	 	var str = MyId;
+	 	str = str.substr(10);
+    	const arrowDown = document.getElementById(MyId);
+        const inquiryAnswer = document.getElementById("inquiry-answer" + str);
+        arrowDown.addEventListener("click", () => {
+            if (inquiryAnswer.style.display == "block") {
+                inquiryAnswer.style.display = "none";
+                return;
+            }
+            inquiryAnswer.style.display = "block";
+        });
+ }
 </script>
 
+<script>
+function function_delete() {
+	    document.formm.action = "tohomeServlet?command=inquiry_delete";
+	}
+</script>
 
 </html>

@@ -5,7 +5,6 @@
 
 <head>
 <title>주문하기</title>
-
 <link rel="stylesheet" type="text/css" href="view/orders/order.min.css">
 <body>
 	<div id="wrap" class="order ordersheet">
@@ -23,7 +22,7 @@
 						<a href="#">로그아웃</a> <a href="#">회원정보변경</a> <a href="#">마이페이지</a>
 						<a href="#">고객센터</a>
 					</div>
-
+ 
 				</div>
 			</div>
 		</header>

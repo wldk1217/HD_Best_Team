@@ -32,9 +32,9 @@ public class OrderInsertAction implements Action {
 		if (memberId == null) {
 			url = "tohomeServlet?command=login_form";
 		} else {
-
-			OrdersDAO ordersDAO = OrdersDAO.getInstance();
 			MemberDAO memberDAO = MemberDAO.getInstance();
+			OrdersVO ordersVO = new OrdersVO();
+			ordersVO.setOrderCount(count);
 			/*
 			 * ArrayList<OrdersVO> orderInfoList = ordersDAO.orderInfoList(memberId,
 			 * totalPrice); request.setAttribute("orderInfoList", orderInfoList);

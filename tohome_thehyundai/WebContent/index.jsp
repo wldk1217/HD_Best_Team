@@ -86,7 +86,7 @@
 		<div class="cart">
 			<i class="bi bi-cart fs-4"></i>
 			<div class="count">
-				<p>1</p>
+				<p>0</p>
 			</div>
 		</div>
 	</ul>
@@ -184,6 +184,6 @@
 	crossorigin="anonymous"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-   AOS.init();
+	AOS.init();
 </script>
 </html>

@@ -21,20 +21,39 @@ public class IdCheckFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		System.out.println("idCheck 왔는감?");
+		String userId = request.getParameter("id");
+		System.out.println(userId);
 		
-		// 중복 id가 있을 때, 실패
-		String url = "view/member/membership.jsp";
+		PrintWriter out = response.getWriter();
 		
-		MemberDAO memberDAO = MemberDAO.getInstance();
-		String id = request.getParameter("id");
-		System.out.println(id);
+		MemberDAO user = new MemberDAO();
 		
-		String result = memberDAO.idCheck(id);
+		String idCheck = user.idCheck(userId);
 		
-		request.setAttribute("idAction", result);
-		System.out.println("result : " + result);
+		System.out.println(idCheck);
 		
+		if(idCheck.length()==0 || idCheck.equals(null)) {
+			System.out.println("사용 가능한 아이디");
+		}else {
+			System.out.println("이미 존재하는 아이디");
+		}
+		out.write(idCheck+"");
+		
+		
+		
+		/*
+		 * System.out.println("idCheck 왔는감?");
+		 * 
+		 * // 중복 id가 있을 때, 실패 String url = "view/member/membership.jsp";
+		 * 
+		 * MemberDAO memberDAO = MemberDAO.getInstance(); String id =
+		 * request.getParameter("id"); System.out.println(id);
+		 * 
+		 * String result = memberDAO.idCheck(id);
+		 * 
+		 * request.setAttribute("idAction", result); System.out.println("result : " +
+		 * result);
+		 */
 //		String scs = "yes";
 //		
 //		if( id.equals(result) ) {
@@ -42,8 +61,8 @@ public class IdCheckFormAction implements Action {
 //		}
 //		System.out.println(scs);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(result);
-		dispatcher.forward(request, response);
+//		RequestDispatcher dispatcher = request.getRequestDispatcher(result);
+//		dispatcher.forward(request, response);
 		
 	}
 }

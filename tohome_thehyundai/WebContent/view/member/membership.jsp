@@ -12,8 +12,12 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- JQuery 로드 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <title>Document</title>
-<script type="text/javascript" src="./membership.js"></script>
+<script type="text/javascript" src="view/member/membership.js"></script>
 </head>
 <body>
 	<!-- header -->
@@ -36,7 +40,7 @@
 	<!-- 회원가입 폼  -->
 	<div class="membership-input-form">
 		<form id="join" action="/tohome_thehyundai/tohomeServlet?command=join" method="post"
-			name="formm">
+			name="formm" onsubmit="MemberCheck() ">
 			<ul>
 				<li class="form-text">
 					<h2>회원가입</h2>
@@ -46,6 +50,7 @@
 						<div class="item">아이디</div>
 						<div class="item">
 							<input type="text" id="id" name="id" class="big" title="아이디 입력" placeholder="아이디">
+							<input type="text" id="idAction" name="idAction" value="${idAction }">${idAction }
 							<span id='chk'></span>
 							<input type="text" id='idchk' value="N" style="display:none;">
 						</div>
@@ -78,37 +83,31 @@
 					<label class="form-entry">
 						<div class="item">닉네임</div>
 						<div class="item">
-							<input type="text" id="nickname" name="nickname" class="big"
-								title="닉네임 입력" placeholder="닉네임">
-						</div>
-						<div class="item">
-							<button type="button">중복확인</button>
+							<input type='text' name='nickname' id='nickname' class="big" title="아이디 입력" placeholder="아이디"/>
+						<span id='chkN'></span>
+						<input type="text" id='stateNickChk' value="N" style="display:none;">
 						</div>
 					</label>
 					<label class="form-entry">
 						<div class="item">전화번호</div>
 						<div class="item">
-							<input type="text" id="tel" name="tel" class="big"
-								placeholder="ex) 01012341234">
-						</div>
-						<div class="item">
-							<button type="button">중복확인</button>
+							<input type='text' name='tel' id='tel' class="big" placeholder='ex) 01011112222'/> 
+							<span id='chkT'></span> 
+							<input type="text" id='telChk' value="N" style="display: none;">
 						</div>
 					</label> 
 					<label class="form-entry">
 						<div class="item">이메일</div>
 						<div class="item">
-							<input type="text" id="email" name="email" class="big"
-								title="이메일 입력" placeholder="이메일     ex) hyundai@google.com">
-						</div>
-						<div class="item">
-							<button type="button">중복확인</button>
+							<input type='text' name='email' id='email' class="big" placeholder='ex) goguma@naver.com'/><br>
+							<span id='chkE'></span>
+							<input type="text" id='EmailChk' value="N" style="display:none;">
 						</div>
 					</label> 
 					<label class="form-entry">
 						<div class="item">성별</div>
 						<div class="item2">
-							<input type="radio" id="gender" name="gender" value=0>&nbsp&nbsp여
+							<input type="radio" id="gender" name="gender" value=0 checked>&nbsp&nbsp여
 							&nbsp&nbsp&nbsp&nbsp <input type="radio" id="gender" name="gender"	value=1>&nbsp&nbsp남
 						</div>
 					</label> 

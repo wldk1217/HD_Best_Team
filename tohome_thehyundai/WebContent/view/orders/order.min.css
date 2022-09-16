@@ -152,6 +152,8 @@ button:disabled, .order.ordersheet .discount-field .coupon .btn.disabled
 	display: block;
 	text-align: center;
 	font-size: 0;
+	max-width: 1000px;
+	margin: 0 auto;
 }
 
 .btns>.btn {

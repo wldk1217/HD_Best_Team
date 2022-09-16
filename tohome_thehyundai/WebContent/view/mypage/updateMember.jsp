@@ -206,8 +206,7 @@
                             input 전체 입력할 경우 : button disabled 해제
                         -->
 						<div class="btns">
-							<button type="button" class="btn big lightgray"
-								onclick="javascript:goMypageMain();">취소</button>
+							
 							<button type="submit" class="btn fill big black">정보변경</button>
 						</div>
 					</fieldset>

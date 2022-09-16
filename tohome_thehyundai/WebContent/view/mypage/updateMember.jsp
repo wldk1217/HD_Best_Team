@@ -107,7 +107,8 @@
 			</section>
 			<section class="conarea">
 				<h3 class="tit line">회원정보 변경</h3>
-				<form name="mainform" method="post">
+				<form name="mainform" method="post"
+					action="tohomeServlet?command=mypage_update">
 					<fieldset class="form-field">
 						<legend>회원정보</legend>
 
@@ -134,8 +135,8 @@
 							</dt>
 							<dd>
 								<label class="form-entry"> <input type="password"
-									name="memberPw" id="EMAIL_ADR" title="이메일 입력"
-									placeholder="비밀번호" value="" />
+									name="memberPw" id="memberPw" title="비밀전호 입력"
+									placeholder="비밀번호" />
 									<button type="button" class="btn-del" tabindex="-1">
 										삭제</button>
 								</label>
@@ -180,20 +181,20 @@
 						<dl>
 							<dt>주소</dt>
 							<dd>
-							<label class="form-entry"> <input type="text"
-										name="memberAdderss" id="memberAdderss" title="주소 입력"
-										placeholder="주소" value="${member.memberAdderss}" />
-										<button type="button" class="btn-del" tabindex="-1">
-											삭제</button>
-									</label>
-								
+								<label class="form-entry"> <input type="text"
+									name="memberAdderss" id="memberAdderss" title="주소 입력"
+									placeholder="주소" value="${member.memberAdderss}" />
+									<button type="button" class="btn-del" tabindex="-1">
+										삭제</button>
+								</label>
+
 							</dd>
 						</dl>
 
 						<input type="hidden" name="PUSH_RCV_AGR_YN" /> <input
 							type="hidden" name="SMS_RCV_AGR_YN" /> <input type="hidden"
 							name="EMAIL_RCV_AGR_YN" />
-						
+
 						<!-- 평생회원인 경우 해당 영역 비노출// -->
 
 						<!-- //평생회원인 경우 해당 영역 비노출 -->
@@ -207,8 +208,7 @@
 						<div class="btns">
 							<button type="button" class="btn big lightgray"
 								onclick="javascript:goMypageMain();">취소</button>
-							<button type="button" class="btn fill big black"
-								onclick="location='tohomeServlet?command=mypage_update'">정보변경</button>
+							<button type="submit" class="btn fill big black">정보변경</button>
 						</div>
 					</fieldset>
 

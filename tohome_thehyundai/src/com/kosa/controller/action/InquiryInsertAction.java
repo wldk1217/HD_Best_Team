@@ -46,9 +46,10 @@ public class InquiryInsertAction implements Action {
           
           InquiryDAO inquiryDAO = InquiryDAO.getInstance();
           inquiryDAO.insertInquiry(inquiryVO);
-      
+          System.out.println("insert 성공");
           RequestDispatcher dispatcher = request.getRequestDispatcher(url);
           dispatcher.forward(request, response);
+          
           
    }
 

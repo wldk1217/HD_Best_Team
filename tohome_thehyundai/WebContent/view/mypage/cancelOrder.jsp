@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="view/mypage/mypage.css" />
+<link rel="stylesheet" href="view/mypage/orderList.css" />
 <link rel="stylesheet" href="view/footer.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
@@ -65,7 +67,8 @@
 					<li class="lnb-depth1"><a href="#">주문관리</a>
 						<ul class="lnb-depth2">
 							<li><a href="tohomeServlet?command=order_list_all">주문 내역</a></li>
-							<li><a href="tohomeServlet?command=order_list_cancel">주문취소</a></li>
+							<li><a href="/front/od/odd/orderCnclList.do"
+								onclick="fn_GaEvent(this);">주문취소</a></li>
 							<li><a href="/front/od/odd/orderExchRtpList.do"
 								onclick="fn_GaEvent(this);">반품/교환</a></li>
 							<li><a href="/front/od/odd/massOrdInqr.do"
@@ -102,53 +105,33 @@
 				</ul>
 			</section>
 			<section class="conarea">
-				<h3 class="tit">회원정보 변경</h3>
-				<form id="mainform" method="post"
-					action="tohomeServlet?command=password_check">
-					<fieldset class="form-field">
-						<legend class="hide">비밀번호 입력</legend>
+				<h3 class="tit">주문 취소</h3>
 
-						<p class="txt">
-							<strong>비밀번호를 입력해주세요.</strong> 고객님의 개인정보 보호를 위해 비밀번호를 다시 확인합니다.<br />
-							비밀번호가 타인에게 노출되지 않도록 항상 주의해 주세요.
-						</p>
+				<div class="orderlist-area">
 
-						<label class="form-entry inline"> <input type="password"
-							id="PWD" name="PWD" title="비밀번호 확인 입력" placeholder="비밀번호"
-							onkeydown="" />
-							<button type="button" class="btn-del" tabindex="-1">삭제</button> <!--
-                        메세지 띄우기 : fn.inputMsg('input ID명', '에러 메세지'); / fn.inputMsg('input ID명', '긍정 메세지', true);
-                        특정 메세지 지우기 : fn.inputMsgClear('input ID명');
-                        전체 메세지 지우기 : fn.inputMsgClear();
-                    -->
-							<button type="submit" class="btn fill black">확인</button>
-						</label>
-						<!-- <div class="infotxt">
-                    <ul>
-                        <li>영문, 숫자, 특수문자를 포함하여 8~30자 이내 사용 가능</li>
-                    </ul>
-                </div> -->
-					</fieldset>
-				</form>
+					<c:forEach items="${orderList}" var="order">
+						<c:if test="${order.orderState eq '주문취소'}">
+							<ul class="order-list">
+								<li class="order"><a
+									href="tohomeServlet?command=order_list_detail&orderId=${order.orderId}"><strong
+										class="order-date">${order.orderDate}</strong></a><br> <span
+									class="order-info">${order.orderCount}
+										${order.orderState} ${order.totalPrice}</span></li>
+							</ul>
+						</c:if>
+					</c:forEach>
+
+					<c:if test="${orderList eq null}">
+						<div class="nodata">취소내역이 없습니다.</div>
+					</c:if>
+
+
+					<div class="pagination"></div>
+				</div>
 			</section>
 		</div>
 	</div>
-	<script>
-		function certPwd() {
-			fn.inputMsgClear("#PWD");
-			if ($("#PWD").val() == null || $("#PWD").val() == "") {
-				fn.inputMsg("#PWD", "비밀번호를 입력해 주세요.", false);
-			} else {
-				$("#mainform").submit();
-			}
-		}
 
-		$(document).ready(function() {
-			if ("" == "Y") {
-				fn.inputMsg("#PWD", "비밀번호를 정확히 입력해 주세요.", false);
-			}
-		});
-	</script>
 	<footer id="footer">
 		<div class="util">
 			<div class="inner">

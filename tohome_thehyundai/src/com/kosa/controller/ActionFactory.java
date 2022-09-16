@@ -73,6 +73,8 @@ public class ActionFactory {
 			action = new OrderInsertOkAction();
 		} else if (command.equals("order_list")) {
 			action = new OrderListAction();
+		} else if (command.equals("order_list_cancel")) {
+			action = new OrderListCancelAction();
 		} else if (command.equals("mypage")) {
 			action = new MyPageAction();
 		} else if (command.equals("mypage_update_form")) {

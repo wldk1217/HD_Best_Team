@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kosa.entity.CategoryVO;
 import com.kosa.entity.InquiryVO;
+import com.kosa.model.CategoryDAO;
 import com.kosa.model.InquiryDAO;
 
 
@@ -18,6 +20,10 @@ public class InquiryMoveFormAction implements Action {
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       String url = "view/inquiry/mtmInqrReg.jsp";
+      
+      CategoryDAO categoryDAO = CategoryDAO.getInstance();
+      ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
+      request.setAttribute("categoryList", categoryList);
       
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);

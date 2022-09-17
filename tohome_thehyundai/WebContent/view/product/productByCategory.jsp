@@ -24,6 +24,9 @@
 <link rel="stylesheet" href="view/product/ProductPage.css" />
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
+<script>
+
+</script>
 
 <title>ProductByCategory</title>
 </head>
@@ -83,10 +86,10 @@
 			</div>
 		</div>
 
-		<div class="cart">
+		<div class="cart" onclick="location.href='tohomeServlet?command=basket_list'">
 			<i class="bi bi-cart fs-4"></i>
 			<div class="count">
-				<p>1</p>
+				<p>${basketCount}</p>
 			</div>
 		</div>
 	</ul>
@@ -114,7 +117,10 @@
 							<p class="discount-per"></p>
 							<span>${ProductVO.productPrice}원</span>
 						</div>
-						<a href=""><i class="bi bi-cart fs-4"></i></a>
+				
+							<a href="tohomeServlet?command=basket_insert&onlyinsert=1&categoryId=${categoryId}&productId=${ProductVO.productId}">
+							<i id="cart" class="bi bi-cart fs-4"></i></a>
+		
 					</div>
 				</div>
 			</div>

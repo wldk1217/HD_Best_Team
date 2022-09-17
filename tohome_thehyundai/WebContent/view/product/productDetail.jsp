@@ -32,8 +32,8 @@
 		document.formm.submit();
 	};
 
-	function go_cart() {
-		document.formm.action = "tohomeServlet?command=cart_insert";
+	function go_basket() {
+		document.formm.action = "tohomeServlet?command=basket_insert";
 		document.formm.submit();
 	};
 </script>
@@ -121,7 +121,7 @@
 					<br> <br> <br> <br>
 					<div class="btns">
 						<button type="button" class="btn orange bigger"
-							onclick="go_cart()">장바구니</button>
+							onclick="go_basket()">장바구니</button>
 						<button type="button" class="btn orange bigger"
 							style="background: #FFAA40;" onclick="go_order()">바로구매</button>
 					</div>

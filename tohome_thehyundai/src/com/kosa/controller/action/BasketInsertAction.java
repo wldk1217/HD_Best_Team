@@ -24,6 +24,9 @@ public class BasketInsertAction implements Action {
 			int productId = Integer.parseInt(request.getParameter("productId"));
 			int basketQuantity = 1;
 			
+			BasketDAO basketDAO = BasketDAO.getInstance();
+			request.setAttribute("basketCount", basketDAO.countBasket(memberId));
+			
 		    if (memberId == null) {
 		      url = "tohomeServlet?command=login_form";
 		    } else {
@@ -31,12 +34,11 @@ public class BasketInsertAction implements Action {
 		    	if (onlyinsert == 1) {
 		    		url = "tohomeServlet?command=product_by_category&categoryId=" + categoryId;
 		    		System.out.println(productId);
-		    		BasketDAO basketDAO = BasketDAO.getInstance();
+		    		
 		    		basketDAO.insertBasket(memberId);
 		    		
 		    		int basketId = basketDAO.findBasketId(memberId);
-		    		basketDAO.insertBasketList(productId, basketId, basketQuantity);
-		    		
+		    		basketDAO.insertBasketList(productId, basketId, basketQuantity);		    		
 		    	} else {
 		    		
 		    	}

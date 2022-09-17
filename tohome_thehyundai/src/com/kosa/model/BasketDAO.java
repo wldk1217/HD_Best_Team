@@ -102,4 +102,38 @@ public class BasketDAO {
 		}
 		return result;
 	}
+
+	// 장바구니 개수 세기
+	public int countBasket(String memberId) {
+		int result = 0;
+		String run = "{ call count_basket(?, ?) }";
+	
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+
+			callableStatement.setString(1, memberId);
+			callableStatement.registerOutParameter(2, java.sql.Types.INTEGER);
+			
+			try {
+				callableStatement.execute();
+				
+				result = callableStatement.getInt(2);
+				System.out.println("total 값 : " + result);
+
+				System.out.println("성공");
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 }

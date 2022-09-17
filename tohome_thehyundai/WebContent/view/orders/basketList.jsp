@@ -33,6 +33,15 @@
 			document.formm.submit();
 		}
 	};
+	
+	function totalPrice(count) {
+		var total = 0;
+		var price = document.getElementById('total').innerText;
+		var p = document.getElementById('p').innerText;
+		
+		total = parseInt(count) * parseInt(p);
+		document.getElementById('total').innerText = total;
+	};
 </script>
 </head>
 <header id="header" class="short">
@@ -78,7 +87,7 @@
 						<div class="prod_ctn">
 							<div class="txt_ellipsis">
 								<p>${BasketVO.productName}</p>
-								<button class="btn_delete" onclick="location.href='tohomeServlet?command=basket_delete'">
+								<button class="btn_delete" onclick="location.href='tohomeServlet?command=basket_delete&productId=${BasketVO.productId}&basketId=${BasketVO.basketId}'">
 									<i class="bi bi-x"></i>
 								</button>
 							</div>
@@ -122,7 +131,7 @@
 											<option value=4>4</option>
 											<option value=5 selected>5</option>
 										</c:if>
-									</select> <em>${BasketVO.productPrice}</em>원
+									</select> <p id="total">${BasketVO.productPrice}</p>
 								</div>
 							</div>
 

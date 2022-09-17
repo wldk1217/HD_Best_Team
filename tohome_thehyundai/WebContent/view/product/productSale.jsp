@@ -112,7 +112,8 @@
 							<p class="discount-per">SALE</p>
 							<span>${ProductVO.productPrice}원</span>
 						</div>
-						<a href=""><i class="bi bi-cart fs-4"></i></a>
+						<a href="tohomeServlet?command=basket_insert&onlyinsert=4&productId=${ProductVO.productId}">
+							<i id="cart" class="bi bi-cart fs-4"></i></a>
 					</div>
 				</div>
 			</div>

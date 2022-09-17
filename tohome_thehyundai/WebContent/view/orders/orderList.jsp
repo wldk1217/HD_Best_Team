@@ -18,6 +18,7 @@
 <head>
 <title>주문하기</title>
 <link rel="stylesheet" type="text/css" href="view/orders/order.min.css">
+</head>
 <body>
 	<div id="wrap" class="order ordersheet">
 		<header id="header" class="short">
@@ -25,14 +26,14 @@
 				<!-- toparea// -->
 				<div class="toparea">
 					<h1>
-						<a href="tohomeServlet?command=product_All"><img
+						<a href="tohomeServlet?command=index"><img
 							src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/temp/header_logo_freex34.png"
 							alt="현대식품관"></a>
 					</h1>
 
 					<div class="util">
-						<a href="#">로그아웃</a> <a href="#">회원정보변경</a> <a href="#">마이페이지</a>
-						<a href="#">고객센터</a>
+						<a href="tohomeServlet?command=logout">로그아웃</a><a href="tohomeServlet?command=mypage">마이페이지</a>
+						<a href="tohomeServlet?command=inquiry_list">고객센터</a>
 					</div>
 
 				</div>

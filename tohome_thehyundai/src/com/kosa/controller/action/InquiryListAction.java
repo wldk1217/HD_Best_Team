@@ -9,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kosa.entity.CategoryVO;
 import com.kosa.entity.InquiryVO;
+import com.kosa.model.CategoryDAO;
 import com.kosa.model.InquiryDAO;
 
 
@@ -21,12 +23,15 @@ public class InquiryListAction implements Action {
       
       HttpSession hs = request.getSession();
       InquiryDAO inquiryDAO = InquiryDAO.getInstance();
-   
+      CategoryDAO categoryDAO = CategoryDAO.getInstance();
+      
       String memberId = (String)hs.getAttribute("memberId");
       
       ArrayList<InquiryVO> inquiryList = inquiryDAO.viewInquiry(memberId);
-      
+      ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
+		
       request.setAttribute("inquiryList", inquiryList);
+      request.setAttribute("categoryList", categoryList);
       
       RequestDispatcher dispatcher = request.getRequestDispatcher(url);
       dispatcher.forward(request, response);

@@ -3,6 +3,7 @@ package com.kosa.controller.action;
 import java.io.IOException;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kosa.entity.CategoryVO;
 import com.kosa.entity.InquiryVO;
+import com.kosa.model.CategoryDAO;
 import com.kosa.model.InquiryDAO;
 
 public class InquiryInsertAction implements Action {
@@ -20,6 +23,10 @@ public class InquiryInsertAction implements Action {
        String url = "view/inquiry/mtmInqrComplete.jsp";
           
           HttpSession session = request.getSession();
+          CategoryDAO categoryDAO = CategoryDAO.getInstance();
+          
+          ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
+          request.setAttribute("categoryList", categoryList);
           
           InquiryVO inquiryVO = new InquiryVO();
           //문의분야

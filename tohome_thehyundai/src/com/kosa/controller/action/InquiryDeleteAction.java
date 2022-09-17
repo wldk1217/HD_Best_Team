@@ -22,11 +22,12 @@ public class InquiryDeleteAction implements Action {
 		BasketDAO basketDAO = BasketDAO.getInstance();
 		request.setAttribute("basketCount", basketDAO.countBasket(memberId));
 
-		String cseq = request.getParameter("cseq");
+		int cseq = Integer.parseInt(request.getParameter("cseq"));
 
+		
 		System.out.println(cseq);
 		InquiryDAO inquiryDAO = InquiryDAO.getInstance();
-		inquiryDAO.deleteInquiry(Integer.parseInt(cseq));
+		inquiryDAO.deleteInquiry(cseq);
 		System.out.println("delete 성공");
 		request.getRequestDispatcher(url).forward(request, response);
 	}

@@ -77,11 +77,12 @@
           </div>
       
        <div class="inquiryList">
-       <form name="formm" method="post">
+    
        <c:forEach items="${inquiryList}" var="InquiryVO" varStatus="status">
+          <form name="formm" method="post" action="tohomeServlet?command=inquiry_delete">
           <div class="inquiry-history">
             <div class="info">
-              <input type="number" name="cseq" value= "${InquiryVO.quiryId}" style="display: none"> 
+              <input type="text" name="cseq" value="${InquiryVO.quiryId}" style="display: none"> 
               <span class="inquirytype">${InquiryVO.quiryType}</span>
             </div>
             <div class="text-wrapper">
@@ -99,12 +100,12 @@
               A. 문의에 대한 답변을 준비중입니다. 빠른 답변을 드릴 수 있도록
               노력하겠습니다.
             </p>
-            <button class="delete_inquiry_btn" onclick="function_delete()">
+            <button class="delete_inquiry_btn" type="submit">
               삭제
             </button>
           </div>
+             </form>
           </c:forEach>
-          </form>
          </div>
           
         </div>
@@ -130,12 +131,6 @@
             inquiryAnswer.style.display = "block";
         });
  }
-</script>
-
-<script>
-function function_delete() {
-	    document.formm.action = "tohomeServlet?command=inquiry_delete";
-	}
 </script>
 
 </html>

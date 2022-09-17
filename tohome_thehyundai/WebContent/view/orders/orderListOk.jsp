@@ -15,7 +15,7 @@
 			<div class="inner">
 				<div class="toparea">
 					<h1>
-						<a href="#"><img
+						<a href="tohomeServlet?command=index"><img
 							src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/temp/header_logo_freex34.png"
 							alt="현대식품관"></a>
 					</h1>
@@ -35,11 +35,11 @@
 
 				<div class="faildata">
 					<h3 style="font-size:30px; text-align:center;">주문/결제가 완료되었습니다.</h3>
-					<p style="font-size:20px; text-align:center;">더 많은 상품을 만나보세요!</p><br><br>
+					<p style="font-size:20px; text-align:center;">더 많은 상품을 만나보세요!</p><br><br> 
 					<div class="btns">
-						<a href="#"
-							class="btn fill big lightgray orange">메인으로 돌아가기</a> <a
-							href="#" class="btn fill big orange">쇼핑계속하기</a>
+						<a href="tohomeServlet?command=index"
+							class="btn fill big lightgray orange">메인으로가기</a> <a
+							href="tohomeServlet?command=product_All" class="btn fill big orange">쇼핑계속하기</a>
 					</div>
 				</div>
 			</div>

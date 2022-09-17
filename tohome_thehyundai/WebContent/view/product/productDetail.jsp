@@ -32,8 +32,8 @@
 		document.formm.submit();
 	};
 
-	function go_cart() {
-		document.formm.action = "tohomeServlet?command=cart_insert";
+	function go_basket() {
+		document.formm.action = "tohomeServlet?command=basket_insert";
 		document.formm.submit();
 	};
 </script>

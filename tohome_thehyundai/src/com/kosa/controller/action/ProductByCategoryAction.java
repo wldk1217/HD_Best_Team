@@ -7,6 +7,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.kosa.entity.CategoryVO;
 import com.kosa.entity.ProductVO;
@@ -18,9 +19,11 @@ public class ProductByCategoryAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/product/productByCategory.jsp";
-
+		
 		int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-
+		HttpSession session = request.getSession();
+		session.setAttribute("categoryId", categoryId);
+		
 		ProductDAO productDAO = ProductDAO.getInstance();
 		ArrayList<ProductVO> productList = productDAO.ProductByCategory(categoryId);
 		

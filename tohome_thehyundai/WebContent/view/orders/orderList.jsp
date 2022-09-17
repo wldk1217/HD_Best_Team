@@ -25,7 +25,7 @@
 				<!-- toparea// -->
 				<div class="toparea">
 					<h1>
-						<a href="#"><img
+						<a href="tohomeServlet?command=product_All"><img
 							src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/temp/header_logo_freex34.png"
 							alt="현대식품관"></a>
 					</h1>

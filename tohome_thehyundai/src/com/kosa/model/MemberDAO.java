@@ -157,8 +157,8 @@ public class MemberDAO {
 		return result;
 	}
 
+	// id 중복체크
 	public String idCheck(String memberId) {
-
 		System.out.println("idCheck 여기왔다");
 
 		String run = "{call MEMBER_CHECKID(?,?)}";
@@ -197,6 +197,123 @@ public class MemberDAO {
 
 		return result;
 	}
+	
+	// 닉네임 중복체크
+	public String nickCheck(String memberNickname) {
+		System.out.println("nickCheck 여기왔다");
+
+		String run = "{call MEMBER_CHECKNICKNAME(?,?)}";
+		String result = "";
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+
+			callableStatement.setString(1, memberNickname);
+			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+			System.out.println();
+
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
+
+				while (resultSet.next()) {
+					result = resultSet.getString(1);
+					System.out.println("MemberDAO result 값 : " + result);
+				}
+
+				System.out.println("성공");
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	// 전화번호 중복체크
+	public String telCheck(String memberTel) {
+		System.out.println("telCheck 여기왔다");
+
+		String run = "{call MEMBER_CHECKTEL(?,?)}";
+		String result = "";
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+
+			callableStatement.setString(1, memberTel);
+			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+			System.out.println();
+
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
+
+				while (resultSet.next()) {
+					result = resultSet.getString(1);
+					System.out.println("MemberDAO result 값 : " + result);
+				}
+
+				System.out.println("성공");
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
+	
+	// 이메일 중복체크
+		public String emailCheck(String memberEmail) {
+			System.out.println("emailCheck 여기왔다");
+
+			String run = "{call MEMBER_CHECKEMAIL(?,?)}";
+			String result = "";
+			try {
+				Connection conn = DBConnection.getConnection();
+				CallableStatement callableStatement = conn.prepareCall(run);
+
+				callableStatement.setString(1, memberEmail);
+				callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+				System.out.println();
+
+				try {
+					callableStatement.execute();
+					ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
+
+					while (resultSet.next()) {
+						result = resultSet.getString(1);
+						System.out.println("MemberDAO result 값 : " + result);
+					}
+
+					System.out.println("성공");
+
+				} catch (SQLException e) {
+					System.out.println("프로시저에서 에러 발생!");
+					// System.err.format("SQL State: %s", e.getSQLState());
+					System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+
+			return result;
+		}
 
 	// 아이디 찾기
 	public String findID(String memberName, String memberEmail) {
@@ -242,37 +359,6 @@ public class MemberDAO {
 		}
 		return result;
 	}
-
-	/*
-	 * public void insertMember() { System.out.println("test"); Scanner sc = new
-	 * Scanner(System.in);
-	 * 
-	 * System.out.print("회원ID: "); String id = sc.next(); System.out.print("pw: ");
-	 * String pw = sc.next(); System.out.print("name 입력: "); String name =
-	 * sc.next(); System.out.print("tel 입력: "); String tel = sc.next();
-	 * System.out.print("birth 입력: "); String birth = sc.next();
-	 * System.out.print("email 입력: "); String email = sc.next();
-	 * System.out.print("gender 입력: "); int gender = sc.nextInt();
-	 * System.out.print("nick 입력: "); String nick = sc.next();
-	 * System.out.print("addrress 입력: "); String addrress = sc.next();
-	 * 
-	 * String runSP = "{ call member_insert(?, ?, ?, ?, ?, ?, ?, ?, ?) }";
-	 * 
-	 * try { Connection conn = DBConnection.getConnection(); CallableStatement
-	 * callableStatement = conn.prepareCall(runSP); callableStatement.setString(1,
-	 * id); callableStatement.setString(2, pw); callableStatement.setString(3,
-	 * name); callableStatement.setString(4, tel); callableStatement.setTimestamp(5,
-	 * Timestamp.valueOf(LocalDateTime.now())); callableStatement.setString(6,
-	 * email); callableStatement.setInt(7, gender); callableStatement.setString(8,
-	 * nick); callableStatement.setString(9, addrress);
-	 * 
-	 * callableStatement.executeUpdate(); System.out.println("성공"); } catch
-	 * (SQLException e) { System.err.format("SQL State: %s\n%s", e.getSQLState(),
-	 * e.getMessage()); e.printStackTrace(); } catch (Exception e) {
-	 * e.printStackTrace(); } finally { sc.close(); }
-	 * 
-	 * }
-	 */
 
 	// 회원 정보 수정
 	public void updateMember(String memberID, String memberPW, String memberTel, String memberEmail,

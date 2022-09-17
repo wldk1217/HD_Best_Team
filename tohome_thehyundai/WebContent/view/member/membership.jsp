@@ -40,7 +40,7 @@
 	<!-- 회원가입 폼  -->
 	<div class="membership-input-form">
 		<form id="join" action="/tohome_thehyundai/tohomeServlet?command=join" method="post"
-			name="formm" onsubmit="MemberCheck() ">
+			name="formm">
 			<ul>
 				<li class="form-text">
 					<h2>회원가입</h2>
@@ -50,7 +50,6 @@
 						<div class="item">아이디</div>
 						<div class="item">
 							<input type="text" id="id" name="id" class="big" title="아이디 입력" placeholder="아이디">
-							<input type="text" id="idAction" name="idAction" value="${idAction }">${idAction }
 							<span id='chk'></span>
 							<input type="text" id='idchk' value="N" style="display:none;">
 						</div>
@@ -83,7 +82,7 @@
 					<label class="form-entry">
 						<div class="item">닉네임</div>
 						<div class="item">
-							<input type='text' name='nickname' id='nickname' class="big" title="아이디 입력" placeholder="아이디"/>
+							<input type='text' name='nickname' id='nickname' class="big" title="아이디 입력" placeholder="닉네임"/>
 						<span id='chkN'></span>
 						<input type="text" id='stateNickChk' value="N" style="display:none;">
 						</div>
@@ -126,7 +125,7 @@
 					</label> <br> <br>
 
 					<div class="membership-btn">
-						<button type="submit" onclick="MemberCheck()" class="btn fill big black text-white">회원가입</button>
+						<input type="submit" id="membershipBtn" class="btn fill big black text-white" value="회원가입"/>
 					</div>
 				</li>
 			</ul>

@@ -89,7 +89,7 @@
 		<div class="cart" onclick="location.href='tohomeServlet?command=basket_list'">
 			<i class="bi bi-cart fs-4"></i>
 			<div class="count">
-				<p>0</p>
+				<p>${basketCount}</p>
 			</div>
 		</div>
 	</ul>

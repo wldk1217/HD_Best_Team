@@ -86,7 +86,7 @@
 		<div class="cart">
 			<i class="bi bi-cart fs-4"></i>
 			<div class="count">
-				<p>1</p>
+				<p>${basketCount}</p>
 			</div>
 		</div>
 	</ul>

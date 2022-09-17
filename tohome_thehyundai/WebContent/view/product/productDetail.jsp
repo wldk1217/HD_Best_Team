@@ -121,7 +121,7 @@
 					<br> <br> <br> <br>
 					<div class="btns">
 						<button type="button" class="btn orange bigger"
-							onclick="go_cart()">장바구니</button>
+							onclick="go_basket()">장바구니</button>
 						<button type="button" class="btn orange bigger"
 							style="background: #FFAA40;" onclick="go_order()">바로구매</button>
 					</div>

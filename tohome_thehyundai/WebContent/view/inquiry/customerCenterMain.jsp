@@ -40,10 +40,7 @@
         <h2>고객센터</h2>
         <ul>
           <li class="lnb-depth1">
-            <a href="https://www.naver.com">자주하는 질문</a>
-          </li>
-          <li class="lnb-depth1">
-            <a href="https://www.naver.com">1:1 문의</a>
+            <a href="tohomeServlet?command=inquiry_moveform">1:1 문의</a>
           </li>
         </ul>
       </section>
@@ -87,22 +84,24 @@
             </div>
             <div class="text-wrapper">
               <div class="text-answer">
-                <p>${InquiryVO.quiryContent}</p>
+                <span>${InquiryVO.quiryContent}</span>
               </div>
               <div class="text-date">
-                <p>${InquiryVO.quiryDate}</p>
+                <span>${InquiryVO.quiryDate}</span>
                 <i class="bi bi-arrow-down-short" style="font-size: 32px" id="arrow-down${status.index}" onClick="ft(this.id)"></i>
               </div>
             </div>
           </div>
           <div class="inquiry-answer" id="inquiry-answer${status.index}">
-            <p>
+          <div class="inquiry-answer2">
+            <span>
               A. 문의에 대한 답변을 준비중입니다. 빠른 답변을 드릴 수 있도록
               노력하겠습니다.
-            </p>
+            </span>
             <button class="delete_inquiry_btn" type="submit">
               삭제
             </button>
+          </div>
           </div>
              </form>
           </c:forEach>

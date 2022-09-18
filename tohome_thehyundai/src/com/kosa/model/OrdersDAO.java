@@ -98,9 +98,10 @@ public class OrdersDAO {
 					productVO.setProductId(resultSet.getInt(1));
 					productVO.setProductName(resultSet.getString(2));
 					productVO.setProductPrice(resultSet.getInt(3));
+					productVO.setProductImg(resultSet.getString(4));
 					orderListVO.setProduct(productVO);
 					orderListVO.setOrderID(orderID);
-					orderListVO.setOrderQuantity(resultSet.getInt(4));
+					orderListVO.setOrderQuantity(resultSet.getInt(5));
 					orderDetail.add(orderListVO);
 				}
 			} catch (SQLException e) {

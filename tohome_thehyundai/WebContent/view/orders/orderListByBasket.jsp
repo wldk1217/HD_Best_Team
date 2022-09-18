@@ -10,7 +10,7 @@
 		if (document.formm.paymentType.value == 1) {
 			alert("결제 수단을 선택하여 주세요.");
 		} else {
-			document.formm.action = "tohomeServlet?command=order_insert_okbasketOk=1";
+			document.formm.action = "tohomeServlet?command=order_insert_ok&basketOk=1";
 			document.formm.submit();
 		}
 	};
@@ -46,7 +46,6 @@
 				<form method="post" name="formm">
 					<input type="hidden" name="totalPrice" value="${ordersVO.totalPrice}"/>
 					<input type="hidden" name="productId" value="${productVO.productId}" />
-					<input type="hidden" name="basketOk" value="1" />
 					<div class="delivery-banner" id="divMultiDlvBtn">
 						<p>주문해 주셔서 감사합니다</p>
 					</div>
@@ -62,7 +61,6 @@
 									<h3>${memberVO.memberAdderss}</h3>
 									&nbsp&nbsp&nbsp
 								</fieldset>
-								
 								<legend class="tit toggle-ti">
 										주문상품<em>${basketCount}</em>
 								</legend>

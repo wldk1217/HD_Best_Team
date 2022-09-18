@@ -24,6 +24,7 @@ public class OrderInsertAction implements Action {
 		String url = "view/orders/orderList.jsp";
 
 		HttpSession session = request.getSession();
+		
 		String memberId = (String) session.getAttribute("memberId");
 		int count = Integer.parseInt(request.getParameter("count"));
 		int productId = Integer.parseInt(request.getParameter("productId"));
@@ -56,14 +57,15 @@ public class OrderInsertAction implements Action {
 			for(int i = 0; i < basketList.size(); i++) {
 				totalPriceBasket += basketList.get(i).getProductPrice() * basketList.get(i).getBasketQuantity();
 			}
-			System.out.println(totalPriceBasket);
+			
+			ProductDAO productDAO = ProductDAO.getInstance();
+			ProductVO productVO = productDAO.ProductDetail(productId);
+			request.setAttribute("productVO", productVO);
 			
 			ordersVO.setTotalPrice(totalPriceBasket);
 			request.setAttribute("ordersVO", ordersVO);
 			
 			url = "view/orders/orderListByBasket.jsp";
-			
-			//session.removeAttribute("basketList");
 		} else {
 			ProductDAO productDAO = ProductDAO.getInstance();
 			ProductVO productVO = productDAO.ProductDetail(productId);

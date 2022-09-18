@@ -105,7 +105,7 @@
 					onclick="location.href='tohomeServlet?command=product_detail&productId=${ProductVO.productId}';">
 					<img src="${ProductVO.productImg}" alt="image">
 					<div class="item-title">
-						<p>${ProductVO.productName}</p>
+						<p class="item-title-p">${ProductVO.productName}</p>
 					</div>
 					<div class="item-bottom">
 						<div class="item-price">

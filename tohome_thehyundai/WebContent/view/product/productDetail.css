@@ -244,3 +244,9 @@ ul {
 	height: 70px;
 	border-radius: 0px;
 }
+
+.productCnt select {
+	width: 60px;
+	height: 35px;
+	text-align: center;
+}

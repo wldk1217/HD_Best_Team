@@ -173,3 +173,7 @@
     display: flex;
     justify-content: space-between;
   }
+  
+  .item-title-p {
+  	text-overflow: ellipsis;
+  }

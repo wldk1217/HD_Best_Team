@@ -5551,3 +5551,19 @@ body.fixed {
 	{
 	content: none;
 }
+
+#orderBasket-pName {
+	color: rgb(74, 74, 74);
+	font-weight: bold;
+}
+
+#cont-order {
+	border-bottom: 1px solid lightgray;
+	padding-top: 10px;
+}
+
+#paymentType {
+	height: 40px;
+	width: 150px;
+	text-align: center;
+}

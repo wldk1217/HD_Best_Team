@@ -201,4 +201,24 @@ public class BasketDAO {
 		}
 		
 	}
+
+	public void updateBasket(int productId, int basketId, int basketQuantity) {
+		String run = "{ call basket_update(?, ?, ?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+			callableStatement.setInt(1, productId);
+			callableStatement.setInt(2, basketId);
+			callableStatement.setInt(3, basketQuantity);
+			callableStatement.executeUpdate();
+			System.out.println("성공");
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

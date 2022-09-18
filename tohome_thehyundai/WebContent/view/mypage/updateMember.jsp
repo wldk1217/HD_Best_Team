@@ -27,50 +27,8 @@
 	
 	<div class="contents">
 		<div class="innercon">
-			<section class="lnbarea">
-				<h2>마이페이지</h2>
-				<ul>
-					<li class="lnb-depth1"><a href="#">주문관리</a>
-						<ul class="lnb-depth2">
-							<li><a href="/front/od/odd/orderList.do"
-								onclick="fn_GaEvent(this);">주문 내역</a></li>
-							<li><a href="/front/od/odd/orderCnclList.do"
-								onclick="fn_GaEvent(this);">주문취소</a></li>
-							<li><a href="/front/od/odd/orderExchRtpList.do"
-								onclick="fn_GaEvent(this);">반품/교환</a></li>
-							<li><a href="/front/od/odd/massOrdInqr.do"
-								onclick="fn_GaEvent(this);">대량주문 문의</a></li>
-							<li><a href="/front/od/odd/prmsSbScrptnList.do"
-								onclick="fn_GaEvent(this);">투홈구독</a></li>
-							<li><a href="/front/od/odd/rintrvDlvList.do"
-								onclick="fn_GaEvent(this);">정기배송 설정</a></li>
-						</ul></li>
-					<li class="lnb-depth1"><a href="#">나의 정보</a>
-						<ul class="lnb-depth2">
-							<li><a href="/front/cua/mypage/certPwd.do"
-								onclick="fn_GaEvent(this);">회원정보 변경</a></li>
-							<li><a href="/front/od/odd/shippingList.do"
-								onclick="fn_GaEvent(this);">배송지 관리</a></li>
-							<!-- <li><a href="#">간편계정연결관리</a></li> -->
-							<li><a href="/front/cua/mypage/loginHistList.do"
-								onclick="fn_GaEvent(this);">로그인 기록</a></li>
-
-							<li><a href="/front/od/odd/hpointPayMethodMng.do"
-								onclick="fn_GaEvent(this);">H.Point Pay</a></li>
-
-							<li><a href="/front/od/odd/stlmWayMng.do"
-								onclick="fn_GaEvent(this);">Home Pay</a></li>
-							<li><a href="/front/cua/mypage/personalInfoUseStatus.do"
-								onclick="fn_GaEvent(this);">개인정보 이용현황</a></li>
-							<li><a href="/front/cua/mypage/cashinfo.do"
-								onclick="fn_GaEvent(this);">환불계좌/현금영수증</a></li>
-							<li><a href="/front/cua/front/staffCertify.do"
-								onclick="fn_GaEvent(this);">임직원 인증</a></li>
-							<li><a href="/front/cua/mypage/custCarInfo.do"
-								onclick="fn_GaEvent(this);">차량 등록</a></li>
-						</ul></li>
-				</ul>
-			</section>
+			<!-- nav -->
+			<jsp:include page="nav.jsp"/>
 			<section class="conarea">
 				<h3 class="tit line">회원정보 변경</h3>
 				<form name="mainform" method="post"

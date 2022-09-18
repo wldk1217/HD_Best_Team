@@ -202,7 +202,7 @@ a {
 	position: relative;
 	padding-right: 130px;
 	padding-bottom: 55px;
-	min-height: 100px;
+	min-height: 50px;
 }
 
 .order-date {
@@ -213,6 +213,13 @@ a {
 	font-size: 18px;
 }
 
+.delivery_log{
+	width : 10px;
+	background-color:Orange;
+	padding-left: 5px;
+    padding-right: 5px;
+    color:White;
+}
 .order-info {
 	position: absolute;
 	left: 0;

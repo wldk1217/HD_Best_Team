@@ -8,8 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kosa.entity.CategoryVO;
 import com.kosa.entity.OrderListVO;
 import com.kosa.entity.OrdersVO;
+import com.kosa.model.BasketDAO;
+import com.kosa.model.CategoryDAO;
 import com.kosa.model.OrdersDAO;
 
 public class OrderListDetailAction implements Action {
@@ -20,6 +23,13 @@ public class OrderListDetailAction implements Action {
 
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("memberId");
+		
+		CategoryDAO categoryDAO = CategoryDAO.getInstance();
+		BasketDAO basketDAO = BasketDAO.getInstance();
+		
+		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
+		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("basketCount", basketDAO.countBasket(loginUser));
 
 		if (loginUser == null) {
 			url = "tohomeServlet?command=login_form";

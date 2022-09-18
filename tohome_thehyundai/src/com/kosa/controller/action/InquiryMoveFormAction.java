@@ -30,6 +30,12 @@ public class InquiryMoveFormAction implements Action {
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
 		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
 		request.setAttribute("categoryList", categoryList);
+		
+		if(memberId == null) {
+			url = "tohomeServlet?command=login_form";
+		}
+		else {
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

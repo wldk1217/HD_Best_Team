@@ -64,22 +64,7 @@
 			</section>
 		</div>
 	</div>
-	<script>
-		function certPwd() {
-			fn.inputMsgClear("#PWD");
-			if ($("#PWD").val() == null || $("#PWD").val() == "") {
-				fn.inputMsg("#PWD", "비밀번호를 입력해 주세요.", false);
-			} else {
-				$("#mainform").submit();
-			}
-		}
 
-		$(document).ready(function() {
-			if ("" == "Y") {
-				fn.inputMsg("#PWD", "비밀번호를 정확히 입력해 주세요.", false);
-			}
-		});
-	</script>
 
 <!-- footer.jsp 삽입 -->
 	<jsp:include page="/footer.jsp"/>

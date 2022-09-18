@@ -25,23 +25,21 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 <link rel="stylesheet" type="text/css" href="view/orders/order.min.css">
 <script>
+function totalPrice(count) {
+	var price = document.getElementById('price').value;
+	var count = document.getElementById('count');
+	var num = count.options[count.selectedIndex].value;
+	var total = parseInt(price) * parseInt(num);
+	
+	document.getElementById('total').innerText = total;
+};
+
 	function insert_order() {
-		if (document.formm.paymentType.value == 1) {
-			alert("결제 수단을 선택하여 주세요.");
-		} else {
-			document.formm.action = "tohomeServlet?command=";
-			document.formm.submit();
-		}
+		document.formm.action = "tohomeServlet?command=order_insert&basketOrder=1";
+		document.formm.submit();
 	};
 	
-	function totalPrice(count) {
-		var total = 0;
-		var price = document.getElementById('total').innerText;
-		var p = document.getElementById('p').innerText;
-		
-		total = parseInt(count) * parseInt(p);
-		document.getElementById('total').innerText = total;
-	};
+	
 </script>
 </head>
 <header id="header" class="short">
@@ -79,6 +77,7 @@
 					<div class="productList">
 						<input type="hidden" name="productId" value="${BasketVO.productId}" />
 						<input type="hidden" name="basketId" value="${BasketVO.basketId}" />
+						<input id="price" type="hidden" name="productPrice" value="${BasketVO.productPrice}" />
 						<div class="basket_img"
 							onclick="location.href='tohomeServlet?command=product_detail&productId=${BasketVO.productId}';">
 							<img src="${BasketVO.productImg}" alt="image"/>

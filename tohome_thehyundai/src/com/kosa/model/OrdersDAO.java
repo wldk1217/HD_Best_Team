@@ -158,4 +158,59 @@ public class OrdersDAO {
 		}
 		return result;
 	}
+
+	// 방금 insert 된 orderId값 찾기 
+	public int findOrdersId() {
+		int result = 0;
+		String run = "{ call find_ordersId(?) }";
+		
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+
+			callableStatement.registerOutParameter(1, java.sql.Types.INTEGER);
+			
+			try {
+				callableStatement.execute();
+				result = callableStatement.getInt(1);
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+		
+	}
+
+	public int insertOrderList(int productId, int orderId, int orderQuantity) {
+		int result = 0;
+
+		String runSP = "{ call orderlist_insert(?, ?, ?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(runSP);
+			callableStatement.setInt(1, productId);
+			callableStatement.setInt(2, orderId);
+			callableStatement.setInt(3, orderQuantity);
+			callableStatement.executeUpdate();
+			System.out.println("성공");
+			result = 1;
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+		}
+		return result;
+		
+	}
 }

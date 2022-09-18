@@ -28,12 +28,12 @@
 	};
 
 	function go_order() {
-		document.formm.action = "tohomeServlet?command=order_insert";
+		document.formm.action = "tohomeServlet?command=order_insert&basketOrder=0";
 		document.formm.submit();
 	};
 
 	function go_basket() {
-		document.formm.action = "tohomeServlet?command=basket_insert";
+		document.formm.action = "tohomeServlet?command=basket_insert&onlyinsert=0";
 		document.formm.submit();
 	};
 </script>

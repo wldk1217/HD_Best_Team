@@ -52,12 +52,19 @@ public class BasketInsertAction implements Action {
 
 				int basketId = basketDAO.findBasketId(memberId);
 				basketDAO.insertBasketList(productId, basketId, basketQuantity);
-			} else {
+			} else if (onlyinsert == 4) {
 				url = "tohomeServlet?command=product_sale";
 
 				basketDAO.insertBasket(memberId, productId);
 
 				int basketId = basketDAO.findBasketId(memberId);
+				basketDAO.insertBasketList(productId, basketId, basketQuantity);
+			} else {
+				url = "tohomeServlet?command=basket_list";
+				basketQuantity = Integer.parseInt(request.getParameter("count"));
+				int basketId = basketDAO.findBasketId(memberId);
+				
+				basketDAO.insertBasket(memberId, productId);
 				basketDAO.insertBasketList(productId, basketId, basketQuantity);
 			}
 

@@ -20,14 +20,24 @@ public class OrderInsertOkAction implements Action {
 		HttpSession session = request.getSession();
 		String memberId = (String) session.getAttribute("memberId");
 		
+		int productId = Integer.parseInt(request.getParameter("productId"));
+		int orderQuantity = Integer.parseInt(request.getParameter("orderQuantity"));
+		int basketOk = Integer.parseInt(request.getParameter("basketOk"));
+		
 		OrdersVO ordersVO = new OrdersVO();
 
 		ordersVO.setPaymenttype(request.getParameter("paymentType"));
 		ordersVO.setTotalPrice(Integer.parseInt(request.getParameter("totalPrice")));
 		ordersVO.setOrderState("주문완료");
-
-		OrdersDAO ordersDAO = OrdersDAO.getInstance();
-		ordersDAO.insertOrders(ordersVO, memberId);
+		
+		if (basketOk == 0) {
+			OrdersDAO ordersDAO = OrdersDAO.getInstance();
+			ordersDAO.insertOrders(ordersVO, memberId);
+			int orderId = ordersDAO.findOrdersId();
+			ordersDAO.insertOrderList(productId, orderId, orderQuantity);
+		} else {
+			System.out.println(request.getParameter("basketList"));
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

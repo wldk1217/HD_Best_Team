@@ -30,6 +30,7 @@ public class BasketListAction implements Action {
 	    	ArrayList<BasketVO> basketList = basketDAO.getBasketList(memberId);
 	    	
 	    	request.setAttribute("basketList", basketList);
+	    	session.setAttribute("basketList", basketList);
 	    }
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

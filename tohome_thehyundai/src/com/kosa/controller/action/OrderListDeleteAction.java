@@ -8,7 +8,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.kosa.entity.CategoryVO;
 import com.kosa.entity.OrdersVO;
+import com.kosa.model.BasketDAO;
+import com.kosa.model.CategoryDAO;
 import com.kosa.model.OrdersDAO;
 
 public class OrderListDeleteAction implements Action {
@@ -18,17 +21,25 @@ public class OrderListDeleteAction implements Action {
 		String url = "view/mypage/orderList.jsp";
 		
 		HttpSession session = request.getSession();
-		String memberId = (String) session.getAttribute("memberId");
+		String loginUser = (String) session.getAttribute("memberId");
+		
+		CategoryDAO categoryDAO = CategoryDAO.getInstance();
+		BasketDAO basketDAO = BasketDAO.getInstance();
+		
+		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
+		request.setAttribute("categoryList", categoryList);
+		request.setAttribute("basketCount", basketDAO.countBasket(loginUser));
+		
 		
 		int orderId = Integer.parseInt(request.getParameter("orderId"));
-		if (memberId == null) {
+		if (loginUser == null) {
 			url = "tohomeServlet?command=login_form";
 		}  else {
 	      OrdersDAO orderDAO = OrdersDAO.getInstance();
-	      orderDAO.CancelOrder(memberId, orderId);
+	      orderDAO.CancelOrder(loginUser, orderId);
 
 	      ArrayList<OrdersVO> orderList = 
-	    		orderDAO.listOrder(memberId);
+	    		orderDAO.listOrder(loginUser);
 	      request.setAttribute("orderList", orderList);
 	    }
 	    request.getRequestDispatcher(url).forward(request, response);

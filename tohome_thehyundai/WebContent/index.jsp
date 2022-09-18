@@ -20,6 +20,7 @@
 	crossorigin="anonymous" />
 
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <title>index</title>
 </head>
 
@@ -58,9 +59,7 @@
 	<section class="timesale">
 		<!-- 알뜰 장보기 -->
 		<div class="inner">
-			<i class="bi bi-exclamation-lg" style="font-size: 8.5rem"></i>
-			<h2>알뜰 장보기</h2>
-			<p>지금 이 순간 만날 수 있는 특가</p>
+			<canvas id="myChart" style="width: 400px; height: 400px;"></canvas>
 		</div>
 
 		<!-- 세일하는 음식 -->
@@ -112,5 +111,39 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
 	AOS.init();
+</script>
+<script type="text/javascript" src="Chart.js"></script>
+<script type="text/javascript">
+	var context = document.getElementById('myChart').getContext('2d');
+	var myChart = new Chart(context, {
+		type: 'bar',
+		data: {
+			labels: ['과일과 채소', '곡물과 견과', '육류와 달걀', '생선과 해산물', '양념과 오일, 통조림', '물, 커피, 음료', '간식'],
+			datasets: [{
+				label: '판매량',
+				data: [5, 4, 8, 2, 3, 6, 7],
+				backgroundColor: "rgb(70, 103, 92)",
+				hoverBackgroundColor: "rgb(89, 89, 89)"
+			}]
+		},
+		options: {
+			responsive: false,
+			scales: {
+	            xAxes: [{
+	                gridLines: {
+	                    drawOnChartArea: false
+	                }
+	            }],
+	            yAxes: [{
+	                ticks: {
+	                    display: true,
+	                    min: 0,   //y축 최솟값
+	                    max: 10, //y축 최댓값
+	                    stepSize: 1
+	                }
+	            }]
+	        }
+		}
+	});
 </script>
 </html>

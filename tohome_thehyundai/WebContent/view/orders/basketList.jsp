@@ -91,7 +91,7 @@
 
 						<div class="prod_ctn">
 							<div class="txt_ellipsis">
-								<p>${BasketVO.productName}</p>
+								<p id="txt-ellipsis-p">${BasketVO.productName}</p>
 								<button class="btn_delete"
 									onclick="location.href='tohomeServlet?command=basket_delete&productId=${BasketVO.productId}&basketId=${BasketVO.basketId}'">
 									<i class="bi bi-x"></i>
@@ -99,9 +99,7 @@
 							</div>
 							<div class="info">
 								<div class="ea-area">
-									<button type="button" class="btn fill orange"
-										onclick="update_basket()">수량변경</button>
-									<input type="text" name="count" value="${BasketVO.basketQuantity}"/>
+									<input type="text" name="count" value="${BasketVO.basketQuantity}" id="ea-area-input"/>
 									<%-- <select id="count" name="count"
 										onchange="totalPrice(this.value)" disable>
 										<c:if test="${BasketVO.basketQuantity eq 1}">
@@ -140,15 +138,16 @@
 											<option value=5 selected>5</option>
 										</c:if>
 									</select> --%>
+									<button type="button" id="ea-area-btn" class="btn fill orange"
+										onclick="update_basket()">수량변경</button>
 									<p id="total" style="font-size: 20px;">${BasketVO.productPrice}&nbsp원</p>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				</c:forEach>
 				<div class="btn_order">
-					<button type="button" class="btn fill orange"
+					<button type="button" id="btn_order-btn" class="btn fill orange"
 						onclick="insert_order()">주문 하기</button>
 				</div>
 			</form>

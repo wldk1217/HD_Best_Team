@@ -97,7 +97,7 @@
 						<div class="originItem">
 							<div class="proName">${productVO.productName}</div>
 							<br>
-							<div>
+							<div class="productCnt">
 								<select id="count" name="count" onchange="totalPrice(this.value)">
 									<option value=1 selected>1</option>
 									<option value=2>2</option>

@@ -50,9 +50,6 @@
 							<dd>${member.memberId}</dd>
 						</dl>
 
-						<!-- 20200407// -->
-
-						<!-- H.Point 통합회원 비밀번호 변경// -->
 						<dl class="hpointpw">
 							<dt>
 								비밀번호<span class="need">*<span class="hide">필수</span></span>
@@ -66,9 +63,6 @@
 								</label>
 							</dd>
 						</dl>
-						<!-- //H.Point 통합회원 비밀번호 변경 -->
-
-						<!-- //20200420 -->
 
 						<dl>
 							<dt>
@@ -119,41 +113,11 @@
 							type="hidden" name="SMS_RCV_AGR_YN" /> <input type="hidden"
 							name="EMAIL_RCV_AGR_YN" />
 
-						<!-- 평생회원인 경우 해당 영역 비노출// -->
-
-						<!-- //평생회원인 경우 해당 영역 비노출 -->
-
-						<!--
-                            메세지 띄우기 : fn.inputMsg('input ID명', '에러 메세지'); / fn.inputMsg('input ID명', '긍정 메세지', true);
-                            특정 메세지 지우기 : fn.inputMsgClear('input ID명');
-                            전체 메세지 지우기 : fn.inputMsgClear();
-                            input 전체 입력할 경우 : button disabled 해제
-                        -->
 						<div class="btns">
 							
 							<button type="submit" class="btn fill big black">정보변경</button>
 						</div>
 					</fieldset>
-
-					<!-- 현대식품관 전용회원인경우에만 통합회원 영역 노출// -->
-					<fieldset class="hpointchange-field" id="hpointNoMem"
-						style="display: none">
-						<legend class="hide">H.Point 통합회원</legend>
-						<!-- 20200407// -->
-						<div class="info">
-							<h3>H.Point 통합회원 전환 안내</h3>
-							<p>현대백화점그룹 H.Point 통합회원으로 전환하고 멤버십 혜택과 다양한 서비스를 하나의 아이디로
-								누리세요!</p>
-							<a href="javascript:checkCi();" class="btn-round">H.Point
-								통합회원 전환하기</a>
-						</div>
-
-						<p class="txt-exclaim">동의하실 경우 다음의 정보가 공유됩니다.</p>
-						<p>제공받는자 : ㈜현대백화점, 목적 : 회원가입 시 필수정보 입력, 기 가입여부, 타인과의 아이디 중복여부
-							확인, 항목 : 이름, 휴대폰번호, 생년월일, CI</p>
-						<!-- //20200407 -->
-					</fieldset>
-					<!-- //현대식품관 전용회원인경우에만 통합회원 영역 노출 -->
 				</form>
 
 				<div class="withdrawal-area">

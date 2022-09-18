@@ -25,21 +25,24 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css" />
 <link rel="stylesheet" type="text/css" href="view/orders/order.min.css">
 <script>
-function totalPrice(count) {
-	var price = document.getElementById('price').value;
-	var count = document.getElementById('count');
-	var num = count.options[count.selectedIndex].value;
-	var total = parseInt(price) * parseInt(num);
-	
-	document.getElementById('total').innerText = total;
-};
+	function totalPrice(count) {
+		var price = document.getElementById('price').value;
+		var count = document.getElementById('count');
+		var num = count.options[count.selectedIndex].value;
+		var total = parseInt(price) * parseInt(num);
+
+		document.getElementById('total').innerText = total + '원';
+	};
 
 	function insert_order() {
 		document.formm.action = "tohomeServlet?command=order_insert&basketOrder=1";
 		document.formm.submit();
 	};
 	
-	
+	function update_basket() {
+		document.formm.action = "tohomeServlet?command=basket_update";
+		document.formm.submit();
+	};
 </script>
 </head>
 <header id="header" class="short">
@@ -75,25 +78,31 @@ function totalPrice(count) {
 			<form method="post" name="formm">
 				<c:forEach items="${basketList}" var="BasketVO">
 					<div class="productList">
-						<input type="hidden" name="productId" value="${BasketVO.productId}" />
-						<input type="hidden" name="basketId" value="${BasketVO.basketId}" />
-						<input id="price" type="hidden" name="productPrice" value="${BasketVO.productPrice}" />
+						<input type="hidden" name="productId"
+							value="${BasketVO.productId}" /> <input type="hidden"
+							name="basketId" value="${BasketVO.basketId}" /> <input
+							id="price" type="hidden" name="productPrice"
+							value="${BasketVO.productPrice}" />
+							
 						<div class="basket_img"
 							onclick="location.href='tohomeServlet?command=product_detail&productId=${BasketVO.productId}';">
-							<img src="${BasketVO.productImg}" alt="image"/>
+							<img src="${BasketVO.productImg}" alt="image" />
 						</div>
 
 						<div class="prod_ctn">
 							<div class="txt_ellipsis">
 								<p>${BasketVO.productName}</p>
-								<button class="btn_delete" onclick="location.href='tohomeServlet?command=basket_delete&productId=${BasketVO.productId}&basketId=${BasketVO.basketId}'">
+								<button class="btn_delete"
+									onclick="location.href='tohomeServlet?command=basket_delete&productId=${BasketVO.productId}&basketId=${BasketVO.basketId}'">
 									<i class="bi bi-x"></i>
 								</button>
 							</div>
 							<div class="info">
 								<div class="ea-area">
-									수량변경
-									<select id="count" name="count"
+									<button type="button" class="btn fill orange"
+										onclick="update_basket()">수량변경</button>
+									<input type="text" name="count" value="${BasketVO.basketQuantity}"/>
+									<%-- <select id="count" name="count"
 										onchange="totalPrice(this.value)" disable>
 										<c:if test="${BasketVO.basketQuantity eq 1}">
 											<option value=1 selected>1</option>
@@ -130,7 +139,8 @@ function totalPrice(count) {
 											<option value=4>4</option>
 											<option value=5 selected>5</option>
 										</c:if>
-									</select> <p id="total">${BasketVO.productPrice}&nbsp원</p>
+									</select> --%>
+									<p id="total" style="font-size: 20px;">${BasketVO.productPrice}&nbsp원</p>
 								</div>
 							</div>
 

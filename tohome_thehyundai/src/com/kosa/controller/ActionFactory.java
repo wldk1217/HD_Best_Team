@@ -65,6 +65,8 @@ public class ActionFactory {
 			action = new BasketListAction();
 		} else if (command.equals("basket_delete")) {
 			action = new BasketDeleteAction();
+		} else if (command.equals("basket_update")) {
+			action = new BasketUpdateAction();
 		} else if (command.equals("order_insert")) {
 			action = new OrderInsertAction();
 		} else if (command.equals("order_insert_ok")) {

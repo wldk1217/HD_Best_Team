@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.contents .innercon .lnbarea {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  flex-direction: column;
+  width: 244px;
+}
+
+.contents .innercon .lnbarea h2 {
+  color: #101010;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.contents .innercon .lnbarea .lnb-depth1 {
+  padding-top: 28px;
+}
+
+.contents .innercon .lnbarea .lnb-depth1 a {
+  line-height: 24px;
+  color: #101010;
+  font-size: 18px;
+  font-weight: 600;
+}

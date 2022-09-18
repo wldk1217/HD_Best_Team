@@ -94,7 +94,7 @@ function totalPrice(count) {
 								<div class="ea-area">
 									수량변경
 									<select id="count" name="count"
-										onchange="totalPrice(this.value)">
+										onchange="totalPrice(this.value)" disable>
 										<c:if test="${BasketVO.basketQuantity eq 1}">
 											<option value=1 selected>1</option>
 											<option value=2>2</option>
@@ -130,7 +130,7 @@ function totalPrice(count) {
 											<option value=4>4</option>
 											<option value=5 selected>5</option>
 										</c:if>
-									</select> <p id="total">${BasketVO.productPrice}</p>
+									</select> <p id="total">${BasketVO.productPrice}&nbsp원</p>
 								</div>
 							</div>
 
@@ -142,9 +142,7 @@ function totalPrice(count) {
 						onclick="insert_order()">주문 하기</button>
 				</div>
 			</form>
-
 		</div>
-
 	</div>
 </body>
 </html>

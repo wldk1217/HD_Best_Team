@@ -10,7 +10,7 @@
 		if (document.formm.paymentType.value == 1) {
 			alert("결제 수단을 선택하여 주세요.");
 		} else {
-			document.formm.action = "tohomeServlet?command=order_insert_ok&basketOk=0";
+			document.formm.action = "tohomeServlet?command=order_insert_ok&basketOk=1";
 			document.formm.submit();
 		}
 	};
@@ -46,11 +46,10 @@
 				<form method="post" name="formm">
 					<input type="hidden" name="totalPrice" value="${ordersVO.totalPrice}"/>
 					<input type="hidden" name="productId" value="${productVO.productId}" />
-					<input type="hidden" name="orderQuantity" value="${ordersVO.orderCount}" />
 					<div class="delivery-banner" id="divMultiDlvBtn">
 						<p>주문해 주셔서 감사합니다</p>
 					</div>
-					
+
 					<div class="conarea">
 						<section class="leftarea">
 							<div id="orderShippingSlitmDiv">
@@ -62,16 +61,23 @@
 									<h3>${memberVO.memberAdderss}</h3>
 									&nbsp&nbsp&nbsp
 								</fieldset>
-								<fieldset class="product-field toggle active">
-									<legend class="tit toggle-ti">
+								<legend class="tit toggle-ti">
 										주문상품<em>${basketCount}</em>
-									</legend>
+								</legend>
+								
+								<c:forEach items="${basketList}" var="BasketVO">
+									<input type="hidden" name="basketList" value="${BasketVO}" />
+								<fieldset class="product-field toggle active">
+									
 									<div class="cont" style="font-size: 20px;">
-										<p>[${productVO.productName}]</p>
-										<p style="margin-right: 40px;">${ordersVO.orderCount}&nbsp개</p>
-										<p style="margin-right: 40px;">${ordersVO.totalPrice}&nbsp원</p>
+										<p>[${BasketVO.productName}]</p>
+										<p style="margin-right: 40px;">${BasketVO.basketQuantity}&nbsp개</p>
+										<p style="margin-right: 40px;">1개&nbsp/&nbsp${BasketVO.productPrice}&nbsp원</p>
 									</div>
+									
 								</fieldset>
+								
+								</c:forEach>
 								<div id="p_popCouponChoiceHTML" class="popup popcouponchoice">
 									<div class="inner">
 										<header>

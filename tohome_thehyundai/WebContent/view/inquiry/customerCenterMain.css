@@ -168,6 +168,12 @@ a {
   padding: 27px;
 }
 
+.inquiry-answer2 {
+	display: flex;
+	justify-content: space-between;
+	align-items : center;
+}
+
 .inquiry-answer .delete_inquiry_btn{
   color: #101010;
   font-weight: 600;

@@ -4,10 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.kosa.dbUtil.DBConnection;
 import com.kosa.entity.BasketVO;
 import com.kosa.entity.OrdersVO;
+import com.kosa.entity.ProductVO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -22,15 +24,17 @@ public class BasketDAO {
 	}
 	
 	// 최초 장바구니 생성
-	public int insertBasket(String memberId) {
+	public int insertBasket(String memberId, int productId) {
 		int result = 0;
-
-		String runSP = "{ call basket_insert(?)}";
+		int basketId = findBasketId(memberId);
+		String runSP = "{ call basket_insert(?, ?, ?)}";
 
 		try {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(runSP);
 			callableStatement.setString(1, memberId);
+			callableStatement.setInt(2, basketId);
+			callableStatement.setInt(3, productId);
 			callableStatement.executeUpdate();
 			System.out.println("성공");
 			result = 1;
@@ -135,5 +139,66 @@ public class BasketDAO {
 		}
 
 		return result;
+	}
+
+	public ArrayList<BasketVO> getBasketList(String memberId) {
+		ArrayList<BasketVO> basketList = new ArrayList<BasketVO>();
+
+		String runSP = "{ call basket_list(?, ?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(runSP);
+			callableStatement.setString(1, memberId);
+			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
+
+			try {
+				callableStatement.execute();
+				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
+				while (resultSet.next()) {
+					BasketVO basket = new BasketVO();
+					basket.setBasketId(resultSet.getInt(1));
+					basket.setMemberId(resultSet.getString(2));
+					basket.setProductId(resultSet.getInt(3));
+					basket.setProductImg(resultSet.getString(4));
+					basket.setProductName(resultSet.getString(5));
+					basket.setProductPrice(resultSet.getInt(6));
+					basket.setBasketQuantity(resultSet.getInt(7));
+
+					basketList.add(basket);
+				}
+
+			} catch (SQLException e) {
+				System.out.println("프로시저에서 에러 발생!");
+				// System.err.format("SQL State: %s", e.getSQLState());
+				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+		return basketList;
+	}
+
+	public void deleteBasket(int productId, int basketId) {
+		String run = "{ call basket_delete(?, ?) }";
+
+		try {
+			Connection conn = DBConnection.getConnection();
+			CallableStatement callableStatement = conn.prepareCall(run);
+			callableStatement.setInt(1, productId);
+			callableStatement.setInt(2, basketId);
+			callableStatement.executeUpdate();
+			System.out.println("성공");
+		} catch (SQLException e) {
+			System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 }

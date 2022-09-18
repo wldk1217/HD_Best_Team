@@ -100,12 +100,16 @@
 
 							</label>
 								<div class="contr">
+								<div class="productdetail_sub1">
 									<strong class="txt-ti ellipsis">${order.product.productName}</strong>
-									<strong><em>${order.product.productPrice}</em>원</strong>
-									<strong><em>${order.orderQuantity}</em>개</strong><span
-										class="info"> <span class="txt-price"> <strong><em>${order.product.productPrice}</em>원</strong>
-									</span>
-									</span>
+									</div>
+									<div class="productdetail_sub2" style="padding:30px">
+										<strong><em>${order.product.productPrice}</em>원</strong> <strong><em>${order.orderQuantity}</em>개</strong>
+										<%-- <span
+											class="info"> <span class="txt-price"> <strong><em>${order.product.productPrice}</em>원</strong>
+										</span> --%>
+										</span>
+									</div>
 								</div></li>
 						</c:forEach>
 					</ul>
@@ -115,6 +119,9 @@
 		</div>
 
 	</div>
+	
+	<!-- footer.jsp 삽입 -->
+	<jsp:include page="/footer.jsp"/>
 
 
 </body>

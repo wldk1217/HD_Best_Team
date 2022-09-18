@@ -18,7 +18,7 @@
 	<!-- header -->
 	<header class="header">
 		<h1 class="logo">
-			<a href="/mainPage.html"> <img
+			<a href="tohomeServlet?command=index"> <img
 				src="https://tohome.thehyundai.com/UIUX/w/pjtCom/images/common/header_logo_freex34.png"
 				alt="logo" />
 			</a>
@@ -27,10 +27,9 @@
 		<div class="util">
 			<a href="tohomeServlet?command=login_form">로그인</a> 
 			<a href="tohomeServlet?command=join_form">회원가입</a> 
-			<a href="">마이페이지</a> 
-			<a href="">고객센터</a>
 		</div>
 	</header>
+
 
 	<!-- 로그인 폼  -->
 	<div class="find-input-form">

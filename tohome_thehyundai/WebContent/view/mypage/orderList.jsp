@@ -46,10 +46,10 @@
 									</div>
 									<div class="txt_ellipsis">
 										<span class="order-info">
-											<span>주문 번호 : ${order.orderCount} </span>
+											<span>주문 번호 : ${order.orderId} </span>
 											<span>${order.orderState}</span>
 											<span>${order.totalPrice}</span>
-											<span>주문번호 : ${order.orderId}</span></span></span>
+											<span>주문 수량 : ${order.orderCount}</span></span></span>
 									</div></li>
 								<form method="post"
 									action="tohomeServlet?command=order_list_delete">

@@ -100,44 +100,6 @@
 							<div class="info">
 								<div class="ea-area">
 									<input type="text" name="count" value="${BasketVO.basketQuantity}" id="ea-area-input"/>
-									<%-- <select id="count" name="count"
-										onchange="totalPrice(this.value)" disable>
-										<c:if test="${BasketVO.basketQuantity eq 1}">
-											<option value=1 selected>1</option>
-											<option value=2>2</option>
-											<option value=3>3</option>
-											<option value=4>4</option>
-											<option value=5>5</option>
-										</c:if>
-										<c:if test="${BasketVO.basketQuantity eq 2}">
-											<option value=1>1</option>
-											<option value=2 selected>2</option>
-											<option value=3>3</option>
-											<option value=4>4</option>
-											<option value=5>5</option>
-										</c:if>
-										<c:if test="${BasketVO.basketQuantity eq 3}">
-											<option value=1>1</option>
-											<option value=2>2</option>
-											<option value=3 selected>3</option>
-											<option value=4>4</option>
-											<option value=5>5</option>
-										</c:if>
-										<c:if test="${BasketVO.basketQuantity eq 4}">
-											<option value=1>1</option>
-											<option value=2>2</option>
-											<option value=3>3</option>
-											<option value=4 selected>4</option>
-											<option value=5>5</option>
-										</c:if>
-										<c:if test="${BasketVO.basketQuantity eq 5}">
-											<option value=1>1</option>
-											<option value=2>2</option>
-											<option value=3>3</option>
-											<option value=4>4</option>
-											<option value=5 selected>5</option>
-										</c:if>
-									</select> --%>
 									<button type="button" id="ea-area-btn" class="btn fill orange"
 										onclick="update_basket()">수량변경</button>
 									<p id="total" style="font-size: 20px;">${BasketVO.productPrice}&nbsp원</p>

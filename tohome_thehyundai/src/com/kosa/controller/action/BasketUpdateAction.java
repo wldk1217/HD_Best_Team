@@ -26,6 +26,8 @@ public class BasketUpdateAction implements Action {
 		BasketDAO basketDAO = BasketDAO.getInstance();
 		request.setAttribute("basketCount", basketDAO.countBasket(memberId));
 		
+		System.out.println(productId + " " + basketId + " " + count);
+		
 		basketDAO.updateBasket(productId, basketId, count);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);

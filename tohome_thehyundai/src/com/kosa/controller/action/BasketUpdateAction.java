@@ -18,7 +18,7 @@ public class BasketUpdateAction implements Action {
 		
 		int productId = Integer.parseInt(request.getParameter("productId"));
 		int basketId = Integer.parseInt(request.getParameter("basketId"));
-		int basketQuantity = Integer.parseInt(request.getParameter("basketQuantity"));
+		int count = Integer.parseInt(request.getParameter("count"));
 
 		HttpSession session = request.getSession();
 		String memberId = (String) session.getAttribute("memberId");
@@ -26,7 +26,7 @@ public class BasketUpdateAction implements Action {
 		BasketDAO basketDAO = BasketDAO.getInstance();
 		request.setAttribute("basketCount", basketDAO.countBasket(memberId));
 		
-		basketDAO.updateBasket(productId, basketId, basketQuantity);
+		basketDAO.updateBasket(productId, basketId, count);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

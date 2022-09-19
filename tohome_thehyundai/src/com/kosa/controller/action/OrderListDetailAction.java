@@ -15,6 +15,7 @@ import com.kosa.model.BasketDAO;
 import com.kosa.model.CategoryDAO;
 import com.kosa.model.OrdersDAO;
 
+//주문내역 상세정보
 public class OrderListDetailAction implements Action {
 
 	@Override
@@ -37,6 +38,8 @@ public class OrderListDetailAction implements Action {
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
 			OrdersDAO orderDAO = OrdersDAO.getInstance();
 			ArrayList<OrderListVO> orderDetail = orderDAO.orderListDetail(orderId);
+			
+			//주문 상품들의 총 결제 금액
 			int total = 0;
 			for (OrderListVO orderListVO : orderDetail) {
 				total += orderListVO.getProduct().getProductPrice()*orderListVO.getOrderQuantity();

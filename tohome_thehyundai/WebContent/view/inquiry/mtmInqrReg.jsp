@@ -33,10 +33,10 @@
         <h2>고객센터</h2>
         <ul>
           <li class="lnb-depth1">
-            <a href="https://www.naver.com">자주하는 질문</a>
+            <a href="tohomeServlet?command=inquiry_list">문의조회</a>
           </li>
           <li class="lnb-depth1">
-            <a href="https://www.naver.com">1:1 문의</a>
+            <a href="tohomeServlet?command=inquiry_moveform">1:1 문의</a>
           </li>
         </ul>
       </section>
@@ -77,15 +77,14 @@
               <label class="img_label" for="file">
                 <i class="bi bi-plus" style="font-size: 48px"></i>
                 <input type="file" accept=".jpg .png .gif" name="uploading" class="upload-hidden" title="사진 첨부"
-                  id="file" />
+                  id="file" onchange="change_img()"/>
               </label>
-              <ul>
-                <li>20MB미만의 JPG, PNGM GIF 파일만 등록가능합니다.</li>
-                <li>
-                  상품과 무관한 내용이거나 음란 및 불법적인 내용은 통보없이
-                  삭제될 수 있습니다.
-                </li>
-              </ul>
+              <ol class="img_ol">
+                <li id="a1"></li>
+                <li id="a2"></li>
+                <li id="a3"></li>
+                <li id="a4"></li>
+              </ol>
             </div>
 
             <div class="btns">
@@ -135,6 +134,37 @@
 		    document.formm.submit();
 		  }
 	}
+	
+    function change_img() {
+        //document.getElementById("img_name").innerHTML = a;
+     
+        var file = document.getElementById('file');
+        //파일 경로.
+        var filePath = file.value;
+        //전체경로를 \ 나눔.
+        var filePathSplit = filePath.split('\\');
+        //전체경로를 \로 나눈 길이.
+        var filePathLength = filePathSplit.length;
+        //마지막 경로를 .으로 나눔.
+        var fileNameSplit = filePathSplit[filePathLength - 1].split('.');
+        //파일명 : .으로 나눈 앞부분
+        var fileName = fileNameSplit[0];
+        //파일 확장자 : .으로 나눈 뒷부분
+        var fileExt = fileNameSplit[1];
+        //파일 크기
+        var fileSize = file.files[0].size;
+        
+        document.getElementById("a1").innerHTML = '파일 경로 : ' + filePath;
+        document.getElementById("a2").innerHTML = '파일명 : ' + fileName;
+        document.getElementById("a3").innerHTML = '파일 확장자 : ' + fileExt;
+        document.getElementById("a4").innerHTML = '파일 크기 : ' + fileSize;
+        
+
+        console.log('파일 경로 : ' + filePath);
+        console.log('파일명 : ' + fileName);
+        console.log('파일 확장자 : ' + fileExt);
+        console.log('파일 크기 : ' + fileSize);
+    }
 </script>
 
 

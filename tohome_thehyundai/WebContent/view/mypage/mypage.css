@@ -4,9 +4,6 @@
   padding: 0;
 }
 
-body {
-  height: 1800px;
-}
 li {
   list-style: none;
 }
@@ -15,7 +12,7 @@ a {
 }
 
 .contents {
-  padding: 44px 0 120px;
+  padding: 44px 0 300px;
   display: flex;
   justify-content: center;
   align-items: center;

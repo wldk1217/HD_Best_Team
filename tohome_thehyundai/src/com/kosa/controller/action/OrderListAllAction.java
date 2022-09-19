@@ -33,9 +33,10 @@ public class OrderListAllAction implements Action {
 		
 		if (loginUser == null) {
 			url = "tohomeServlet?command=login_form";
-		}  else {
-	      OrdersDAO orderDAO = OrdersDAO.getInstance();
-	      ArrayList<OrdersVO> orderList = 
+		}else {
+			//회원의 모든 주문 내역을 조회
+			OrdersDAO orderDAO = OrdersDAO.getInstance();
+			ArrayList<OrdersVO> orderList = 
 	    		orderDAO.listOrder(loginUser);
 	      request.setAttribute("orderList", orderList);
 	    }

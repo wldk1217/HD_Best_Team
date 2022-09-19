@@ -39,6 +39,9 @@
       <section class="lnbarea">
         <h2>고객센터</h2>
         <ul>
+           <li class="lnb-depth1">
+            <a href="tohomeServlet?command=inquiry_list">문의조회</a>
+          </li>
           <li class="lnb-depth1">
             <a href="tohomeServlet?command=inquiry_moveform">1:1 문의</a>
           </li>

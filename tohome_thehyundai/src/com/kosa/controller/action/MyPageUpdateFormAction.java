@@ -14,6 +14,7 @@ import com.kosa.model.BasketDAO;
 import com.kosa.model.CategoryDAO;
 import com.kosa.model.MemberDAO;
 
+//회원 정보 수정 양식
 public class MyPageUpdateFormAction implements Action {
 
 	@Override

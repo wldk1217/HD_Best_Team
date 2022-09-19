@@ -14,6 +14,7 @@ import com.kosa.model.BasketDAO;
 import com.kosa.model.CategoryDAO;
 import com.kosa.model.OrdersDAO;
 
+//취소된 주문내역 조회
 public class OrderListCancelAction implements Action {
 
 	@Override

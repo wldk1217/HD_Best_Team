@@ -18,23 +18,25 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
 	crossorigin="anonymous">
-    </script>
+	
+</script>
 </head>
 <body>
 	<!-- header.jsp 삽입 -->
-	<jsp:include page="/header.jsp"/>
+	<jsp:include page="/header.jsp" />
 	<!-- contents// -->
 	<div id="contents">
 
 		<div class="innercon">
-			<h2>주문 내역 상세보기</h2>
-
-	
 			<fieldset class="list-field toggle active">
-			<h3>주문 번호 : ${orderId}</h3>
-				<div class="cont" style="display: block;">
+				<div class="title-order">
+					<h3>주문 번호 : ${orderId}</h3>
+					<strong class="total-price">총 결제 금액 : ${total}원</strong>				
+				</div>
+
+				<div class="cont">
 					<ul class="product-list vertical">
-						<c:forEach items="${orderDetail}" var = "order">
+						<c:forEach items="${orderDetail}" var="order">
 							<li dlvdivision="1_DAWN" data-dlvc_pay_gbcd="10"><label
 								class="thumb"> <span><img
 										src="${order.product.productImg}"
@@ -42,12 +44,12 @@
 
 							</label>
 								<div class="contr">
-								<div class="productdetail_sub1">
-									<strong class="txt-ti ellipsis">${order.product.productName}</strong>
+									<div class="productdetail_sub1">
+										<strong class="txt-ti ellipsis">${order.product.productName}</strong>
 									</div>
-									<div class="productdetail_sub2" style="padding:30px">
-										<strong><em>${order.product.productPrice}</em>원</strong> <strong><em>${order.orderQuantity}</em>개</strong>
-										
+									<div class="productdetail_sub2">
+										<strong><em>${order.orderQuantity}</em>개</strong> <strong><em>${order.product.productPrice}</em>원</strong>
+
 									</div>
 								</div></li>
 						</c:forEach>
@@ -58,9 +60,9 @@
 		</div>
 
 	</div>
-	
+
 	<!-- footer.jsp 삽입 -->
-	<jsp:include page="/footer.jsp"/>
+	<jsp:include page="/footer.jsp" />
 
 
 </body>

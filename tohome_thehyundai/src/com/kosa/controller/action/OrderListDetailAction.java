@@ -37,8 +37,13 @@ public class OrderListDetailAction implements Action {
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
 			OrdersDAO orderDAO = OrdersDAO.getInstance();
 			ArrayList<OrderListVO> orderDetail = orderDAO.orderListDetail(orderId);
+			int total = 0;
+			for (OrderListVO orderListVO : orderDetail) {
+				total += orderListVO.getProduct().getProductPrice()*orderListVO.getOrderQuantity();
+			}
 			request.setAttribute("orderId", orderId);
 			request.setAttribute("orderDetail", orderDetail);
+			request.setAttribute("total", total);
 		}
 		request.getRequestDispatcher(url).forward(request, response);
 	}

@@ -29,6 +29,7 @@ public class BasketListAction implements Action {
 	    } else {
 	    	ArrayList<BasketVO> basketList = basketDAO.getBasketList(memberId);
 	    	
+	    	request.setAttribute("lastSize", basketList.size() - 1);
 	    	request.setAttribute("basketList", basketList);
 	    	session.setAttribute("basketList", basketList);
 	    }

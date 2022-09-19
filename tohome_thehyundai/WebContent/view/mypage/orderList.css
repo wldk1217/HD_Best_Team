@@ -189,6 +189,7 @@ a {
 }
 
 .orderlist-area .order-list {
+	display:flex;
 	margin-top: 24px;
 	padding-bottom: 24px;
 	border-bottom: 1px solid #e7e7e7;

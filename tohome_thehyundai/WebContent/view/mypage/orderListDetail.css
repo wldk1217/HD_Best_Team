@@ -1,3 +1,146 @@
+/* * {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none !important;
+}
+
+.contents {
+  padding: 44px 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contents .innercon {
+  width: 1204px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.contents .innercon .test {
+  padding-bottom: 80px;
+}
+.contents .innercon h2 {
+  color: #101010;
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.contents .innercon .shipping {
+  display: block;
+  width: 100%;
+  border-top: 2px solid #767572;
+}
+
+.contents .innercon .shipping p {
+  padding: 15px 0 17px;
+  color: #101010;
+  font-size: 24px;
+}
+
+.contents .innercon .shipping em {
+  margin-left: 6px;
+  line-height: 1;
+  color: #ff6913;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.contents .innercon .productList {
+  display: flex;
+}
+
+.contents .innercon .productList .basket_img img {
+  height: 180px;
+  width: 180px;
+}
+
+.contents .innercon .productList .prod_ctn {
+  width: calc(100% - 130px);
+  padding-left: 20px;
+  padding-bottom: 55px;
+  min-height: 124px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contents .innercon .productList .prod_ctn .txt_ellipsis {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contents .innercon .productList .prod_ctn .txt_ellipsis p {
+  margin-bottom: 4px;
+  max-height: 48px;
+  margin-top: 5px;
+  height: auto;
+  line-height: 24px;
+  color: #101010;
+  font-size: 18px;
+}
+
+.btn_delete {
+  background-color: white;
+  border: 1px;
+}
+
+.btn_delete i {
+  color: #767572;
+  font-size: 40px;
+}
+
+.contents .innercon .productList .prod_ctn .info {
+  bottom: 8px;
+  width: 100%;
+}
+
+css 추가
+.productList {
+	border-bottom: 1px solid lightgray;
+	padding-top: 30px;
+}
+
+#ea-area-input {
+	height: 40px;
+    text-align: center;
+    width: 100px;
+    border: 1px solid lightgray;
+}
+
+#ea-area-btn {
+	border-radius: 0px;
+}
+
+#txt-ellipsis-p {
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#total {
+	padding-top: 40px;
+	font-weight: bold;
+	color: #ff6913;
+}
+
+#btn_order-btn {
+	border-radius: 0px;
+    margin-top: 40px;
+    float: right;
+} */
 @charset "UTF-8";
 
 * {
@@ -28,10 +171,11 @@ li {
 }
 
 .product-list.vertical>li {
-	position: relative;
+	display: flex; position : relative;
 	float: none;
 	margin-left: 0;
 	width: 100%;
+	position: relative;
 }
 
 .product-list.vertical .thumb {
@@ -221,85 +365,20 @@ ul, ol {
 	padding: 0;
 }
 
-/* 
-.contents .innercon .lnbarea {
+.title-order{
 	display: flex;
-	justify-items: center;
-	align-items: center;
-	flex-direction: column;
-	width: 244px;
+    justify-content: space-between;
+    align-items: center;
 }
-
-.contents .innercon .lnbarea h2 {
-	color: #101010;
-	font-size: 32px;
-	font-weight: 600;
+.total-price{
+	font-size: 25px;
+	color:orange;
 }
-
-.contents .innercon .lnbarea .lnb-depth1 {
-	padding-top: 28px;
+.productdetail_sub2 {
+	position: absolute;
+	left: 0;
+	bottom: 8px;
+	padding-right: 0;
+	width: 100%;
+	font-size: 20px;
 }
-
-.contents .innercon .lnbarea .lnb-depth1 a {
-	line-height: 24px;
-	color: #101010;
-	font-size: 18px;
-	font-weight: 600;
-}
-
-.contents .innercon .conarea {
-	width: 960px;
-}
-
-.contents .innercon .conarea .tit {
-	color: #101010;
-	font-size: 24px;
-	font-weight: 200;
-	padding-bottom: 24px;
-	border-bottom: 1px solid #767572;
-}
-
-.contents .innercon .conarea .infotxt {
-	padding: 20px 32px;
-	border-top: 2px solid #767572;
-	border-bottom: 1px solid #dbd9d6;
-	background-color: #f8f8f8;
-}
-
-.conarea .infotxt p {
-	padding: 0;
-	margin-top: 4px;
-	line-height: 24px;
-	font-size: 15px;
-}
-
-.contents .innercon .conarea .customeform {
-	display: flex;
-	justify-items: center;
-	align-items: center;
-	flex-direction: column;
-}
-
-.conarea .customerform .inqrForm .form-filter {
-	display: flex;
-	border-bottom: 1px #e7e7e7 solid;
-	padding: 23px 0 24px;
-}
-
-.conarea .customerform .inqrForm .form-filter p {
-	margin-right: 30px;
-}
-
-.search-setting .btn-setting:before {
-	content: "";
-	display: inline-block;
-	margin-right: 8px;
-	width: 12px;
-	height: 12px;
-	background: url("../../images/common/btn.png") no-repeat -300px 0;
-}
-
-.delivery-banner {
-	margin: 50px 0 10px;
-	width: 800px;
-} */

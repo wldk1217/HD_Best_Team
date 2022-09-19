@@ -14,6 +14,7 @@ import com.kosa.model.BasketDAO;
 import com.kosa.model.CategoryDAO;
 import com.kosa.model.OrdersDAO;
 
+//주문 취소
 public class OrderListDeleteAction implements Action {
 
 	@Override
@@ -38,6 +39,7 @@ public class OrderListDeleteAction implements Action {
 	      OrdersDAO orderDAO = OrdersDAO.getInstance();
 	      orderDAO.CancelOrder(loginUser, orderId);
 
+	      // 주문내역 페이지로 다시 들어감
 	      ArrayList<OrdersVO> orderList = 
 	    		orderDAO.listOrder(loginUser);
 	      request.setAttribute("orderList", orderList);

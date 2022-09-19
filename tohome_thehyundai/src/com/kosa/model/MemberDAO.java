@@ -42,6 +42,7 @@ public class MemberDAO {
 //		System.out.println(dao.passwordCheck("admin12", "0"));
 //	}
 
+	//회원 정보 조회
 	public MemberVO selectMember(String memberID) {
 		MemberVO memberVO = new MemberVO();
 		String run = "{call MEMBER_SELECT(?,?)}";

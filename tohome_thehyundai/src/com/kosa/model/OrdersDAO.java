@@ -117,6 +117,7 @@ public class OrdersDAO {
 		return orderDetail;
 	}
 
+	//주문 취소
 	public void CancelOrder(String memberID, int orderID) {
 		String run = "{ call orderlist_cancel(?, ?) }";
 

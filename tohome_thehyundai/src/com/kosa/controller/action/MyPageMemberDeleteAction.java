@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kosa.model.MemberDAO;
 
+//회원 탈퇴
 public class MyPageMemberDeleteAction implements Action {
 
 	@Override

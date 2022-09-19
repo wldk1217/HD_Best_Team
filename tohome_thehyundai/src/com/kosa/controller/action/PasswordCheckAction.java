@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kosa.model.MemberDAO;
 
+//비밀번호 재인증
 public class PasswordCheckAction implements Action {
 
 	@Override

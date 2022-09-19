@@ -69,10 +69,11 @@
 									<input type="hidden" name="basketList" value="${BasketVO}" />
 								<fieldset class="product-field toggle active">
 									
-									<div class="cont" style="font-size: 20px;">
-										<p>[${BasketVO.productName}]</p>
+									<div id="cont-order" class="cont" style="font-size: 20px;">
+										<p id="orderBasket-pName">[${BasketVO.productName}]</p>
 										<p style="margin-right: 40px;">${BasketVO.basketQuantity}&nbsp개</p>
-										<p style="margin-right: 40px;">1개&nbsp/&nbsp${BasketVO.productPrice}&nbsp원</p>
+										<span style="font-weight: bold; color: gray;">1개</span>
+										<span style="margin-right: 40px; font-weight: bold; color: #ff6913;">&nbsp/&nbsp${BasketVO.productPrice}&nbsp원</span>
 									</div>
 									
 								</fieldset>
@@ -80,7 +81,7 @@
 								</c:forEach>
 								<div id="p_popCouponChoiceHTML" class="popup popcouponchoice">
 									<div class="inner">
-										<header>
+										<header><br><br>
 											<h2>상품 주문 하기</h2>
 										</header>
 										<div class="contents">

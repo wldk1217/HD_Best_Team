@@ -122,7 +122,7 @@
 
 				<div class="withdrawal-area">
 					<p>탈퇴를 원하신다면?</p>
-					<a href="/front/cua/mypage/leaveMemberForm.do" class="btn-line">회원탈퇴</a>
+					<a href="tohomeServlet?command=mypage_member_delete" class="btn-line">회원탈퇴</a>
 				</div>
 			</section>
 		</div>

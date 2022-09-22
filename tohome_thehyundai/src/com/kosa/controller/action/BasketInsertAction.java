@@ -1,3 +1,6 @@
+/* 
+ *  코드 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -13,6 +16,7 @@ import com.kosa.model.BasketDAO;
 
 public class BasketInsertAction implements Action {
 
+	// 장바구니 상품 담기
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "tohomeServlet?command=basket_list";
@@ -29,7 +33,7 @@ public class BasketInsertAction implements Action {
 		if (memberId == null) {
 			url = "tohomeServlet?command=login_form";
 		} else {
-
+			// 카테고리별 상품, 전체상품, 신상품, 세일상품 별 장바구니에 상품 1개씩 담기
 			if (onlyinsert == 1) {
 				int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 				url = "tohomeServlet?command=product_by_category&categoryId=" + categoryId;
@@ -63,7 +67,7 @@ public class BasketInsertAction implements Action {
 				url = "tohomeServlet?command=basket_list";
 				basketQuantity = Integer.parseInt(request.getParameter("count"));
 				int basketId = basketDAO.findBasketId(memberId);
-				
+
 				basketDAO.insertBasket(memberId, productId);
 				basketDAO.insertBasketList(productId, basketId, basketQuantity);
 			}

@@ -17,6 +17,7 @@ import com.kosa.model.InquiryDAO;
 
 public class InquiryMoveFormAction implements Action {
 
+	//세션값이 없을 경우 로그인페이지로 이동시키고 세션값이 있을 경우 url페이지로 forward
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/inquiry/mtmInqrReg.jsp";

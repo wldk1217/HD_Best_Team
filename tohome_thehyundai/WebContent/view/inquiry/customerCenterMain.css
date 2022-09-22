@@ -17,7 +17,7 @@ a {
 }
 
 .contents {
-  padding: 44px 0 120px;
+  padding: 44px 0 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -177,8 +177,7 @@ a {
 .inquiry-answer .delete_inquiry_btn{
   color: #101010;
   font-weight: 600;
-  font-size: 18px;
-  margin-bottom: 15px;
+  font-size: 15px;
   letter-spacing: 2px;
   border: none;
 }

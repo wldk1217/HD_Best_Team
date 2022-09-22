@@ -1,3 +1,6 @@
+/* 
+ * 작성자 : 신기원
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -14,11 +17,13 @@ import com.kosa.model.BasketDAO;
 import com.kosa.model.CategoryDAO;
 import com.kosa.model.MemberDAO;
 
+//회원 정보 수정 양식폼
 public class MyPageUpdateFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/mypage/updateMember.jsp";
+		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("memberId");
 
@@ -31,6 +36,7 @@ public class MyPageUpdateFormAction implements Action {
 		
 		MemberDAO memberDAO = MemberDAO.getInstance();
 
+		//VO객체를 반환하여 request 객체에 담아 jsp에 전달
 		MemberVO memberVO = memberDAO.selectMember(id);
 
 		request.setAttribute("member", memberVO);

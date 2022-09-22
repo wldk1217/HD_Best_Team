@@ -1,3 +1,6 @@
+/* 
+ * 작성자 : 신기원
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -13,6 +16,7 @@ import com.kosa.entity.MemberVO;
 import com.kosa.model.BasketDAO;
 import com.kosa.model.CategoryDAO;
 
+//마이페이지 연결
 public class MyPageAction implements Action {
 
 	@Override
@@ -20,44 +24,26 @@ public class MyPageAction implements Action {
 		String url = "view/mypage/mypage.jsp";
 		
 		HttpSession session = request.getSession();
+		
+		//header의 카테코리 목록을 보여주기 위한 DAO
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
+		
+		//header의 장바구니 표시를 위한 DAO
 		BasketDAO basketDAO = BasketDAO.getInstance();
 		
 		String loginUser = (String) session.getAttribute("memberId");
 		
+		//카테고리 목록을 가져온다
 		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
+		
+		//request 객체에 key value로 전달
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("basketCount", basketDAO.countBasket(loginUser));
 
+		// 세션에 로그인한 회원Id 값이 없으면 로그인페이지로 이동
 		if (loginUser == null) {
 			url = "tohomeServlet?command=login_form";
-		} else{
-			
 		}
-//		} else {
-//			OrderDAO orderDAO = OrderDAO.getInstance();
-//			ArrayList<Integer> oseqList = orderDAO.selectSeqOrderIng(loginUser.getId());
-//
-//			ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-//
-//			for (int oseq : oseqList) {
-//				ArrayList<OrderVO> orderListIng = orderDAO.listOrderById(loginUser.getId(), "1", oseq);
-//
-//				OrderVO orderVO = orderListIng.get(0);
-//				orderVO.setPname(orderVO.getPname() + " 외 " + orderListIng.size() + "건");
-//
-//				int totalPrice = 0;
-//				for (OrderVO ovo : orderListIng) {
-//					totalPrice += ovo.getPrice2() * ovo.getQuantity();
-//				}
-//				orderVO.setPrice2(totalPrice);
-//				orderList.add(orderVO);
-//			}
-//			request.setAttribute("title", "진행 중인 주문 내역");
-//			request.setAttribute("orderList", orderList);
-//		}
-
-//		response.sendRedirect(url);
 		request.getRequestDispatcher(url).forward(request, response);
 	}
 }

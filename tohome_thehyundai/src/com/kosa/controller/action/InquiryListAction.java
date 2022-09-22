@@ -1,3 +1,6 @@
+/*
+ * 코드 작성자 : 김민석
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -17,6 +20,7 @@ import com.kosa.model.InquiryDAO;
 
 public class InquiryListAction implements Action {
 
+	//문의'조회하기' 요청(request)를 받아 dao를 통해 조회처리한 후 url 페이지로 forward 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/inquiry/customerCenterMain.jsp";

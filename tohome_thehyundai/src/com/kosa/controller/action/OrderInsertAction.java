@@ -1,3 +1,6 @@
+/* 
+ *  코드 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -19,6 +22,7 @@ import com.kosa.model.ProductDAO;
 
 public class OrderInsertAction implements Action {
 
+	// 주문정보 확인
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/orders/orderList.jsp";
@@ -40,8 +44,9 @@ public class OrderInsertAction implements Action {
 			url = "tohomeServlet?command=login_form";
 		} 
 		
-		// 장바구니에서 주문하기
+		// 장바구니에서 주문하기 버튼 눌러 주문하기
 		if (basketOrder == 1) {
+			// 장바구니 리스트 세션에서 가져오기
 			@SuppressWarnings("unchecked")
 			ArrayList<BasketVO> basketList = (ArrayList<BasketVO>) session.getAttribute("basketList");
 			request.setAttribute("basketList", basketList);
@@ -53,6 +58,7 @@ public class OrderInsertAction implements Action {
 			OrdersVO ordersVO = new OrdersVO();
 			ordersVO.setOrderState("주문대기");
 			
+			// 장바구니에 담긴 상품들 총 가격 구하기
 			int totalPriceBasket = 0;
 			for(int i = 0; i < basketList.size(); i++) {
 				totalPriceBasket += basketList.get(i).getProductPrice() * basketList.get(i).getBasketQuantity();
@@ -66,6 +72,8 @@ public class OrderInsertAction implements Action {
 			request.setAttribute("ordersVO", ordersVO);
 			
 			url = "view/orders/orderListByBasket.jsp";
+			
+		// 즉시 주문하기 정보 확인
 		} else {
 			ProductDAO productDAO = ProductDAO.getInstance();
 			ProductVO productVO = productDAO.ProductDetail(productId);

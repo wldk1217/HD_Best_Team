@@ -1,3 +1,6 @@
+/* 
+ *  코드 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -17,6 +20,7 @@ import com.kosa.model.CategoryDAO;
 
 public class IndexAction implements Action {
 
+	// 메인페이지 카테고리 리스트 조회
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/index.jsp";
@@ -27,6 +31,7 @@ public class IndexAction implements Action {
 		BasketDAO basketDAO = BasketDAO.getInstance();
 		request.setAttribute("basketCount", basketDAO.countBasket(memberId));
 		
+		// 카테고리 리스트 조회 코드 -> 모든 페이지 헤더에 있으므로 모든 Action에 추가
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
 		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
 		

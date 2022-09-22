@@ -187,7 +187,7 @@ public class BasketDAO {
 		return basketList;
 	}
 
-	// 장바구니 삭제
+	// 장바구니 리스트 삭제
 	public void deleteBasket(int productId, int basketId) {
 		String run = "{ call basket_delete(?, ?) }";
 
@@ -207,7 +207,7 @@ public class BasketDAO {
 		
 	}
 
-	// 장바구니 수정
+	// 장바구니 수량 수정
 	public void updateBasket(int productId, int basketId, int basketQuantity) {
 		String run = "{ call basket_update(?, ?, ?) }";
 

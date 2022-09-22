@@ -1,5 +1,5 @@
 /*
- * 코드 작성자: 김민석
+ * 코드 작성자 : 김민석
  */
 package com.kosa.entity;
 

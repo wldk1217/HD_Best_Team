@@ -1,3 +1,6 @@
+/*
+ * 코드 작성자 : 민지아, 신기원
+ */
 package com.kosa.model;
 
 import java.sql.CallableStatement;
@@ -117,7 +120,7 @@ public class OrdersDAO {
 		return orderDetail;
 	}
 
-	//주문 취소
+	// 주문 취소
 	public void CancelOrder(String memberID, int orderID) {
 		String run = "{ call orderlist_cancel(?, ?) }";
 
@@ -136,6 +139,7 @@ public class OrdersDAO {
 		}
 	}
 
+	// 주문 정보 insert
 	public int insertOrders(OrdersVO ordersVO, String memberId) {
 		int result = 0;
 
@@ -191,6 +195,7 @@ public class OrdersDAO {
 		
 	}
 
+	// 주문리스트에 insert
 	public int insertOrderList(int productId, int orderId, int orderQuantity) {
 		int result = 0;
 

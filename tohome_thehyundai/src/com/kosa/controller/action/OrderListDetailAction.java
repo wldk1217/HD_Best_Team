@@ -1,3 +1,6 @@
+/* 
+ * 작성자 : 신기원
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -35,6 +38,7 @@ public class OrderListDetailAction implements Action {
 		if (loginUser == null) {
 			url = "tohomeServlet?command=login_form";
 		} else {
+			//주문Id별 상품내역과 상품별 정보 조회
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
 			OrdersDAO orderDAO = OrdersDAO.getInstance();
 			ArrayList<OrderListVO> orderDetail = orderDAO.orderListDetail(orderId);

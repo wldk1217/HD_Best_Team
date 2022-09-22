@@ -1,3 +1,6 @@
+/* 
+ * 작성자 : 신기원
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;

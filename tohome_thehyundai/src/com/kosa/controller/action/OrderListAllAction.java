@@ -1,3 +1,6 @@
+/* 
+ * 작성자 : 신기원
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -23,9 +26,9 @@ public class OrderListAllAction implements Action {
 		
 		HttpSession session = request.getSession();
 		String loginUser = (String) session.getAttribute("memberId");
+		
 		CategoryDAO categoryDAO = CategoryDAO.getInstance();
 		BasketDAO basketDAO = BasketDAO.getInstance();
-		
 		ArrayList<CategoryVO> categoryList = categoryDAO.viewCategory();
 		request.setAttribute("categoryList", categoryList);
 		request.setAttribute("basketCount", basketDAO.countBasket(loginUser));

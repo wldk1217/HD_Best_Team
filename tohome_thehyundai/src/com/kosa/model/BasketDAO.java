@@ -1,3 +1,6 @@
+/* 
+ *  코드 작성자 : 민지아
+ */
 package com.kosa.model;
 
 import java.sql.CallableStatement;
@@ -141,6 +144,7 @@ public class BasketDAO {
 		return result;
 	}
 
+	// 장바구니 리스트 조회
 	public ArrayList<BasketVO> getBasketList(String memberId) {
 		ArrayList<BasketVO> basketList = new ArrayList<BasketVO>();
 
@@ -183,6 +187,7 @@ public class BasketDAO {
 		return basketList;
 	}
 
+	// 장바구니 리스트 삭제
 	public void deleteBasket(int productId, int basketId) {
 		String run = "{ call basket_delete(?, ?) }";
 
@@ -202,6 +207,7 @@ public class BasketDAO {
 		
 	}
 
+	// 장바구니 수량 수정
 	public void updateBasket(int productId, int basketId, int basketQuantity) {
 		String run = "{ call basket_update(?, ?, ?) }";
 

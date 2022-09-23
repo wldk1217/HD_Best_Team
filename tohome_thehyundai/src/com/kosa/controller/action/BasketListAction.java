@@ -1,3 +1,6 @@
+/* 
+ *  코드 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -14,6 +17,7 @@ import com.kosa.model.BasketDAO;
 
 public class BasketListAction implements Action {
 
+	// 장바구니 리스트 조회
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/orders/basketList.jsp";
@@ -29,6 +33,7 @@ public class BasketListAction implements Action {
 	    } else {
 	    	ArrayList<BasketVO> basketList = basketDAO.getBasketList(memberId);
 	    	
+	    	// 장바구니 리스트 개수 조회
 	    	request.setAttribute("lastSize", basketList.size() - 1);
 	    	request.setAttribute("basketList", basketList);
 	    	session.setAttribute("basketList", basketList);

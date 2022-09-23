@@ -1,3 +1,6 @@
+/*
+ * 코드 작성자 : 신기원
+ */
 package com.kosa.entity;
 
 import lombok.Data;

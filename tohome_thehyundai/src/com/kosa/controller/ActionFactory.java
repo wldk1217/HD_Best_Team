@@ -1,3 +1,7 @@
+/* 
+ *  코드 작성자 : 공통
+ *  코드 설명 : command값에 맞는 ActionFactory객체 생성
+ */
 package com.kosa.controller;
 
 import com.kosa.controller.action.*;
@@ -16,7 +20,6 @@ public class ActionFactory {
 	public Action getAction(String command) {
 		Action action = null;
 		System.out.println("ActionFactory  :" + command);
-		/* 추가된 부분 */
 		if (command.equals("index")) {
 			action = new IndexAction();
 		} else if (command.equals("product_detail")) {
@@ -85,8 +88,6 @@ public class ActionFactory {
 			action = new OrderListDetailAction();
 		} else if (command.equals("order_list_all")) {
 			action = new OrderListAllAction();
-		} else if (command.equals("order_list_update")) {
-			action = new OrderListUpdateAction();
 		} else if (command.equals("order_list_delete")) {
 			action = new OrderListDeleteAction();
 		} else if (command.equals("inquiry_list")) {

@@ -1,3 +1,6 @@
+/* 
+ *  코드 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import com.kosa.model.BasketDAO;
 
+// 장바구니 삭제
 public class BasketDeleteAction implements Action {
 
 	@Override

@@ -1,3 +1,7 @@
+/* 
+ *  코드 작성자 : 공통
+ *  코드 설명 : 데이터베이스 연결 세팅
+ */
 package com.kosa.dbUtil;
 
 import java.io.FileNotFoundException;
@@ -7,7 +11,6 @@ import java.io.Reader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 
 public class DBConnection {
 

@@ -1,3 +1,6 @@
+/* 
+ * 작성자 : 김다빈, 신기원
+ */
 package com.kosa.model;
 
 import java.sql.CallableStatement;
@@ -18,12 +21,14 @@ import oracle.jdbc.OracleTypes;
 
 public class MemberDAO {
 
+	//클래스 변수를 통해 인스턴스 생성
 	private static MemberDAO instance = new MemberDAO();
 
 	public MemberDAO() {
 
 	}
-
+	
+	//다른 클래스에서 new를 직접 사용하지 않고 객체를 생성
 	public static MemberDAO getInstance() {
 		return instance;
 	}
@@ -50,16 +55,19 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
 
+			//프로시저에 Id와 select문의 결과를 담을 cursor를 전달해줌
 			callableStatement.setString(1, memberID);
 			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 			System.out.println();
 
 			try {
 				callableStatement.execute();
+				//데이터가 저장된 cursor를 ResultSet에 담음
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 
 				while (resultSet.next()) {
 
+					//데이터로 memberVO 조립
 					memberVO.setMemberName(resultSet.getString(1));
 					memberVO.setMemberId(resultSet.getString(2));
 					memberVO.setMemberPw(resultSet.getString(3));
@@ -365,7 +373,8 @@ public class MemberDAO {
 	public void updateMember(String memberID, String memberPW, String memberTel, String memberEmail,
 			String memberAddress) {
 		String run = "{ call member_update(?,?,?,?,?) }";
-
+		
+		// 프로시저에서 update문을 사용하기 때문에 따로 반환되는 데이터가 없다.
 		try {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
@@ -405,6 +414,8 @@ public class MemberDAO {
 	// 마이페이지 접속시 비밀번호 확인 성공이면 1, 실패면 -1
 	public int passwordCheck(String memberID, String memberPw) {
 		int result = -1;
+		
+		//파라미터로 받아온 id와 비밀번호가 일치하는지 확인하는 sql
 		String sql = "select * from member where memberid=? and memberPw = ?";
 
 		try {

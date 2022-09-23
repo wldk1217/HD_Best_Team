@@ -5,8 +5,6 @@
 	padding: 0;
 }
 
-
-
 li {
 	list-style: none;
 }
@@ -187,7 +185,7 @@ a {
 }
 
 .orderlist-area .order-list {
-	display:flex;
+	display: flex;
 	margin-top: 24px;
 	padding-bottom: 24px;
 	border-bottom: 1px solid #e7e7e7;
@@ -212,13 +210,14 @@ a {
 	font-size: 18px;
 }
 
-.delivery_log{
-	width : 10px;
-	background-color:Orange;
+.delivery_log {
+	width: 10px;
+	background-color: Orange;
 	padding-left: 5px;
-    padding-right: 5px;
-    color:White;
+	padding-right: 5px;
+	color: White;
 }
+
 .order-info {
 	position: absolute;
 	left: 0;
@@ -226,3 +225,26 @@ a {
 	padding-right: 0;
 	width: 100%;
 }
+
+.orderlist-box .bottom {padding: 0 31px;width: 100%;line-height: 64px;background: #f8f8f8;border-top: 1px solid #e7e7e7;}
+.orderlist-box .bottom:after {content: "";display: block;clear: both;}
+.orderlist-box .bottom .order-number, .order-date {float: left;}
+.orderlist-box .date {position: relative;display: block;padding: 0px 31px 0px;line-height: 60px;}
+.orderlist-box .date h2 {font-size:initial !important;}
+.orderlist-box .date strong {display: inline-block;color: #101010;font-weight: 200;font-size: 18px;vertical-align: top;}
+.orderlist-box .date strong > em {margin-left: 9px;color: #767572;font-weight: 200;}
+.orderlist-box .date .btn-go {position: absolute;top: 50%;right: 31px;transform: translateY(-50%);display: inline-block;padding-right: 15px;}
+.orderlist-box .bottom {padding: 0 31px;width: 100%;line-height: 64px;background: #f8f8f8;border-top: 1px solid #e7e7e7;}
+.orderlist-box .bottom .total-price {float: right;font-size:15px;}
+.orderlist-box .bottom .total-price dt {font-weight: 600;}
+.orderlist-box .bottom .total-price dd em {font-size: 20px;}
+.orderlist-box .bottom dt {display: inline-block;color: #767572;font-size: 15px;}
+.orderlist-box .bottom dd {display: inline-block;margin-left: 4px;font-size: 15px;text-align: right;color: #767572;}
+.orderlist-box .bottom dd strong {font-weight: 200;}
+.orderlist-box .bottom dd em {display: inline-block;font-family: "Roboto";font-size: 15px;font-weight: 600;vertical-align: top;}
+.orderlist-box .bottom h3 {display: inline-block;font-size: 14px;font-weight: 600;}
+
+
+
+
+

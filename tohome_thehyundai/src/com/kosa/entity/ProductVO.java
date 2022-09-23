@@ -1,3 +1,6 @@
+/*
+ * 코드 작성자 : 민지아
+ */
 package com.kosa.entity;
 
 import java.util.*;

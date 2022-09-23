@@ -1,3 +1,7 @@
+/* 
+ *  코드 작성자 : 공통
+ *  코드 설명 : Servlet을 통해 GET, POST 수행
+ */
 package com.kosa.controller;
 
 import java.io.IOException;

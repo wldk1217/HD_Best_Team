@@ -1,3 +1,6 @@
+/*
+ * 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -12,6 +15,7 @@ import com.kosa.entity.*;
 
 public class ProductDetailAction implements Action {
 
+	// 상품 상세페이지 조회
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/product/productDetail.jsp";

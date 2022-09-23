@@ -1,3 +1,6 @@
+/*
+ * 코드 작성자: 김민석
+ */
 package com.kosa.model;
 
 import java.sql.Date;
@@ -28,7 +31,7 @@ public class InquiryDAO {
       return instance;
    }
    
-   // 문의내역들 화면에 뿌려주기
+   // 문의내역들 db에서 불러와 조회하기
    public ArrayList<InquiryVO> viewInquiry(String member_memberId) {
       ArrayList<InquiryVO> inquiryList = new ArrayList<InquiryVO>();
       

@@ -1,3 +1,6 @@
+/*
+ * 작성자 : 민지아
+ */
 package com.kosa.controller.action;
 
 import java.io.IOException;
@@ -17,6 +20,7 @@ import com.kosa.model.ProductDAO;
 
 public class ProductByCategoryAction implements Action {
 
+	// 카테고리별 상품 조회
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "view/product/productByCategory.jsp";

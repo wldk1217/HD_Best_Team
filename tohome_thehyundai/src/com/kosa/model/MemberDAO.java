@@ -33,21 +33,7 @@ public class MemberDAO {
 		return instance;
 	}
 
-	/* MemberDAO 테스트시 사용 */
-
-//	public static void main(String[] args) {
-//		MemberDAO dao = MemberDAO.getInstance();
-//		dao.updateMember("admin12", "1234", "010-1234-1234", "admin12@naver.com", "서울특별시 종로구 코코레지던스 308호");
-//		MemberVO vo = dao.selectMember("admin12");
-//		
-//		System.out.println(vo.getMemberId());
-//		System.out.println(vo.getMemberName());
-
-//		dao.deleteMember("asd");
-//		System.out.println(dao.passwordCheck("admin12", "0"));
-//	}
-
-	//회원 정보 조회
+	// 회원 정보 조회
 	public MemberVO selectMember(String memberID) {
 		MemberVO memberVO = new MemberVO();
 		String run = "{call MEMBER_SELECT(?,?)}";
@@ -92,6 +78,7 @@ public class MemberDAO {
 		return memberVO;
 	}
 
+	// 로그인
 	public MemberVO loginCheck(String memberID, String memberPW) {
 
 		System.out.println("loginCheck 여기왔다");
@@ -102,15 +89,18 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
 
+			// 프로시저에 memberId, memberPw와 select문의 결과를 담을 cursor를 전달해줌
 			callableStatement.setString(1, memberID);
 			callableStatement.setString(2, memberPW);
 			callableStatement.registerOutParameter(3, OracleTypes.CURSOR);
 
 			try {
 				callableStatement.execute();
+				// 데이터가 저장된 cursor를 ResultSet에 담음
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(3);
 
 				while (resultSet.next()) {
+					// 데이터로 memberId, memberPw 값 설정
 					memberVO.setMemberId(resultSet.getString(1));
 					memberVO.setMemberPw(resultSet.getString(2));
 				}
@@ -131,6 +121,7 @@ public class MemberDAO {
 		return memberVO;
 	}
 
+	// 회원가입
 	public int insertMember(MemberVO memberVO) {
 		System.out.println("insertMember 여기왔다");
 
@@ -141,6 +132,7 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement cs = conn.prepareCall(runSP);
 
+			//프로시저에 memberVO의 값들과 insert문의 결과를 전달해줌
 			cs.setString(1, memberVO.getMemberId());
 			cs.setString(2, memberVO.getMemberPw());
 			cs.setString(3, memberVO.getMemberName());
@@ -166,7 +158,7 @@ public class MemberDAO {
 		return result;
 	}
 
-	// id 중복체크
+	// 아이디 중복체크
 	public String idCheck(String memberId) {
 		System.out.println("idCheck 여기왔다");
 
@@ -176,17 +168,19 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
 			
+			// 프로시저에 memberId와 select문의 결과를 담을 cursor를 전달해줌
 			callableStatement.setString(1, memberId);
 			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 			System.out.println();
 
 			try {
 				callableStatement.execute();
+				// 데이터가 저장된 cursor를 ResultSet에 담음
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 				
-				
-				
+			
 				while (resultSet.next()) {
+					// 데이터로 memberId 값 설정
 					result = resultSet.getString(1);
 					System.out.println("MemberDAO result 값 : "+result);
 				}
@@ -217,15 +211,18 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
 
+			// 프로시저에 memberNickname과 select문의 결과를 담을 cursor를 전달해줌
 			callableStatement.setString(1, memberNickname);
 			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 			System.out.println();
 
 			try {
 				callableStatement.execute();
+				// 데이터가 저장된 cursor를 ResultSet에 담음
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 
 				while (resultSet.next()) {
+					// 데이터로 memberNickname 값 설정
 					result = resultSet.getString(1);
 					System.out.println("MemberDAO result 값 : " + result);
 				}
@@ -256,15 +253,18 @@ public class MemberDAO {
 			Connection conn = DBConnection.getConnection();
 			CallableStatement callableStatement = conn.prepareCall(run);
 
+			// 프로시저에 memberTel과 select문의 결과를 담을 cursor를 전달해줌
 			callableStatement.setString(1, memberTel);
 			callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 			System.out.println();
 
 			try {
 				callableStatement.execute();
+				// 데이터가 저장된 cursor를 ResultSet에 담음
 				ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 
 				while (resultSet.next()) {
+					// 데이터로 memberTel 값 설정
 					result = resultSet.getString(1);
 					System.out.println("MemberDAO result 값 : " + result);
 				}
@@ -295,15 +295,18 @@ public class MemberDAO {
 				Connection conn = DBConnection.getConnection();
 				CallableStatement callableStatement = conn.prepareCall(run);
 
+				// 프로시저에 memberEmail과 select문의 결과를 담을 cursor를 전달해줌
 				callableStatement.setString(1, memberEmail);
 				callableStatement.registerOutParameter(2, OracleTypes.CURSOR);
 				System.out.println();
 
 				try {
 					callableStatement.execute();
+					// 데이터가 저장된 cursor를 ResultSet에 담음
 					ResultSet resultSet = (ResultSet) callableStatement.getObject(2);
 
 					while (resultSet.next()) {
+						// 데이터로 memberEmail 값 설정
 						result = resultSet.getString(1);
 						System.out.println("MemberDAO result 값 : " + result);
 					}
@@ -327,15 +330,19 @@ public class MemberDAO {
 	// 아이디 찾기
 	public String findID(String memberName, String memberEmail) {
 		String result = "";
+		// memberId를 찾기위한 select문
 		String sql = "select memberId from member where memberName=? and memberEmail = ?";
 
 		try {
 			Connection connn = DBConnection.getConnection();
 			PreparedStatement pstmt = connn.prepareStatement(sql);
+			
+			// 매개변수 값 대입, 매개변수 유효화 처리
 			pstmt.setString(1, memberName);
 			pstmt.setString(2, memberEmail);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
+				// sql문을 통해 얻은 결과 값 저장
 				result = rs.getString("memberId");
 			} else {
 				//
@@ -349,16 +356,20 @@ public class MemberDAO {
 	// 비밀번호 찾기
 	public String findPW(String memberId, String memberEmail, String memberTel) {
 		String result = "";
+		// memberPw를 찾기위한 select문
 		String sql = "select memberPw from member where memberId=? and memberEmail=? and memberTel=?";
 
 		try {
 			Connection connn = DBConnection.getConnection();
 			PreparedStatement pstmt = connn.prepareStatement(sql);
+			
+			// 매개변수 값 대입, 매개변수 유효화 처리
 			pstmt.setString(1, memberId);
 			pstmt.setString(2, memberEmail);
 			pstmt.setString(3, memberTel);
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
+				// sql문을 통해 얻은 결과 값 저장
 				result = rs.getString("memberPw");
 			} else {
 				//

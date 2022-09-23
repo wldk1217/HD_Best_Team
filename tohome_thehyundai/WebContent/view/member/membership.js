@@ -1,20 +1,25 @@
-/**
- * 
+/*
+ * 코드 작성자 : 김다빈 
  */
+
+// id, nick, tel, email 체크 패스 여부 변수
 let idPass = false;
 let nickPass = false;
 let telPass = false;
 let emailPass = false;
 
-
+// 회원가입 버튼 클릭 시
 $(function() {
 	$("#join").submit(function() {
+		
+		// id 값이 빈칸일 때 alert 띄우기
 		if ($("#id").val() == '') {
 			alert("아이디를 입력하세요");
 			$("#id").focus();
 			return false;
 		}
 
+		// pwd 값이 빈칸일 때 alert 띄우고 pwd2와 pwd가 일치하지 않으면 alert 띄우기
 		if ($("#pwd").val() == '' || $("#pwd2").val() == '') {
 			alert("비밀번호를 입력하세요");
 			$("#pwd").focus();
@@ -24,38 +29,43 @@ $(function() {
 			$("#pwd2").focus();
 			return false;
 		}
-
+		
+		// name 값이 빈칸일 때 alert 띄우기
 		if ($("#name").val() == '') {
 			alert("이름을 입력하세요");
 			$("#name").focus();
 			return false;
 		}
-
+		
+		// nickname 값이 빈칸일 때 alert 띄우기
 		if ($("#nickname").val() == '') {
 			alert("닉네임을 입력하세요");
 			$("#nickname").focus();
 			return false;
 		}
 
+		// tel 값이 빈칸일 때 alert 띄우기
 		if ($("#tel").val() == '') {
 			alert("전화번호를 입력하세요");
 			$("#tel").focus();
 			return false;
 		}
 
+		// email 값이 빈칸일 때 alert 띄우기
 		if ($("#email").val() == '') {
 			alert("이메일을 입력하세요");
 			$("#email").focus();
 			return false;
 		}
 		
+		// birth 값이 빈칸일 때 alert 띄우기
 		if ($("#birth").val() == '') {
 			alert("생년월일을 선택하세요");
 			$("#birth").focus();
 			return false;
 		}
 
-
+		// addr 값이 빈칸일 때 alert 띄우기
 		if ($("#addr").val() == '') {
 			alert("주소를 입력하세요");
 			$("#addr").focus();
@@ -147,14 +157,14 @@ $(function() {
 
 			$.ajax({
 				url: url,
-				data: "nickname=" + member_nickname, // input박스에 입력한 아이디
+				data: "nickname=" + member_nickname, // input박스에 입력한 닉네임
 				dataType: "text",
 				type: "POST",
 				success: function(result) {
 					console.log("ajax result : " + result);
 					console.log("member_nickname result : " + member_nickname);
 
-					// input박스에 입력한 아이디와 #idAction의 아이디가 같으면 사용 불가능
+					// input박스에 입력한 닉네임의 길이가 0보다 크면 사용 불가능
 					if ( result.length > 0 ) {//사용불가능
 						$("#chkN").html("이미 사용중인 닉네임입니다.");
 						$("#stateNickChk").val("N");
@@ -189,14 +199,14 @@ $(function() {
 
 			$.ajax({
 				url: url,
-				data: "tel=" + member_tel, // input박스에 입력한 아이디
+				data: "tel=" + member_tel, // input박스에 입력한 전화번호
 				dataType: "text",
 				type: "POST",
 				success: function(result) {
 					console.log("ajax result : " + result);
 					console.log("member_tel result : " + member_tel);
 
-					// input박스에 입력한 아이디와 #idAction의 아이디가 같으면 사용 불가능
+					// input박스에 입력한 전화번호의 길이가 0보다 크면 사용 불가능
 					if ( result.length > 0 ) {//사용불가능
 						$("#chkT").html("이미 사용중인 전화번호입니다.");
 						$("#telChk").val("N");
@@ -233,14 +243,14 @@ $(function() {
 
 			$.ajax({
 				url: url,
-				data: "email=" + member_email, // input박스에 입력한 아이디
+				data: "email=" + member_email, // input박스에 입력한 이메일
 				dataType: "text",
 				type: "POST",
 				success: function(result) {
 					console.log("ajax result : " + result);
 					console.log("member_tel result : " + member_email);
 
-					// input박스에 입력한 아이디와 #idAction의 아이디가 같으면 사용 불가능
+					// input박스에 입력한 이메일의 길이가 0보다 크면 사용 불가능
 					if ( result.length > 0 ) {//사용불가능
 						$("#chkE").html("이미 사용중인 이메일입니다.");
 						$("#EmailChk").val("N");

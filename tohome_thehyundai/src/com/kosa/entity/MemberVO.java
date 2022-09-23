@@ -1,7 +1,11 @@
+/*
+ * 코드 작성자 : 김다빈
+ */
 package com.kosa.entity;
 
 import lombok.Data;
 
+// 회원들의 값을 받아오기 위한 MemberVO
 @Data
 public class MemberVO {
 	private String memberId;

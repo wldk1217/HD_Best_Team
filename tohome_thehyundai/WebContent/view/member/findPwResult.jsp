@@ -1,3 +1,6 @@
+<!-- 
+	코드 작성자 : 김다빈
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -30,7 +33,7 @@
 		</div>
 	</header>
 
-	<!-- 로그인 폼  -->
+	<!-- 비밀번호 찾기 결과 폼  -->
 	<div class="find-input-form">
 		<h2>비밀번호찾기</h2>
 		<br>

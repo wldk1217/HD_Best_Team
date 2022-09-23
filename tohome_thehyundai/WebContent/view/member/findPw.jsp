@@ -1,3 +1,6 @@
+<!-- 
+	코드 작성자 : 김다빈
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE htm.---l>
@@ -31,7 +34,7 @@
 	</header>
 
 	
-	<!-- 로그인 폼  -->
+	<!-- 비밀번호 찾기 폼  -->
 	<div class="find-input-form">
 		<h2>비밀번호 찾기</h2><br>
 		<form method="post" id="mainform" action="tohomeServlet?command=find_pw">

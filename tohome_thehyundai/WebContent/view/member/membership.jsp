@@ -1,3 +1,6 @@
+<!-- 
+	코드 작성자 : 김다빈
+ -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>

@@ -45,14 +45,18 @@ public class InquiryInsertAction implements Action {
 		inquiryVO.setQuiryDate(Date.valueOf(LocalDate.now()));
 		// 문의내용
 		inquiryVO.setQuiryContent(request.getParameter("cntn"));
-
+		
+		//문의입력페이지에서 넘겨받은 "uploading"의 값이 없다면 "test"로 세팅
 		if (request.getParameter("uploading") == null) {
 			inquiryVO.setQuiryImg("test");
-		} else {
+		} 
+		else {
+			inquiryVO.setQuiryImg(request.getParameter("uploading"));
 		}
 
 		inquiryVO.setMember_memberId((String) session.getAttribute("memberId"));
 
+		//test 할 목적으로 콘솔창에 띄워주기
 		System.out.print(inquiryVO.getQuiryType());
 		System.out.print(inquiryVO.getQuiryDate());
 		System.out.print(inquiryVO.getQuiryContent());
@@ -60,7 +64,10 @@ public class InquiryInsertAction implements Action {
 		System.out.print(inquiryVO.getMember_memberId());
 
 		InquiryDAO inquiryDAO = InquiryDAO.getInstance();
+		
+		//inquiryDAO.insertInquiry메소드 실행
 		inquiryDAO.insertInquiry(inquiryVO);
+		
 		System.out.println("insert 성공");
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
